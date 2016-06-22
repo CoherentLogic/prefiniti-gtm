@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# $Id: mkdoc 4 2010-10-24 17:30:25Z jollis $
+
+cd ${PREFINITI_ROOT}/doc
+
+SRCDIRS=`echo ${PREFINITI_ROOT}/src/*`
+DOCFILE=${PREFINITI_ROOT}/doc/api_guide.pdi.tmp
+echo "PDOC" > ${DOCFILE}
+
+
+function process_file {
+    MUMPSFILE=$1    
+    FBASE=${FILE}
+    echo "FILE ${FBASE}" >> ${DOCFILE}    
+    cat ${MUMPSFILE} | sed -n '/;;PDOC/,/;;PDOC\//p' >> ${DOCFILE}
+}
+
+function process_dir {
+    PACKAGE=`cat $1/PPACKAGE`
+    FILES=$1/*.m   
+    echo "mkdoc:  importing ${PACKAGE}"
+    PDESC="PACKAGE ${PACKAGE}"
+    echo ${PDESC} >> ${DOCFILE}
+    for FILE in ${FILES}
+    do	
+	process_file ${FILE} "${PACKAGE}"
+    done
+}
+
+echo "Prefiniti 3.0"
+echo " Documentation Import Utility"
+echo ""
+echo ""
+echo "Copyright (C) 2010 Coherent Logic Development LLC"
+echo ""
+
+for DIR in ${SRCDIRS}
+do
+    process_dir $DIR
+done
+
+cat ${DOCFILE} | sed 's/;;//g' > ${PREFINITI_ROOT}/doc/api_guide.pdi
+rm ${DOCFILE}
+mumps -r "DWDOCS" "${PREFINITI_ROOT}/doc/api_guide.pdi" > ${PREFINITI_ROOT}/doc/api_guide.texinfo
+makeinfo ${PREFINITI_ROOT}/doc/api_guide.texinfo
+makeinfo --html --no-split ${PREFINITI_ROOT}/doc/api_guide.texinfo

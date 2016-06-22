@@ -1,0 +1,14 @@
+#!/bin/bash
+#PICASSO/JOLLIS - INSTALL PREFINITI KERNEL MODULE;9/13/10;bin/modinst
+#;;3.0;INST;9/13/10;1
+
+# $Id: modinst 4 2010-10-24 17:30:25Z jollis $
+
+if [ -z "$1" ]; then
+  echo "usage:  modinst module-name"
+  echo ""
+  echo "NOTE:  The module's source must be in $PREFINITI_ROOT/src/mods"
+  exit
+fi
+
+mumps -r "DWKRMODI" -I $1

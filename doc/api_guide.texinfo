@@ -1,0 +1,688 @@
+\input textinfo    @c -*-textinfo-*-
+@c %**start of header
+@setfilename api_guide.info
+@settitle Prefiniti API Guide
+@c %**end of header
+
+@copying
+This manual describes the Prefiniti v3 API
+
+Copyright (C) 2010 Coherent Logic Development LLC
+@end copying
+
+
+@titlepage
+@title Prefiniti API Guide
+@page
+@vskip 0pt plus 1filll
+@end titlepage
+
+@contents
+@ifnottex
+@node Top
+@top Prefiniti API Guide
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Object Broker::
+* Documentation Generator::
+* EWD Forms Generator::
+* Prefiniti FileMan/ScreenMan interfaces::
+* Instance Configuration::
+* Prefiniti I/O Library::
+* Prefiniti Kernel::
+* Object Record Management System::
+* Administrator Shell::
+* Maintenance Shell::
+* User Shell::
+* Security and Authentication::
+
+* Concepts Index::
+* Routines Index::
+@end menu
+
+
+@node Object Broker
+@chapter Object Broker
+
+
+@node Documentation Generator
+@chapter Documentation Generator
+
+@cindex Generate texinfo from PDI input file
+@findex DWTIGPDI^DWDOCS(INFILE)
+@section Generate texinfo from PDI input file
+@subsection @code{DWTIGPDI^DWDOCS(INFILE)}
+@* @emph{INFILE}:  Specifies the PDI file to convert  @*
+@cindex Return an Argument description
+@findex $$ARGDESC^DWDOCS(TEXT)
+@section Return an Argument description
+@subsection @code{$$ARGDESC^DWDOCS(TEXT)}
+@* @emph{}:   @*
+@* @emph{TEXT}:  The PDI argument line to parse and display  @*
+@cindex Return a texinfo chapheading
+@findex $$CHAPHEAD^DWDOCS(TEXT)
+@section Return a texinfo chapheading
+@subsection @code{$$CHAPHEAD^DWDOCS(TEXT)}
+@* @emph{TEXT}:  The text of the chapter heading  @*
+@cindex Return a texinfo majorheading
+@findex $$MAJRHEAD^DWDOCS(TEXT)
+@section Return a texinfo majorheading
+@subsection @code{$$MAJRHEAD^DWDOCS(TEXT)}
+@* @emph{TEXT}:  The text of the major heading  @*
+@cindex Return a texinfo cindex tag
+@findex $$CINDEX^DWDOCS(TEXT)
+@section Return a texinfo cindex tag
+@subsection @code{$$CINDEX^DWDOCS(TEXT)}
+@* @emph{TEXT}:  The text of the index entry  @*
+@cindex Return a texinfo findex tag
+@findex $$FINDEX^DWDOCS(TEXT)
+@section Return a texinfo findex tag
+@subsection @code{$$FINDEX^DWDOCS(TEXT)}
+@* @emph{TEXT}:  The text of the index entry  @*
+@cindex Return a texinfo input tag
+@findex $$DWTIINPT^DWDOCS()
+@section Return a texinfo input tag
+@subsection @code{$$DWTIINPT^DWDOCS()}
+@cindex Return a texinfo start of header
+@findex $$DWTISOH^DWDOCS()
+@section Return a texinfo start of header
+@subsection @code{$$DWTISOH^DWDOCS()}
+@cindex Return a texinfo setfilename tag
+@findex $$DWTISFN^DWDOCS(NAME)
+@section Return a texinfo setfilename tag
+@subsection @code{$$DWTISFN^DWDOCS(NAME)}
+@* @emph{NAME}:  The file to which the makeinfo output will be sent  @*
+@cindex Return a texinfo settitle tag
+@findex $$DWTISTTL^DWDOCS(NAME)
+@section Return a texinfo settitle tag
+@subsection @code{$$DWTISTTL^DWDOCS(NAME)}
+@* @emph{NAME}:  The title of the document  @*
+@cindex Return a texinfo end of header
+@findex $$DWTIEOH^DWDOCS()
+@section Return a texinfo end of header
+@subsection @code{$$DWTIEOH^DWDOCS()}
+@cindex Return a texinfo node tag
+@findex $$DWTINODE^DWDOCS(NAME)
+@section Return a texinfo node tag
+@subsection @code{$$DWTINODE^DWDOCS(NAME)}
+@* @emph{NAME}:  The name of the node  @*
+@cindex Return a texinfo chapter tag
+@findex $$DWTICHAP^DWDOCS(NAME)
+@section Return a texinfo chapter tag
+@subsection @code{$$DWTICHAP^DWDOCS(NAME)}
+@* @emph{NAME}:  The name of the chapter  @*
+@cindex Return a texinfo code tag
+@findex $$DWTICODE^DWDOCS(CODE)
+@section Return a texinfo code tag
+@subsection @code{$$DWTICODE^DWDOCS(CODE)}
+@* @emph{CODE}:  The code to quote  @*
+@cindex Return a texinfo section tag
+@findex $$DWTISC^DWDOCS(NAME)
+@section Return a texinfo section tag
+@subsection @code{$$DWTISC^DWDOCS(NAME)}
+@* @emph{NAME}:  The name of the section  @*
+@cindex Return a texinfo subsection tag
+@findex $$DWTISSC^DWDOCS(NAME)
+@section Return a texinfo subsection tag
+@subsection @code{$$DWTISSC^DWDOCS(NAME)}
+@* @emph{NAME}:  The name of the subsection  @*
+@cindex Return a texinfo subsubsection tag
+@findex $$DWTISSSC^DWDOCS(NAME)
+@section Return a texinfo subsubsection tag
+@subsection @code{$$DWTISSSC^DWDOCS(NAME)}
+@* @emph{NAME}:  The name of the subsubsection  @*
+
+@node EWD Forms Generator
+@chapter EWD Forms Generator
+
+@cindex Compiles forms for a class into EWD pages
+@findex COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET)
+@section Compiles forms for a class into EWD pages
+@subsection @code{COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET)}
+@* @emph{CLASNAME}:  The class to compile  @*
+@* @emph{REVN}:  The revision to compile  @*
+@* @emph{ACTION}:  The type of form to generate, ADD or EDIT  @*
+@* @emph{TARGET}:  The file to compile to, defaults to STDOUT  @*
+@cindex Return an XML attribute
+@findex $$XMLATTR^DWFGBLD(KEY,VAL)
+@section Return an XML attribute
+@subsection @code{$$XMLATTR^DWFGBLD(KEY,VAL)}
+@* @emph{KEY}:  The attribute's key  @*
+@* @emph{KEY}:  The attribute's value  @*
+@cindex Return start of an xml tag TAG
+@findex $$XMLST^DWFGBLD(TAG)
+@section Return start of an xml tag TAG
+@subsection @code{$$XMLST^DWFGBLD(TAG)}
+@* @emph{TAG}:  The tag to open  @*
+@cindex Return a closing brace in a single line xml tag
+@findex $$XMLSLCL^DWFGBLD()
+@section Return a closing brace in a single line xml tag
+@subsection @code{$$XMLSLCL^DWFGBLD()}
+@cindex Return a closing brace in a multi line xml tag TAG
+@findex $$XMLMLCL^DWFGBLD(TAG)
+@section Return a closing brace in a multi line xml tag TAG
+@subsection @code{$$XMLMLCL^DWFGBLD(TAG)}
+@* @emph{TAG}:  The tag to close  @*
+@cindex Return an <hLEVEL>TEXT</hLEVEL> block
+@findex $$HDRTXT^DWFGBLD(TEXT,LEVEL)
+@section Return an <hLEVEL>TEXT</hLEVEL> block
+@subsection @code{$$HDRTXT^DWFGBLD(TEXT,LEVEL)}
+@* @emph{TEXT}:  The text to place in the block  @*
+@* @emph{LEVEL}:  The level of the heading  @*
+@cindex Return a field block LABEL: CONT
+@findex $$FLDBLK^DWFGBLD(LABEL,CONT)
+@section Return a field block LABEL: CONT
+@subsection @code{$$FLDBLK^DWFGBLD(LABEL,CONT)}
+@* @emph{LABEL}:  The label of the block  @*
+@* @emph{CONT}:  The contents of the block  @*
+@cindex Return a form input field
+@findex $$INPFLD^DWFGBLD(TYPE,NAME,VALUE)
+@section Return a form input field
+@subsection @code{$$INPFLD^DWFGBLD(TYPE,NAME,VALUE)}
+@* @emph{TYPE}:  The HTML input field type  @*
+@* @emph{NAME}:  The DOM name of the field  @*
+@* @emph{VALUE}:  The initial value of the field  @*
+@cindex Return an HTML submit button 
+@findex $$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE)
+@section Return an HTML submit button 
+@subsection @code{$$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE)}
+@* @emph{NAME}:  The DOM name of the button  @*
+@* @emph{LABEL}:  The label on the button  @*
+@* @emph{ACTION}:  The MUMPS action script to run  @*
+@* @emph{NEXTPAGE}:  The page to go to after submit  @*
+@cindex Return opening of an HTML table tag
+@findex $$TBLOPEN^DWFGBLD()
+@section Return opening of an HTML table tag
+@subsection @code{$$TBLOPEN^DWFGBLD()}
+@cindex Return ending of an HTML table tag
+@findex $$TBLCLS^DWFGBLD()
+@section Return ending of an HTML table tag
+@subsection @code{$$TBLCLS^DWFGBLD()}
+@cindex Return opening of an HTML form tag
+@findex $$FORMOPEN^DWFGBLD(METHOD,ACTION)
+@section Return opening of an HTML form tag
+@subsection @code{$$FORMOPEN^DWFGBLD(METHOD,ACTION)}
+@* @emph{METHOD}:  The method, either post or get, to submit this form  @*
+@* @emph{ACTION}:  The action to perform, usually ewd  @*
+@cindex Return ending of an HTML form tag
+@findex $$FORMCLS^DWFGBLD()
+@section Return ending of an HTML form tag
+@subsection @code{$$FORMCLS^DWFGBLD()}
+@cindex Return an ewd config tag
+@findex $$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE)
+@section Return an ewd config tag
+@subsection @code{$$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE)}
+@* @emph{FRSTPAGE}:  Is this the first page of the app, true or false  @*
+@* @emph{PREPAGE}:  The pre-page script to call  @*
+@cindex Return an html tag
+@findex $$HTMLOPEN^DWFGBLD()
+@section Return an html tag
+@subsection @code{$$HTMLOPEN^DWFGBLD()}
+@cindex Return head section
+@findex $$HEADSECN^DWFGBLD(PGTITLE)
+@section Return head section
+@subsection @code{$$HEADSECN^DWFGBLD(PGTITLE)}
+@* @emph{PGTITLE}:  The title of the page  @*
+@cindex Return the body section
+@findex $$BODYOPEN^DWFGBLD()
+@section Return the body section
+@subsection @code{$$BODYOPEN^DWFGBLD()}
+@cindex Close the body section
+@findex $$BODYCLS^DWFGBLD()
+@section Close the body section
+@subsection @code{$$BODYCLS^DWFGBLD()}
+@cindex Close the <html> section
+@findex $$HTMLCLS^DWFGBLD()
+@section Close the <html> section
+@subsection @code{$$HTMLCLS^DWFGBLD()}
+
+@node Prefiniti FileMan/ScreenMan interfaces
+@chapter Prefiniti FileMan/ScreenMan interfaces
+
+@cindex Invoke a ScreenMan form
+@findex $$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM)
+@section Invoke a ScreenMan form
+@subsection @code{$$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM)}
+@* @emph{FILENUM}:  The FileMan file number  @*
+@* @emph{FORMNAM}:  The ScreenMan form name  @*
+@* @emph{RECNUM}:  The record number  @*
+@* @emph{PAGENUM}:  The initial page to display  @*
+
+@node Instance Configuration
+@chapter Instance Configuration
+
+
+@node Prefiniti I/O Library
+@chapter Prefiniti I/O Library
+
+@cindex Initialize the I/O Library
+@findex $$INIT^DWIOLIB()
+@section Initialize the I/O Library
+@subsection @code{$$INIT^DWIOLIB()}
+@cindex Set up a screen buffer
+@findex SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)
+@section Set up a screen buffer
+@subsection @code{SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)}
+@* @emph{BUF}:  Reference to the buffer array  @*
+@* @emph{WIDTH}:  The width of the screen  @*
+@* @emph{HEIGHT}:  The height of the screen  @*
+@* @emph{FORECOLR}:  The foreground color  @*
+@* @emph{BACKCOLR}:  The background color  @*
+@* @emph{FILLCHAR}:  The fill character  @*
+@cindex Update pending->current and current->screen
+@findex UPDATE^DWIOLIB()
+@section Update pending->current and current->screen
+@subsection @code{UPDATE^DWIOLIB()}
+@cindex Draw a rectangle into the pending buffer
+@findex $$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)
+@section Draw a rectangle into the pending buffer
+@subsection @code{$$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)}
+@* @emph{XPOS}:  The horizontal position of the upper-left corner  @*
+@* @emph{YPOS}:  The vertical position of the upper-left corner  @*
+@* @emph{WIDTH}:  The width, in characters, of the rectangle. Must be less than XPOS+SCWIDTH  @*
+@* @emph{HEIGHT}:  The height, in characters, of the rectangle. Must be less than YPOS+SCHEIGHT  @*
+@* @emph{FORECOLR}:  The foreground color of the rectangle  @*
+@* @emph{BACKCOLR}:  The background color of the rectangle  @*
+@* @emph{FILLCHAR}:  The character with which to fill the rectangle  @*
+
+@node Prefiniti Kernel
+@chapter Prefiniti Kernel
+
+@cindex Get the next FUID in the sequence
+@findex $$GETNEXT^DWKRFUID()
+@section Get the next FUID in the sequence
+@subsection @code{$$GETNEXT^DWKRFUID()}
+@cindex Installs a kernel module into a Prefiniti instance
+@findex INSTALL^DWKRMODI(MODULE)
+@section Installs a kernel module into a Prefiniti instance
+@subsection @code{INSTALL^DWKRMODI(MODULE)}
+@* @emph{MODULE}:  The module to be installed  @*
+@cindex Removes a kernel module from this instance
+@findex REMOVE^DWKRMODI(MODULE)
+@section Removes a kernel module from this instance
+@subsection @code{REMOVE^DWKRMODI(MODULE)}
+@* @emph{MODULE}:  The module to be removed  @*
+@cindex Prints a module's info line
+@findex MODINFO^DWKRMODI(MODULE)
+@section Prints a module's info line
+@subsection @code{MODINFO^DWKRMODI(MODULE)}
+@* @emph{MODULE}:  The module for which to print the info line  @*
+@cindex Prints a list of installed modules
+@findex MODULES^DWKRMODI()
+@section Prints a list of installed modules
+@subsection @code{MODULES^DWKRMODI()}
+@cindex Queries whether a module is installed
+@findex $$QRYMOD^DWKRMODI(MODULE)
+@section Queries whether a module is installed
+@subsection @code{$$QRYMOD^DWKRMODI(MODULE)}
+@* @emph{MODULE}:  The module to be queried  @*
+@cindex Return a multi-line input
+@findex $$MLTILINE^DWKRRNSI()
+@section Return a multi-line input
+@subsection @code{$$MLTILINE^DWKRRNSI()}
+@cindex Get terminal height in lines
+@findex $$TRMLINES^DWKRRNSI()
+@section Get terminal height in lines
+@subsection @code{$$TRMLINES^DWKRRNSI()}
+@cindex Get terminal width in columns
+@findex $$TRMCOLS^DWKRRNSI()
+@section Get terminal width in columns
+@subsection @code{$$TRMCOLS^DWKRRNSI()}
+@cindex Write a multi-line global
+@findex WMLTLINE^DWKRRNSI(GLOB)
+@section Write a multi-line global
+@subsection @code{WMLTLINE^DWKRRNSI(GLOB)}
+@* @emph{GLOB}:  The global to be written  @*
+@cindex Send escape sequence
+@findex ESCAPE^DWKRRNSI(SEQ)
+@section Send escape sequence
+@subsection @code{ESCAPE^DWKRRNSI(SEQ)}
+@* @emph{SEQ}:  The escape sequence  @*
+@cindex Clear the screen
+@findex CLRSCR^DWKRRNSI()
+@section Clear the screen
+@subsection @code{CLRSCR^DWKRRNSI()}
+@cindex Set colors
+@findex COLOR^DWKRRNSI(FG,BG)
+@section Set colors
+@subsection @code{COLOR^DWKRRNSI(FG,BG)}
+@* @emph{FG}:  The foreground color  @*
+@* @emph{BG}:  The background color  @*
+@cindex Restore the previous colors
+@findex RESTRCLR^DWKRRNSI()
+@section Restore the previous colors
+@subsection @code{RESTRCLR^DWKRRNSI()}
+@cindex Locate the cursor to X,Y
+@findex LOCATE^DWKRRNSI(X,Y)
+@section Locate the cursor to X,Y
+@subsection @code{LOCATE^DWKRRNSI(X,Y)}
+@* @emph{X}:  The horizontal coordinate  @*
+@* @emph{Y}:  The vertical coordinate  @*
+@cindex Restore previous cursor position
+@findex RESTORXY^DWKRRNSI()
+@section Restore previous cursor position
+@subsection @code{RESTORXY^DWKRRNSI()}
+@cindex Write a bar across the screen
+@findex HDRBAR^DWKRRNSI(FG,BG,LENGTH)
+@section Write a bar across the screen
+@subsection @code{HDRBAR^DWKRRNSI(FG,BG,LENGTH)}
+@* @emph{FG}:  Foreground Color  @*
+@* @emph{BG}:  Background Color  @*
+@* @emph{LENGTH}:  Length of the bar  @*
+@cindex Write TEXT at X,Y coordinates
+@findex WRITEAT^DWKRRNSI(X,Y,TEXT)
+@section Write TEXT at X,Y coordinates
+@subsection @code{WRITEAT^DWKRRNSI(X,Y,TEXT)}
+@* @emph{X}:  X coordinate  @*
+@* @emph{Y}:  Y coordinate  @*
+@* @emph{TEXT}:  Text to be written  @*
+@cindex Reset the screen
+@findex RESET^DWKRRNSI()
+@section Reset the screen
+@subsection @code{RESET^DWKRRNSI()}
+@cindex Reset the screen
+@findex  D COLOR^DWKRRNSI("WHITE","BLACK")
+@section Reset the screen
+@subsection @code{ D COLOR^DWKRRNSI("WHITE","BLACK")}
+@cindex Reset the screen
+@findex  D CLRSCR^DWKRRNSI()
+@section Reset the screen
+@subsection @code{ D CLRSCR^DWKRRNSI()}
+@cindex Fires when any class is created
+@findex CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)
+@section Fires when any class is created
+@subsection @code{CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)}
+@* @emph{EVTYPE}:  The event type  @*
+@* @emph{OID}:  The record's OID  @*
+@* @emph{KEY}:  The key  @*
+@* @emph{REVN}:  The revision of the record  @*
+@* @emph{DATA}:  The PDB of the record  @*
+@cindex Fires when any class is revised
+@findex CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)
+@section Fires when any class is revised
+@subsection @code{CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)}
+@* @emph{EVTYPE}:  The event type  @*
+@* @emph{OID}:  The record's OID  @*
+@* @emph{KEY}:  The key  @*
+@* @emph{REVN}:  The revision of the record  @*
+@* @emph{DATA}:  The PDB of the record  @*
+@cindex Runs form generation for the class and compiles the EWD pages
+@findex CLSCOMP^DWCLWTCH(OID,REVN)
+@section Runs form generation for the class and compiles the EWD pages
+@subsection @code{CLSCOMP^DWCLWTCH(OID,REVN)}
+@* @emph{OID}:  The object's OID  @*
+@* @emph{REVN}:  The revision of the object  @*
+
+@node Object Record Management System
+@chapter Object Record Management System
+
+@cindex Create a new ORMS class definition
+@findex $$CREATE^DWORCLAS(CLASNAME,CLASDEFN)
+@section Create a new ORMS class definition
+@subsection @code{$$CREATE^DWORCLAS(CLASNAME,CLASDEFN)}
+@* @emph{CLASNAME}:  The name of the class  @*
+@* @emph{CLASDEFN}:  The definition of the class  @*
+@cindex Return a comma-delimited list of the fields in a class
+@findex $$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT)
+@section Return a comma-delimited list of the fields in a class
+@subsection @code{$$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT)}
+@* @emph{CLASNAME}:  The name of the class  @*
+@* @emph{REVN}:  The revision of the class, "N" for newest  @*
+@* @emph{PARENT}:  The parent of this class for CLASPTRs  @*
+@cindex Set the primary key of a class
+@findex SETPK^DWORCLAS(CLASNAME,PK)
+@section Set the primary key of a class
+@subsection @code{SETPK^DWORCLAS(CLASNAME,PK)}
+@* @emph{CLASNAME}:  The name of the class  @*
+@* @emph{PK}:  The name of the primary key field  @*
+@cindex Get the primary key of a class
+@findex $$GETPK^DWORCLAS(CLASNAME)
+@section Get the primary key of a class
+@subsection @code{$$GETPK^DWORCLAS(CLASNAME)}
+@* @emph{CLASNAME}:  The name of the class  @*
+@cindex Retrieve a class's CLASDEFN ORMS ID by name
+@findex $$RETRIEVE^DWORCLAS(CLASNAME)
+@section Retrieve a class's CLASDEFN ORMS ID by name
+@subsection @code{$$RETRIEVE^DWORCLAS(CLASNAME)}
+@* @emph{CLASNAME}:  The name of the class  @*
+@cindex Get the revision number of the latest revision to this class
+@findex $$REVISION^DWORCLAS(OID)
+@section Get the revision number of the latest revision to this class
+@subsection @code{$$REVISION^DWORCLAS(OID)}
+@* @emph{OID}:  The OID of the object to check  @*
+@cindex Update an existing ORMS class definition
+@findex UPDATE^DWORCLAS(OID,CLASDEFN)
+@section Update an existing ORMS class definition
+@subsection @code{UPDATE^DWORCLAS(OID,CLASDEFN)}
+@* @emph{OID}:  The OID of the record to update  @*
+@* @emph{CLASDEFN}:  The CLASDEFN of the record to update  @*
+@cindex EWD action script for form submission
+@findex ACTION^DWOREWD(sessid)
+@section EWD action script for form submission
+@subsection @code{ACTION^DWOREWD(sessid)}
+@* @emph{sessid}:  The EWD session ID  @*
+@cindex EWD prepage script for form editing
+@findex PREPAGE^DWOREWD(sessid)
+@section EWD prepage script for form editing
+@subsection @code{PREPAGE^DWOREWD(sessid)}
+@* @emph{sessid}:  The EWD session ID  @*
+@cindex Register a new ORMS class hook
+@findex REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK)
+@section Register a new ORMS class hook
+@subsection @code{REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK)}
+@* @emph{MODULE}:  The kernel module to which the hook belongs  @*
+@* @emph{CLASNAME}:  The class name we are hooking  @*
+@* @emph{EVNTMASK}:  Format "CRD" C=Create,R=Revise,D=Delete 1 for true, 0 for false  @*
+@* @emph{CALLBACK}:  The MUMPS routine to be called when the hook is run  @*
+@cindex Run hooks for CLASNAME on OID
+@findex RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)
+@section Run hooks for CLASNAME on OID
+@subsection @code{RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)}
+@* @emph{CLASNAME}:  Class name  @*
+@* @emph{EVTYPE}:  CREATE, REVISE, DELETE  @*
+@* @emph{OID}:  The record's OID  @*
+@* @emph{KEY}:  The key of the updated field  @*
+@* @emph{REVN}:  The revision number  @*
+@* @emph{DATA}:  The new data  @*
+@cindex Internal subroutine called by RUNHOOKS^DWORHOOK
+@findex DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)
+@section Internal subroutine called by RUNHOOKS^DWORHOOK
+@subsection @code{DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)}
+@cindex Index a record by three terms
+@findex SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL)
+@section Index a record by three terms
+@subsection @code{SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL)}
+@* @emph{PRILKP}:  The primary lookup term  @*
+@* @emph{SECLKP}:  The secondary lookup term  @*
+@* @emph{TERLKP}:  The tertiary lookup term  @*
+@* @emph{VAL}:  The value to be indexed  @*
+@cindex Lookup a record by three terms
+@findex $$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP)
+@section Lookup a record by three terms
+@subsection @code{$$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP)}
+@* @emph{PRILKP}:  The primary lookup term  @*
+@* @emph{SECLKP}:  The secondary lookup term  @*
+@* @emph{TERLKP}:  The tertiary lookup term  @*
+@cindex Compile an external CLASDEFN into ORMS-native format
+@findex COMPILE^DWORINST(FH)
+@section Compile an external CLASDEFN into ORMS-native format
+@subsection @code{COMPILE^DWORINST(FH)}
+@* @emph{FH}:  The file to compile  @*
+@cindex Create/set meta stream STREAM at position POS to VAL on OID
+@findex SET^DWORMETA(OID,KEY,STREAM,POS,VAL)
+@section Create/set meta stream STREAM at position POS to VAL on OID
+@subsection @code{SET^DWORMETA(OID,KEY,STREAM,POS,VAL)}
+@* @emph{OID}:  The OID of the record to attach to  @*
+@* @emph{KEY}:  The key of the record to attach to  @*
+@* @emph{STREAM}:  The metadata stream's name  @*
+@* @emph{POS}:  The numeric index of this stream element  @*
+@* @emph{VAL}:  The value of STREAM at POS  @*
+@cindex Get meta stream STREAM at position POS on OID
+@findex GET^DWORMETA(OID,KEY,STREAM,POS)
+@section Get meta stream STREAM at position POS on OID
+@subsection @code{GET^DWORMETA(OID,KEY,STREAM,POS)}
+@* @emph{OID}:  The OID of the record to read from  @*
+@* @emph{KEY}:  The key of the record to read stream from  @*
+@* @emph{STREAM}:  The metadata stream's name  @*
+@* @emph{POS}:  The numeric index of this stream element  @*
+@cindex Create a new ORMS record
+@findex CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA)
+@section Create a new ORMS record
+@subsection @code{CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA)}
+@* @emph{PARENT}:  The parent record of this record  @*
+@* @emph{CLASS}:  The CLASNAME of this record  @*
+@* @emph{NAME}:  The name of this record  @*
+@* @emph{KEY}:  The key of this record  @*
+@* @emph{DATA}:  The data contained in this record  @*
+@cindex Write to an existing ORMS record
+@findex OUTPUT^DWORREC(OID,KEY,DATA)
+@section Write to an existing ORMS record
+@subsection @code{OUTPUT^DWORREC(OID,KEY,DATA)}
+@* @emph{OID}:  The OID of the record  @*
+@* @emph{KEY}:  The key of the record  @*
+@* @emph{DATA}:  The PDB of the record  @*
+@cindex Append to an existing ORMS record
+@findex APPEND^DWORREC(OID,KEY,DATA)
+@section Append to an existing ORMS record
+@subsection @code{APPEND^DWORREC(OID,KEY,DATA)}
+@* @emph{OID}:  OID  @*
+@* @emph{KEY}:  Key  @*
+@* @emph{DATA}:  PDB  @*
+@cindex Read from an existing ORMS record
+@findex INPUT^DWORREC(OID,KEY,REV)
+@section Read from an existing ORMS record
+@subsection @code{INPUT^DWORREC(OID,KEY,REV)}
+@* @emph{OID}:  OID  @*
+@* @emph{KEY}:  Key  @*
+@* @emph{REV}:  Revision  @*
+@cindex Get by class and key
+@findex CLSGET^DWORREC(CLASS,KEY,DATA)
+@section Get by class and key
+@subsection @code{CLSGET^DWORREC(CLASS,KEY,DATA)}
+@* @emph{CLASS}:  CLASNAME  @*
+@* @emph{KEY}:  Key  @*
+@* @emph{DATA}:  PDB  @*
+@cindex Get an OID through ^DWIND
+@findex INDGET^DWORREC(CLASS,KEY,DATA)
+@section Get an OID through ^DWIND
+@subsection @code{INDGET^DWORREC(CLASS,KEY,DATA)}
+@* @emph{CLASS}:  CLASNAME  @*
+@* @emph{KEY}:  Key  @*
+@* @emph{DATA}:  PDB  @*
+@cindex Get the newest revision number for record OID,KEY
+@findex NEWEST^DWORREC(OID,KEY)
+@section Get the newest revision number for record OID,KEY
+@subsection @code{NEWEST^DWORREC(OID,KEY)}
+@* @emph{OID}:  OID  @*
+@* @emph{KEY}:  Key  @*
+@cindex Set a lock on record OID
+@findex SETLOCK^DWORREC(OID)
+@section Set a lock on record OID
+@subsection @code{SETLOCK^DWORREC(OID)}
+@* @emph{OID}:  OID  @*
+@cindex Cull revisions for OID, preserving at most COUNT revisions
+@findex CULL^DWORREC(OID,COUNT)
+@section Cull revisions for OID, preserving at most COUNT revisions
+@subsection @code{CULL^DWORREC(OID,COUNT)}
+@* @emph{OID}:  OID of object to cull  @*
+@* @emph{COUNT}:  Maximum revisions to preserve  @*
+@cindex Check for locks on record OID
+@findex ISLOCKED^DWORREC(OID)
+@section Check for locks on record OID
+@subsection @code{ISLOCKED^DWORREC(OID)}
+@* @emph{OID}:  The OID of the desired record  @*
+@cindex Clear locks on record OID
+@findex CLRLOCK^DWORREC(OID)
+@section Clear locks on record OID
+@subsection @code{CLRLOCK^DWORREC(OID)}
+@* @emph{OID}:  The OID of the object to have its locks cleared  @*
+@cindex Get the root node for this instance
+@findex ROOTNODE^DWORREC()
+@section Get the root node for this instance
+@subsection @code{ROOTNODE^DWORREC()}
+@cindex Sets the root node for this instance
+@findex SETRTNOD^DWORREC(OID)
+@section Sets the root node for this instance
+@subsection @code{SETRTNOD^DWORREC(OID)}
+@* @emph{OID}:  The OID of the new root node  @*
+@cindex returns 1 if OID exists, 0 if it does not
+@findex $$RECEXIST^DWORREC(OID)
+@section returns 1 if OID exists, 0 if it does not
+@subsection @code{$$RECEXIST^DWORREC(OID)}
+@* @emph{OID}:  The OID of the record to check  @*
+@cindex Get the class component of a computed field
+@findex $$CFCLASS^DWORREC(CF)
+@section Get the class component of a computed field
+@subsection @code{$$CFCLASS^DWORREC(CF)}
+@* @emph{CF}:  The entire computed field  @*
+@cindex Get the key component of a computed field
+@findex $$CFKEY^DWORREC(CF)
+@section Get the key component of a computed field
+@subsection @code{$$CFKEY^DWORREC(CF)}
+@* @emph{CF}:  The entire computed field  @*
+@cindex Get the field component of a computed field
+@findex $$CFFIELD^DWORREC(CF)
+@section Get the field component of a computed field
+@subsection @code{$$CFFIELD^DWORREC(CF)}
+@* @emph{CF}:  The entire computed field  @*
+@cindex Get a computed field's value
+@findex $$CFGET^DWORREC(CF)
+@section Get a computed field's value
+@subsection @code{$$CFGET^DWORREC(CF)}
+@* @emph{CF}:  The entire computed field  @*
+@cindex Dump an ORMS record
+@findex DUMP^DWORREC(OID)
+@section Dump an ORMS record
+@subsection @code{DUMP^DWORREC(OID)}
+@* @emph{OID}:  The OID of the record to dump  @*
+@cindex Build a query from a query string
+@findex $$BLDQRY^DWORRSET(QS)
+@section Build a query from a query string
+@subsection @code{$$BLDQRY^DWORRSET(QS)}
+@* @emph{QS}:  The query string  @*
+
+@node Administrator Shell
+@chapter Administrator Shell
+
+@cindex Render an add class instance form
+@findex $$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK)
+@section Render an add class instance form
+@subsection @code{$$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK)}
+@* @emph{CLASNAME}:  The class for which to render this form  @*
+@* @emph{REVN}:  The revision number of the class, N for most recent  @*
+@* @emph{SHHDR}:  Should be 1 to show header, 0 to hide header  @*
+@* @emph{STUFFPK}:  The value with which to fill the PK field, 0 for none  @*
+
+@node Maintenance Shell
+@chapter Maintenance Shell
+
+
+@node User Shell
+@chapter User Shell
+
+
+@node Security and Authentication
+@chapter Security and Authentication
+
+@cindex Register with authentication
+@findex $$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID)
+@section Register with authentication
+@subsection @code{$$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID)}
+@* @emph{EMAIL}:  The user's e-mail address  @*
+@* @emph{PASSWORD}:  The user's password  @*
+@* @emph{MODE}:  EWD or DIRECT  @*
+@* @emph{SESSID}:  The EWD session ID if MODE=EWD  @*
+@node Concepts Index
+@unnumbered Concepts Index
+
+@printindex cp
+
+@node Routines Index
+@unnumbered Routines Index
+
+@printindex fn
+
+@bye

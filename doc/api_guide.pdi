@@ -1,0 +1,733 @@
+PDOC
+PACKAGE Object Broker
+FILE /home/prefiniti/prefiniti/src/brkr/*.m
+PACKAGE Documentation Generator
+FILE /home/prefiniti/prefiniti/src/docs/DWDOCS.m
+PDOC
+SUMMARY Generate texinfo from PDI input file
+DEFSUB
+DWTIGPDI(INFILE)
+ARG 1 INFILE Specifies the PDI file to convert
+PDOC/
+PDOC
+SUMMARY Return an Argument description
+DEFFNC
+ARGDESC(TEXT)
+ARG 1 TEXT The PDI argument line to parse and display
+PDOC/
+PDOC
+SUMMARY Return a texinfo chapheading
+DEFFNC
+CHAPHEAD(TEXT)
+ARG 1 TEXT The text of the chapter heading
+PDOC/
+PDOC
+SUMMARY Return a texinfo majorheading
+DEFFNC
+MAJRHEAD(TEXT)
+ARG 1 TEXT The text of the major heading
+PDOC/
+PDOC
+SUMMARY Return a texinfo cindex tag
+DEFFNC
+CINDEX(TEXT)
+ARG 1 TEXT The text of the index entry
+PDOC/
+PDOC
+SUMMARY Return a texinfo findex tag
+DEFFNC
+FINDEX(TEXT)
+ARG 1 TEXT The text of the index entry
+PDOC/
+PDOC
+SUMMARY Return a texinfo input tag
+DEFFNC
+DWTIINPT()
+PDOC/
+PDOC
+SUMMARY Return a texinfo start of header
+DEFFNC
+DWTISOH()
+PDOC/
+PDOC
+SUMMARY Return a texinfo setfilename tag
+DEFFNC 
+DWTISFN(NAME)
+ARG 1 NAME The file to which the makeinfo output will be sent
+PDOC/
+PDOC
+SUMMARY Return a texinfo settitle tag
+DEFFNC
+DWTISTTL(NAME)
+ARG 1 NAME The title of the document
+PDOC/
+PDOC
+SUMMARY Return a texinfo end of header
+DEFFNC
+DWTIEOH()
+PDOC/
+PDOC
+SUMMARY Return a texinfo node tag
+DEFFNC
+DWTINODE(NAME)
+ARG 1 NAME The name of the node
+PDOC/
+PDOC
+SUMMARY Return a texinfo chapter tag
+DEFFNC
+DWTICHAP(NAME)
+ARG 1 NAME The name of the chapter
+PDOC/
+PDOC
+SUMMARY Return a texinfo code tag
+DEFFNC
+DWTICODE(CODE)
+ARG 1 CODE The code to quote
+PDOC/
+PDOC
+SUMMARY Return a texinfo section tag
+DEFFNC
+DWTISC(NAME)
+ARG 1 NAME The name of the section
+PDOC/
+PDOC
+SUMMARY Return a texinfo subsection tag
+DEFFNC
+DWTISSC(NAME)
+ARG 1 NAME The name of the subsection
+PDOC/
+PDOC
+SUMMARY Return a texinfo subsubsection tag
+DEFFNC
+DWTISSSC(NAME)
+ARG 1 NAME The name of the subsubsection
+PDOC/
+PACKAGE EWD Forms Generator
+FILE /home/prefiniti/prefiniti/src/fgen/DWFGBLD.m
+PDOC
+SUMMARY Compiles forms for a class into EWD pages
+DEFSUB
+COMPILE(CLASNAME,REVN,ACTION,TARGET)
+ARG 1 CLASNAME The class to compile
+ARG 2 REVN The revision to compile
+ARG 3 ACTION The type of form to generate, ADD or EDIT
+ARG 4 TARGET The file to compile to, defaults to STDOUT
+PDOC/
+PDOC
+SUMMARY Return an XML attribute
+DEFFNC
+XMLATTR(KEY,VAL)
+ARG 1 KEY The attribute's key
+ARG 2 KEY The attribute's value
+PDOC/
+PDOC
+SUMMARY Return start of an xml tag TAG
+DEFFNC
+XMLST(TAG)
+ARG 1 TAG The tag to open
+PDOC/
+PDOC
+SUMMARY Return a closing brace in a single line xml tag
+DEFFNC
+XMLSLCL()
+PDOC/
+PDOC
+SUMMARY Return a closing brace in a multi line xml tag TAG
+DEFFNC
+XMLMLCL(TAG)
+ARG 1 TAG The tag to close
+PDOC/
+PDOC
+SUMMARY Return an <hLEVEL>TEXT</hLEVEL> block
+DEFFNC
+HDRTXT(TEXT,LEVEL)
+ARG 1 TEXT The text to place in the block
+ARG 2 LEVEL The level of the heading
+PDOC/
+PDOC
+SUMMARY Return a field block LABEL: CONT
+DEFFNC
+FLDBLK(LABEL,CONT)
+ARG 1 LABEL The label of the block
+ARG 2 CONT The contents of the block
+PDOC/
+PDOC
+SUMMARY Return a form input field
+DEFFNC
+INPFLD(TYPE,NAME,VALUE)
+ARG 1 TYPE The HTML input field type
+ARG 2 NAME The DOM name of the field
+ARG 3 VALUE The initial value of the field
+PDOC/
+PDOC
+SUMMARY Return an HTML submit button 
+DEFFNC
+SUBFLD(NAME,LABEL,ACTION,NEXTPAGE)
+ARG 1 NAME The DOM name of the button
+ARG 2 LABEL The label on the button
+ARG 3 ACTION The MUMPS action script to run
+ARG 4 NEXTPAGE The page to go to after submit
+PDOC/
+PDOC
+SUMMARY Return opening of an HTML table tag
+DEFFNC
+TBLOPEN()
+PDOC/
+PDOC
+SUMMARY Return ending of an HTML table tag
+DEFFNC
+TBLCLS()
+PDOC/
+PDOC
+SUMMARY Return opening of an HTML form tag
+DEFFNC
+FORMOPEN(METHOD,ACTION)
+ARG 1 METHOD The method, either post or get, to submit this form
+ARG 2 ACTION The action to perform, usually ewd
+PDOC/
+PDOC
+SUMMARY Return ending of an HTML form tag
+DEFFNC
+FORMCLS()
+PDOC/
+PDOC
+SUMMARY Return an ewd config tag
+DEFFNC
+EWDHDR(FRSTPAGE,PREPAGE)
+ARG 1 FRSTPAGE Is this the first page of the app, true or false
+ARG 2 PREPAGE The pre-page script to call
+PDOC/
+PDOC
+SUMMARY Return an html tag
+DEFFNC
+HTMLOPEN()
+PDOC/
+PDOC
+SUMMARY Return head section
+DEFFNC
+HEADSECN(PGTITLE)
+ARG 1 PGTITLE The title of the page
+PDOC/
+PDOC
+SUMMARY Return the body section
+DEFFNC
+BODYOPEN()
+PDOC/
+PDOC
+SUMMARY Close the body section
+BODYCLS()
+PDOC/
+PDOC
+SUMMARY Close the <html> section
+DEFFNC
+HTMLCLS()
+PDOC/
+PACKAGE Prefiniti FileMan/ScreenMan interfaces
+FILE /home/prefiniti/prefiniti/src/fman/DWFMAPI.m
+FILE /home/prefiniti/prefiniti/src/fman/DWSMINTR.m
+PDOC
+SUMMARY Invoke a ScreenMan form
+DEFFNC
+INVOKE(FILENUM,FORMNAM,RECNUM,PAGENUM)
+ARG 1 FILENUM The FileMan file number
+ARG 2 FORMNAM The ScreenMan form name
+ARG 3 RECNUM The record number
+ARG 4 PAGENUM The initial page to display
+PDOC/
+PACKAGE Instance Configuration
+FILE /home/prefiniti/prefiniti/src/inst/DWPRINST.m
+PACKAGE Prefiniti I/O Library
+FILE /home/prefiniti/prefiniti/src/iolib/DWIOLIB.m
+PDOC
+SUMMARY Initialize the I/O Library
+DEFFNC
+INIT()
+PDOC/
+PDOC
+SUMMARY Set up a screen buffer
+DEFSUB
+SETBUF(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)
+ARG 1 BUF Reference to the buffer array
+ARG 2 WIDTH The width of the screen
+ARG 3 HEIGHT The height of the screen
+ARG 4 FORECOLR The foreground color
+ARG 5 BACKCOLR The background color
+ARG 6 FILLCHAR The fill character
+PDOC/
+PDOC
+SUMMARY Update pending->current and current->screen
+DEFSUB
+UPDATE()
+PDOC/
+PDOC
+SUMMARY Draw a rectangle into the pending buffer
+DEFFNC
+DRAWRECT(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)
+ARG 1 XPOS The horizontal position of the upper-left corner
+ARG 2 YPOS The vertical position of the upper-left corner
+ARG 3 WIDTH The width, in characters, of the rectangle. Must be less than XPOS+SCWIDTH
+ARG 4 HEIGHT The height, in characters, of the rectangle. Must be less than YPOS+SCHEIGHT
+ARG 5 FORECOLR The foreground color of the rectangle
+ARG 6 BACKCOLR The background color of the rectangle
+ARG 7 FILLCHAR The character with which to fill the rectangle
+PDOC/
+FILE /home/prefiniti/prefiniti/src/iolib/DWTVT100.m
+PACKAGE Prefiniti Kernel
+FILE /home/prefiniti/prefiniti/src/krnl/DWKRFUID.m
+PDOC
+SUMMARY Get the next FUID in the sequence
+DEFFCN
+GETNEXT()
+PDOC/	
+FILE /home/prefiniti/prefiniti/src/krnl/DWKRMCAL.m
+FILE /home/prefiniti/prefiniti/src/krnl/DWKRMODI.m
+PDOC
+SUMMARY Installs a kernel module into a Prefiniti instance
+DEFSUB
+INSTALL(MODULE)
+ARG 1 MODULE The module to be installed
+PDOC/
+PDOC
+SUMMARY Removes a kernel module from this instance
+DEFSUB
+REMOVE(MODULE)
+ARG 1 MODULE The module to be removed
+PDOC/
+PDOC
+SUMMARY Prints a module's info line
+DEFSUB
+MODINFO(MODULE)
+ARG 1 MODULE The module for which to print the info line
+PDOC/
+PDOC
+SUMMARY Prints a list of installed modules
+DEFSUB
+MODULES()
+PDOC/
+PDOC
+SUMMARY Queries whether a module is installed
+DEFFNC
+QRYMOD(MODULE)
+ARG 1 MODULE The module to be queried
+PDOC/
+FILE /home/prefiniti/prefiniti/src/krnl/DWKRRNSI.m
+PDOC
+SUMMARY Return a multi-line input
+DEFFCN
+MLTILINE()
+PDOC/
+PDOC
+SUMMARY Get terminal height in lines
+DEFFNC
+TRMLINES()
+PDOC/
+PDOC
+SUMMARY Get terminal width in columns
+DEFFNC
+TRMCOLS()
+PDOC/
+PDOC
+SUMMARY Write a multi-line global
+DEFSUB
+WMLTLINE(GLOB)
+ARG 1 GLOB The global to be written
+PDOC/
+PDOC
+SUMMARY Send escape sequence
+DEFSUB
+ESCAPE(SEQ)
+ARG 1 SEQ The escape sequence
+PDOC/
+PDOC
+SUMMARY Clear the screen
+DEFSUB
+CLRSCR()
+PDOC/
+PDOC
+SUMMARY Set colors
+DEFSUB
+COLOR(FG,BG)
+ARG 1 FG The foreground color
+ARG 2 BG The background color
+PDOC/
+PDOC
+SUMMARY Restore the previous colors
+DEFSUB
+RESTRCLR()
+PDOC/
+PDOC
+SUMMARY Locate the cursor to X,Y
+DEFSUB
+LOCATE(X,Y)
+ARG 1 X The horizontal coordinate
+ARG 2 Y The vertical coordinate
+PDOC/
+PDOC
+SUMMARY Restore previous cursor position
+DEFSUB
+RESTORXY()
+PDOC/
+PDOC
+SUMMARY Write a bar across the screen
+DEFSUB
+HDRBAR(FG,BG,LENGTH)
+ARG 1 FG Foreground Color
+ARG 2 BG Background Color
+ARG 3 LENGTH Length of the bar
+PDOC/
+PDOC
+SUMMARY Write TEXT at X,Y coordinates
+DEFSUB
+WRITEAT(X,Y,TEXT)
+ARG 1 X X coordinate
+ARG 2 Y Y coordinate
+ARG 3 TEXT Text to be written
+PDOC/
+PDOC
+SUMMARY Reset the screen
+DEFSUB
+RESET()
+ D COLOR("WHITE","BLACK")
+ D CLRSCR()
+ QPACKAGE Standard Distribution Modules
+FILE /home/prefiniti/prefiniti/src/mods/DWCLWTCH.m
+PDOC
+SUMMARY Register this module with the instance
+DEFSUB
+REGISTER
+PDOC/
+PDOC
+SUMMARY Unregister this module with the instance
+DEFSUB
+UNREGSTR
+PDOC/
+PDOC
+SUMMARY Print the info line for this module
+DEFSUB
+MODINFO
+PDOC/
+PDOC
+SUMMARY Fires when any class is created
+DEFSUB
+CLSCREAT(EVTYPE,OID,KEY,REVN,DATA)
+ARG 1 EVTYPE The event type
+ARG 2 OID The record's OID
+ARG 3 KEY The key
+ARG 4 REVN The revision of the record
+ARG 5 DATA The PDB of the record
+PDOC/
+PDOC
+SUMMARY Fires when any class is revised
+DEFSUB
+CLSREVIS(EVTYPE,OID,KEY,REVN,DATA)
+ARG 1 EVTYPE The event type
+ARG 2 OID The record's OID
+ARG 3 KEY The key
+ARG 4 REVN The revision of the record
+ARG 5 DATA The PDB of the record
+PDOC/
+PDOC
+SUMMARY Runs form generation for the class and compiles the EWD pages
+DEFSUB
+CLSCOMP(OID,REVN)
+ARG 1 OID The object's OID
+ARG 2 REVN The revision of the object
+PDOC/
+FILE /home/prefiniti/prefiniti/src/mods/DWLGSUPT.m
+PACKAGE Object Record Management System
+FILE /home/prefiniti/prefiniti/src/orms/DWORCLAS.m
+PDOC
+SUMMARY Create a new ORMS class definition
+DEFFNC
+CREATE(CLASNAME,CLASDEFN)
+ARG 1 CLASNAME The name of the class
+ARG 2 CLASDEFN The definition of the class
+PDOC/
+PDOC
+SUMMARY Return a comma-delimited list of the fields in a class
+DEFFNC
+LISTFLDS(CLASNAME,REVN,PARENT)
+ARG 1 CLASNAME The name of the class
+ARG 2 REVN The revision of the class, "N" for newest
+ARG 3 PARENT The parent of this class for CLASPTRs
+PDOC/
+PDOC
+SUMMARY Set the primary key of a class
+DEFSUB
+SETPK(CLASNAME,PK)
+ARG 1 CLASNAME The name of the class
+ARG 2 PK The name of the primary key field
+PDOC/
+PDOC
+SUMMARY Get the primary key of a class
+DEFFNC
+GETPK(CLASNAME)
+ARG 1 CLASNAME The name of the class
+PDOC/
+PDOC
+SUMMARY Retrieve a class's CLASDEFN ORMS ID by name
+DEFFNC
+RETRIEVE(CLASNAME)
+ARG 1 CLASNAME The name of the class
+PDOC/
+PDOC
+SUMMARY Get the revision number of the latest revision to this class
+DEFFNC
+REVISION(OID)
+ARG 1 OID The OID of the object to check
+PDOC/
+PDOC
+SUMMARY Update an existing ORMS class definition
+DEFSUB
+UPDATE(OID,CLASDEFN)
+ARG 1 OID The OID of the record to update
+ARG 2 CLASDEFN The CLASDEFN of the record to update
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWOREWD.m
+PDOC
+SUMMARY EWD action script for form submission
+DEFSUB
+ACTION(sessid)
+ARG 1 sessid The EWD session ID
+PDOC/
+PDOC
+SUMMARY EWD prepage script for form editing
+DEFSUB
+PREPAGE(sessid)
+ARG 1 sessid The EWD session ID
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWORHOOK.m
+PDOC
+SUMMARY Register a new ORMS class hook
+DEFSUB
+REGISTER(MODULE,CLASNAME,EVNTMASK,CALLBACK)
+ARG 1 MODULE The kernel module to which the hook belongs
+ARG 2 CLASNAME The class name we are hooking
+ARG 3 EVNTMASK Format "CRD" C=Create,R=Revise,D=Delete 1 for true, 0 for false
+ARG 4 CALLBACK The MUMPS routine to be called when the hook is run
+PDOC/
+PDOC
+SUMMARY Run hooks for CLASNAME on OID
+DEFSUB
+RUNHOOKS(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)    
+ARG 1 CLASNAME Class name
+ARG 2 EVTYPE CREATE, REVISE, DELETE
+ARG 3 OID The record's OID
+ARG 4 KEY The key of the updated field
+ARG 5 REVN The revision number
+ARG 6 DATA The new data
+PDOC/
+PDOC
+SUMMARY Internal subroutine called by RUNHOOKS^DWORHOOK
+DEFSUB
+DOHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWORINDX.m
+PDOC
+SUMMARY Index a record by three terms
+DEFSUB
+SIDX3(PRILKP,SECLKP,TERLKP,VAL)
+ARG 1 PRILKP The primary lookup term
+ARG 2 SECLKP The secondary lookup term
+ARG 3 TERLKP The tertiary lookup term
+ARG 4 VAL The value to be indexed
+PDOC/
+PDOC
+SUMMARY Lookup a record by three terms
+DEFFNC
+LIDX3(PRILKP,SECLKP,TERLKP)
+ARG 1 PRILKP The primary lookup term
+ARG 2 SECLKP The secondary lookup term
+ARG 3 TERLKP The tertiary lookup term
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWORINST.m
+PDOC
+SUMMARY Compile an external CLASDEFN into ORMS-native format
+DEFSUB
+COMPILE(FH)
+ARG 1 FH The file to compile
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWORMETA.m
+PDOC
+SUMMARY Create/set meta stream STREAM at position POS to VAL on OID
+DEFSUB
+SET(OID,KEY,STREAM,POS,VAL)
+ARG 1 OID The OID of the record to attach to
+ARG 2 KEY The key of the record to attach to
+ARG 3 STREAM The metadata stream's name
+ARG 4 POS The numeric index of this stream element
+ARG 5 VAL The value of STREAM at POS
+PDOC/
+PDOC
+SUMMARY Get meta stream STREAM at position POS on OID
+;:DEFFCN
+GET(OID,KEY,STREAM,POS)
+ARG 1 OID The OID of the record to read from
+ARG 2 KEY The key of the record to read stream from
+ARG 3 STREAM The metadata stream's name
+ARG 4 POS The numeric index of this stream element
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWORREC.m
+PDOC
+SUMMARY Create a new ORMS record
+DEFFCN
+CREATE(PARENT,CLASS,NAME,KEY,DATA)		
+ARG 1 PARENT The parent record of this record
+ARG 2 CLASS The CLASNAME of this record
+ARG 3 NAME The name of this record
+ARG 4 KEY The key of this record
+ARG 5 DATA The data contained in this record
+PDOC/
+PDOC
+SUMMARY Write to an existing ORMS record
+DEFSUB
+OUTPUT(OID,KEY,DATA)
+ARG 1 OID The OID of the record
+ARG 2 KEY The key of the record
+ARG 3 DATA The PDB of the record
+PDOC/
+PDOC
+SUMMARY Append to an existing ORMS record
+DEFSUB
+APPEND(OID,KEY,DATA)
+ARG 1 OID OID
+ARG 2 KEY Key
+ARG 3 DATA PDB
+PDOC/
+PDOC
+SUMMARY Read from an existing ORMS record
+DEFFCN
+INPUT(OID,KEY,REV)
+ARG 1 OID OID
+ARG 2 KEY Key
+ARG 3 REV Revision
+PDOC/
+PDOC
+SUMMARY Get by class and key
+DEFFCN
+CLSGET(CLASS,KEY,DATA)
+ARG 1 CLASS CLASNAME
+ARG 2 KEY Key
+ARG 3 DATA PDB
+PDOC/
+PDOC
+SUMMARY Get an OID through ^DWIND
+DEFFCN
+INDGET(CLASS,KEY,DATA)
+ARG 1 CLASS CLASNAME
+ARG 2 KEY Key
+ARG 3 DATA PDB
+PDOC/
+PDOC 
+SUMMARY Get the newest revision number for record OID,KEY
+DEFFCN
+NEWEST(OID,KEY)
+ARG 1 OID OID
+ARG 2 KEY Key
+PDOC/
+PDOC
+SUMMARY Set a lock on record OID
+DEFSUB
+SETLOCK(OID)
+ARG 1 OID OID
+PDOC/
+PDOC
+SUMMARY Cull revisions for OID, preserving at most COUNT revisions
+DEFSUB
+CULL(OID,COUNT)
+ARG 1 OID OID of object to cull
+ARG 2 COUNT Maximum revisions to preserve
+PDOC/
+PDOC
+SUMMARY Check for locks on record OID
+DEFFCN
+ISLOCKED(OID)
+ARG 1 OID The OID of the desired record
+PDOC/
+PDOC
+SUMMARY Clear locks on record OID
+DEFSUB
+CLRLOCK(OID)
+ARG 1 OID The OID of the object to have its locks cleared
+PDOC/
+PDOC
+SUMMARY Get the root node for this instance
+DEFFCN
+ROOTNODE()
+PDOC/
+PDOC
+SUMMARY Sets the root node for this instance
+DEFSUB
+SETRTNOD(OID) 
+ARG 1 OID The OID of the new root node
+PDOC/
+PDOC
+SUMMARY returns 1 if OID exists, 0 if it does not
+DEFFNC
+RECEXIST(OID)
+ARG 1 OID The OID of the record to check
+PDOC/
+PDOC
+SUMMARY Get the class component of a computed field
+DEFFNC
+CFCLASS(CF)
+ARG 1 CF The entire computed field
+PDOC/
+PDOC
+SUMMARY Get the key component of a computed field
+DEFFNC
+CFKEY(CF)
+ARG 1 CF The entire computed field
+PDOC/
+PDOC
+SUMMARY Get the field component of a computed field
+DEFFNC
+CFFIELD(CF)
+ARG 1 CF The entire computed field
+PDOC/
+PDOC
+SUMMARY Get a computed field's value
+DEFFNC
+CFGET(CF)
+ARG 1 CF The entire computed field
+PDOC/
+PDOC
+SUMMARY Dump an ORMS record
+DEFSUB
+DUMP(OID)
+ARG 1 OID The OID of the record to dump
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/DWORRSET.m
+PDOC
+SUMMARY Build a query from a query string
+DEFFNC
+BLDQRY(QS)
+ARG 1 QS The query string
+PDOC/
+FILE /home/prefiniti/prefiniti/src/orms/HOOKTEST.m
+PACKAGE Administrator Shell
+FILE /home/prefiniti/prefiniti/src/pash/DWPASHL.m
+PDOC
+SUMMARY Render an add class instance form
+DEFFNC
+RNDRADD(CLASNAME,REVN,SHHDR,STUFFPK)
+ARG 1 CLASNAME The class for which to render this form
+ARG 2 REVN The revision number of the class, N for most recent
+ARG 3 SHHDR Should be 1 to show header, 0 to hide header
+ARG 4 STUFFPK The value with which to fill the PK field, 0 for none
+PDOC/
+PACKAGE Maintenance Shell
+FILE /home/prefiniti/prefiniti/src/pmsh/*.m
+PACKAGE User Shell
+FILE /home/prefiniti/prefiniti/src/push/*.m
+PACKAGE Security and Authentication
+FILE /home/prefiniti/prefiniti/src/secu/DWSCAUTH.m
+PDOC
+SUMMARY Register with authentication
+DEFFNC
+LOGIN(EMAIL,PASSWORD,MODE,SESSID)
+ARG 1 EMAIL The user's e-mail address
+ARG 2 PASSWORD The user's password
+ARG 3 MODE EWD or DIRECT
+ARG 4 SESSID The EWD session ID if MODE=EWD
+PDOC/

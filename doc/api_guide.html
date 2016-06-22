@@ -1,0 +1,1679 @@
+<html lang="en">
+<head>
+<title>Prefiniti API Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Prefiniti API Guide">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes the Prefiniti v3 API
+
+Copyright (C) 2010 Coherent Logic Development LLC-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">Prefiniti API Guide</h1>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Prefiniti API Guide</a>
+<li><a name="toc_Object-Broker" href="#Object-Broker">1 Object Broker</a>
+<li><a name="toc_Documentation-Generator" href="#Documentation-Generator">2 Documentation Generator</a>
+<ul>
+<li><a href="#Documentation-Generator">2.1 Generate texinfo from PDI input file</a>
+<ul>
+<li><a href="#Documentation-Generator">2.1.1 <code>DWTIGPDI^DWDOCS(INFILE)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.2 Return an Argument description</a>
+<ul>
+<li><a href="#Documentation-Generator">2.2.1 <code>$$ARGDESC^DWDOCS(TEXT)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.3 Return a texinfo chapheading</a>
+<ul>
+<li><a href="#Documentation-Generator">2.3.1 <code>$$CHAPHEAD^DWDOCS(TEXT)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.4 Return a texinfo majorheading</a>
+<ul>
+<li><a href="#Documentation-Generator">2.4.1 <code>$$MAJRHEAD^DWDOCS(TEXT)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.5 Return a texinfo cindex tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.5.1 <code>$$CINDEX^DWDOCS(TEXT)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.6 Return a texinfo findex tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.6.1 <code>$$FINDEX^DWDOCS(TEXT)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.7 Return a texinfo input tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.7.1 <code>$$DWTIINPT^DWDOCS()</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.8 Return a texinfo start of header</a>
+<ul>
+<li><a href="#Documentation-Generator">2.8.1 <code>$$DWTISOH^DWDOCS()</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.9 Return a texinfo setfilename tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.9.1 <code>$$DWTISFN^DWDOCS(NAME)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.10 Return a texinfo settitle tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.10.1 <code>$$DWTISTTL^DWDOCS(NAME)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.11 Return a texinfo end of header</a>
+<ul>
+<li><a href="#Documentation-Generator">2.11.1 <code>$$DWTIEOH^DWDOCS()</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.12 Return a texinfo node tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.12.1 <code>$$DWTINODE^DWDOCS(NAME)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.13 Return a texinfo chapter tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.13.1 <code>$$DWTICHAP^DWDOCS(NAME)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.14 Return a texinfo code tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.14.1 <code>$$DWTICODE^DWDOCS(CODE)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.15 Return a texinfo section tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.15.1 <code>$$DWTISC^DWDOCS(NAME)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.16 Return a texinfo subsection tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.16.1 <code>$$DWTISSC^DWDOCS(NAME)</code></a>
+</li></ul>
+<li><a href="#Documentation-Generator">2.17 Return a texinfo subsubsection tag</a>
+<ul>
+<li><a href="#Documentation-Generator">2.17.1 <code>$$DWTISSSC^DWDOCS(NAME)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_EWD-Forms-Generator" href="#EWD-Forms-Generator">3 EWD Forms Generator</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.1 Compiles forms for a class into EWD pages</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.1.1 <code>COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.2 Return an XML attribute</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.2.1 <code>$$XMLATTR^DWFGBLD(KEY,VAL)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.3 Return start of an xml tag TAG</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.3.1 <code>$$XMLST^DWFGBLD(TAG)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.4 Return a closing brace in a single line xml tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.4.1 <code>$$XMLSLCL^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.5 Return a closing brace in a multi line xml tag TAG</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.5.1 <code>$$XMLMLCL^DWFGBLD(TAG)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.6 Return an &lt;hLEVEL&gt;TEXT&lt;/hLEVEL&gt; block</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.6.1 <code>$$HDRTXT^DWFGBLD(TEXT,LEVEL)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.7 Return a field block LABEL: CONT</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.7.1 <code>$$FLDBLK^DWFGBLD(LABEL,CONT)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.8 Return a form input field</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.8.1 <code>$$INPFLD^DWFGBLD(TYPE,NAME,VALUE)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.9 Return an HTML submit button</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.9.1 <code>$$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.10 Return opening of an HTML table tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.10.1 <code>$$TBLOPEN^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.11 Return ending of an HTML table tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.11.1 <code>$$TBLCLS^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.12 Return opening of an HTML form tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.12.1 <code>$$FORMOPEN^DWFGBLD(METHOD,ACTION)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.13 Return ending of an HTML form tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.13.1 <code>$$FORMCLS^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.14 Return an ewd config tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.14.1 <code>$$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.15 Return an html tag</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.15.1 <code>$$HTMLOPEN^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.16 Return head section</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.16.1 <code>$$HEADSECN^DWFGBLD(PGTITLE)</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.17 Return the body section</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.17.1 <code>$$BODYOPEN^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.18 Close the body section</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.18.1 <code>$$BODYCLS^DWFGBLD()</code></a>
+</li></ul>
+<li><a href="#EWD-Forms-Generator">3.19 Close the &lt;html&gt; section</a>
+<ul>
+<li><a href="#EWD-Forms-Generator">3.19.1 <code>$$HTMLCLS^DWFGBLD()</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Prefiniti-FileMan_002fScreenMan-interfaces" href="#Prefiniti-FileMan_002fScreenMan-interfaces">4 Prefiniti FileMan/ScreenMan interfaces</a>
+<ul>
+<li><a href="#Prefiniti-FileMan_002fScreenMan-interfaces">4.1 Invoke a ScreenMan form</a>
+<ul>
+<li><a href="#Prefiniti-FileMan_002fScreenMan-interfaces">4.1.1 <code>$$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Instance-Configuration" href="#Instance-Configuration">5 Instance Configuration</a>
+<li><a name="toc_Prefiniti-I_002fO-Library" href="#Prefiniti-I_002fO-Library">6 Prefiniti I/O Library</a>
+<ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.1 Initialize the I/O Library</a>
+<ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.1.1 <code>$$INIT^DWIOLIB()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.2 Set up a screen buffer</a>
+<ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.2.1 <code>SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.3 Update pending-&gt;current and current-&gt;screen</a>
+<ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.3.1 <code>UPDATE^DWIOLIB()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.4 Draw a rectangle into the pending buffer</a>
+<ul>
+<li><a href="#Prefiniti-I_002fO-Library">6.4.1 <code>$$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Prefiniti-Kernel" href="#Prefiniti-Kernel">7 Prefiniti Kernel</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.1 Get the next FUID in the sequence</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.1.1 <code>$$GETNEXT^DWKRFUID()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.2 Installs a kernel module into a Prefiniti instance</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.2.1 <code>INSTALL^DWKRMODI(MODULE)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.3 Removes a kernel module from this instance</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.3.1 <code>REMOVE^DWKRMODI(MODULE)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.4 Prints a module's info line</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.4.1 <code>MODINFO^DWKRMODI(MODULE)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.5 Prints a list of installed modules</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.5.1 <code>MODULES^DWKRMODI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.6 Queries whether a module is installed</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.6.1 <code>$$QRYMOD^DWKRMODI(MODULE)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.7 Return a multi-line input</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.7.1 <code>$$MLTILINE^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.8 Get terminal height in lines</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.8.1 <code>$$TRMLINES^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.9 Get terminal width in columns</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.9.1 <code>$$TRMCOLS^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.10 Write a multi-line global</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.10.1 <code>WMLTLINE^DWKRRNSI(GLOB)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.11 Send escape sequence</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.11.1 <code>ESCAPE^DWKRRNSI(SEQ)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.12 Clear the screen</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.12.1 <code>CLRSCR^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.13 Set colors</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.13.1 <code>COLOR^DWKRRNSI(FG,BG)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.14 Restore the previous colors</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.14.1 <code>RESTRCLR^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.15 Locate the cursor to X,Y</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.15.1 <code>LOCATE^DWKRRNSI(X,Y)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.16 Restore previous cursor position</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.16.1 <code>RESTORXY^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.17 Write a bar across the screen</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.17.1 <code>HDRBAR^DWKRRNSI(FG,BG,LENGTH)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.18 Write TEXT at X,Y coordinates</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.18.1 <code>WRITEAT^DWKRRNSI(X,Y,TEXT)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.19 Reset the screen</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.19.1 <code>RESET^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.20 Reset the screen</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.20.1 <code> D COLOR^DWKRRNSI("WHITE","BLACK")</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.21 Reset the screen</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.21.1 <code> D CLRSCR^DWKRRNSI()</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.22 Fires when any class is created</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.22.1 <code>CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.23 Fires when any class is revised</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.23.1 <code>CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)</code></a>
+</li></ul>
+<li><a href="#Prefiniti-Kernel">7.24 Runs form generation for the class and compiles the EWD pages</a>
+<ul>
+<li><a href="#Prefiniti-Kernel">7.24.1 <code>CLSCOMP^DWCLWTCH(OID,REVN)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Object-Record-Management-System" href="#Object-Record-Management-System">8 Object Record Management System</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.1 Create a new ORMS class definition</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.1.1 <code>$$CREATE^DWORCLAS(CLASNAME,CLASDEFN)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.2 Return a comma-delimited list of the fields in a class</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.2.1 <code>$$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.3 Set the primary key of a class</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.3.1 <code>SETPK^DWORCLAS(CLASNAME,PK)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.4 Get the primary key of a class</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.4.1 <code>$$GETPK^DWORCLAS(CLASNAME)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.5 Retrieve a class's CLASDEFN ORMS ID by name</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.5.1 <code>$$RETRIEVE^DWORCLAS(CLASNAME)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.6 Get the revision number of the latest revision to this class</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.6.1 <code>$$REVISION^DWORCLAS(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.7 Update an existing ORMS class definition</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.7.1 <code>UPDATE^DWORCLAS(OID,CLASDEFN)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.8 EWD action script for form submission</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.8.1 <code>ACTION^DWOREWD(sessid)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.9 EWD prepage script for form editing</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.9.1 <code>PREPAGE^DWOREWD(sessid)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.10 Register a new ORMS class hook</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.10.1 <code>REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.11 Run hooks for CLASNAME on OID</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.11.1 <code>RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.12 Internal subroutine called by RUNHOOKS^DWORHOOK</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.12.1 <code>DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.13 Index a record by three terms</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.13.1 <code>SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.14 Lookup a record by three terms</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.14.1 <code>$$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.15 Compile an external CLASDEFN into ORMS-native format</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.15.1 <code>COMPILE^DWORINST(FH)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.16 Create/set meta stream STREAM at position POS to VAL on OID</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.16.1 <code>SET^DWORMETA(OID,KEY,STREAM,POS,VAL)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.17 Get meta stream STREAM at position POS on OID</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.17.1 <code>GET^DWORMETA(OID,KEY,STREAM,POS)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.18 Create a new ORMS record</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.18.1 <code>CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.19 Write to an existing ORMS record</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.19.1 <code>OUTPUT^DWORREC(OID,KEY,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.20 Append to an existing ORMS record</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.20.1 <code>APPEND^DWORREC(OID,KEY,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.21 Read from an existing ORMS record</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.21.1 <code>INPUT^DWORREC(OID,KEY,REV)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.22 Get by class and key</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.22.1 <code>CLSGET^DWORREC(CLASS,KEY,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.23 Get an OID through ^DWIND</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.23.1 <code>INDGET^DWORREC(CLASS,KEY,DATA)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.24 Get the newest revision number for record OID,KEY</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.24.1 <code>NEWEST^DWORREC(OID,KEY)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.25 Set a lock on record OID</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.25.1 <code>SETLOCK^DWORREC(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.26 Cull revisions for OID, preserving at most COUNT revisions</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.26.1 <code>CULL^DWORREC(OID,COUNT)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.27 Check for locks on record OID</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.27.1 <code>ISLOCKED^DWORREC(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.28 Clear locks on record OID</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.28.1 <code>CLRLOCK^DWORREC(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.29 Get the root node for this instance</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.29.1 <code>ROOTNODE^DWORREC()</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.30 Sets the root node for this instance</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.30.1 <code>SETRTNOD^DWORREC(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.31 returns 1 if OID exists, 0 if it does not</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.31.1 <code>$$RECEXIST^DWORREC(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.32 Get the class component of a computed field</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.32.1 <code>$$CFCLASS^DWORREC(CF)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.33 Get the key component of a computed field</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.33.1 <code>$$CFKEY^DWORREC(CF)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.34 Get the field component of a computed field</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.34.1 <code>$$CFFIELD^DWORREC(CF)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.35 Get a computed field's value</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.35.1 <code>$$CFGET^DWORREC(CF)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.36 Dump an ORMS record</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.36.1 <code>DUMP^DWORREC(OID)</code></a>
+</li></ul>
+<li><a href="#Object-Record-Management-System">8.37 Build a query from a query string</a>
+<ul>
+<li><a href="#Object-Record-Management-System">8.37.1 <code>$$BLDQRY^DWORRSET(QS)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Administrator-Shell" href="#Administrator-Shell">9 Administrator Shell</a>
+<ul>
+<li><a href="#Administrator-Shell">9.1 Render an add class instance form</a>
+<ul>
+<li><a href="#Administrator-Shell">9.1.1 <code>$$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Maintenance-Shell" href="#Maintenance-Shell">10 Maintenance Shell</a>
+<li><a name="toc_User-Shell" href="#User-Shell">11 User Shell</a>
+<li><a name="toc_Security-and-Authentication" href="#Security-and-Authentication">12 Security and Authentication</a>
+<ul>
+<li><a href="#Security-and-Authentication">12.1 Register with authentication</a>
+<ul>
+<li><a href="#Security-and-Authentication">12.1.1 <code>$$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID)</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Concepts-Index" href="#Concepts-Index">Concepts Index</a>
+<li><a name="toc_Routines-Index" href="#Routines-Index">Routines Index</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Object-Broker">Object Broker</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Prefiniti API Guide</h2>
+
+<p>This manual describes the Prefiniti v3 API
+
+   <p>Copyright (C) 2010 Coherent Logic Development LLC
+
+<ul class="menu">
+<li><a accesskey="1" href="#Object-Broker">Object Broker</a>
+<li><a accesskey="2" href="#Documentation-Generator">Documentation Generator</a>
+<li><a accesskey="3" href="#EWD-Forms-Generator">EWD Forms Generator</a>
+<li><a accesskey="4" href="#Prefiniti-FileMan_002fScreenMan-interfaces">Prefiniti FileMan/ScreenMan interfaces</a>
+<li><a accesskey="5" href="#Instance-Configuration">Instance Configuration</a>
+<li><a accesskey="6" href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a>
+<li><a accesskey="7" href="#Prefiniti-Kernel">Prefiniti Kernel</a>
+<li><a accesskey="8" href="#Object-Record-Management-System">Object Record Management System</a>
+<li><a accesskey="9" href="#Administrator-Shell">Administrator Shell</a>
+<li><a href="#Maintenance-Shell">Maintenance Shell</a>
+<li><a href="#User-Shell">User Shell</a>
+<li><a href="#Security-and-Authentication">Security and Authentication</a>
+
+<li><a href="#Concepts-Index">Concepts Index</a>
+<li><a href="#Routines-Index">Routines Index</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Object-Broker"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Documentation-Generator">Documentation Generator</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Object Broker</h2>
+
+<div class="node">
+<p><hr>
+<a name="Documentation-Generator"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#EWD-Forms-Generator">EWD Forms Generator</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Object-Broker">Object Broker</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Documentation Generator</h2>
+
+<p><a name="index-Generate-texinfo-from-PDI-input-file-1"></a><a name="index-DWTIGPDI_005eDWDOCS_0028INFILE_0029-2"></a>
+
+<h3 class="section">2.1 Generate texinfo from PDI input file</h3>
+
+<h4 class="subsection">2.1.1 <code>DWTIGPDI^DWDOCS(INFILE)</code></h4>
+
+<p><br> <em>INFILE</em>:  Specifies the PDI file to convert  <br>
+<a name="index-Return-an-Argument-description-3"></a><a name="index-g_t_0024_0024ARGDESC_005eDWDOCS_0028TEXT_0029-4"></a>
+
+<h3 class="section">2.2 Return an Argument description</h3>
+
+<h4 class="subsection">2.2.1 <code>$$ARGDESC^DWDOCS(TEXT)</code></h4>
+
+<p><br> :   <br>
+<br> <em>TEXT</em>:  The PDI argument line to parse and display  <br>
+<a name="index-Return-a-texinfo-chapheading-5"></a><a name="index-g_t_0024_0024CHAPHEAD_005eDWDOCS_0028TEXT_0029-6"></a>
+
+<h3 class="section">2.3 Return a texinfo chapheading</h3>
+
+<h4 class="subsection">2.3.1 <code>$$CHAPHEAD^DWDOCS(TEXT)</code></h4>
+
+<p><br> <em>TEXT</em>:  The text of the chapter heading  <br>
+<a name="index-Return-a-texinfo-majorheading-7"></a><a name="index-g_t_0024_0024MAJRHEAD_005eDWDOCS_0028TEXT_0029-8"></a>
+
+<h3 class="section">2.4 Return a texinfo majorheading</h3>
+
+<h4 class="subsection">2.4.1 <code>$$MAJRHEAD^DWDOCS(TEXT)</code></h4>
+
+<p><br> <em>TEXT</em>:  The text of the major heading  <br>
+<a name="index-Return-a-texinfo-cindex-tag-9"></a><a name="index-g_t_0024_0024CINDEX_005eDWDOCS_0028TEXT_0029-10"></a>
+
+<h3 class="section">2.5 Return a texinfo cindex tag</h3>
+
+<h4 class="subsection">2.5.1 <code>$$CINDEX^DWDOCS(TEXT)</code></h4>
+
+<p><br> <em>TEXT</em>:  The text of the index entry  <br>
+<a name="index-Return-a-texinfo-findex-tag-11"></a><a name="index-g_t_0024_0024FINDEX_005eDWDOCS_0028TEXT_0029-12"></a>
+
+<h3 class="section">2.6 Return a texinfo findex tag</h3>
+
+<h4 class="subsection">2.6.1 <code>$$FINDEX^DWDOCS(TEXT)</code></h4>
+
+<p><br> <em>TEXT</em>:  The text of the index entry  <br>
+<a name="index-Return-a-texinfo-input-tag-13"></a><a name="index-g_t_0024_0024DWTIINPT_005eDWDOCS_0028_0029-14"></a>
+
+<h3 class="section">2.7 Return a texinfo input tag</h3>
+
+<h4 class="subsection">2.7.1 <code>$$DWTIINPT^DWDOCS()</code></h4>
+
+<p><a name="index-Return-a-texinfo-start-of-header-15"></a><a name="index-g_t_0024_0024DWTISOH_005eDWDOCS_0028_0029-16"></a>
+
+<h3 class="section">2.8 Return a texinfo start of header</h3>
+
+<h4 class="subsection">2.8.1 <code>$$DWTISOH^DWDOCS()</code></h4>
+
+<p><a name="index-Return-a-texinfo-setfilename-tag-17"></a><a name="index-g_t_0024_0024DWTISFN_005eDWDOCS_0028NAME_0029-18"></a>
+
+<h3 class="section">2.9 Return a texinfo setfilename tag</h3>
+
+<h4 class="subsection">2.9.1 <code>$$DWTISFN^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The file to which the makeinfo output will be sent  <br>
+<a name="index-Return-a-texinfo-settitle-tag-19"></a><a name="index-g_t_0024_0024DWTISTTL_005eDWDOCS_0028NAME_0029-20"></a>
+
+<h3 class="section">2.10 Return a texinfo settitle tag</h3>
+
+<h4 class="subsection">2.10.1 <code>$$DWTISTTL^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The title of the document  <br>
+<a name="index-Return-a-texinfo-end-of-header-21"></a><a name="index-g_t_0024_0024DWTIEOH_005eDWDOCS_0028_0029-22"></a>
+
+<h3 class="section">2.11 Return a texinfo end of header</h3>
+
+<h4 class="subsection">2.11.1 <code>$$DWTIEOH^DWDOCS()</code></h4>
+
+<p><a name="index-Return-a-texinfo-node-tag-23"></a><a name="index-g_t_0024_0024DWTINODE_005eDWDOCS_0028NAME_0029-24"></a>
+
+<h3 class="section">2.12 Return a texinfo node tag</h3>
+
+<h4 class="subsection">2.12.1 <code>$$DWTINODE^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The name of the node  <br>
+<a name="index-Return-a-texinfo-chapter-tag-25"></a><a name="index-g_t_0024_0024DWTICHAP_005eDWDOCS_0028NAME_0029-26"></a>
+
+<h3 class="section">2.13 Return a texinfo chapter tag</h3>
+
+<h4 class="subsection">2.13.1 <code>$$DWTICHAP^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The name of the chapter  <br>
+<a name="index-Return-a-texinfo-code-tag-27"></a><a name="index-g_t_0024_0024DWTICODE_005eDWDOCS_0028CODE_0029-28"></a>
+
+<h3 class="section">2.14 Return a texinfo code tag</h3>
+
+<h4 class="subsection">2.14.1 <code>$$DWTICODE^DWDOCS(CODE)</code></h4>
+
+<p><br> <em>CODE</em>:  The code to quote  <br>
+<a name="index-Return-a-texinfo-section-tag-29"></a><a name="index-g_t_0024_0024DWTISC_005eDWDOCS_0028NAME_0029-30"></a>
+
+<h3 class="section">2.15 Return a texinfo section tag</h3>
+
+<h4 class="subsection">2.15.1 <code>$$DWTISC^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The name of the section  <br>
+<a name="index-Return-a-texinfo-subsection-tag-31"></a><a name="index-g_t_0024_0024DWTISSC_005eDWDOCS_0028NAME_0029-32"></a>
+
+<h3 class="section">2.16 Return a texinfo subsection tag</h3>
+
+<h4 class="subsection">2.16.1 <code>$$DWTISSC^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The name of the subsection  <br>
+<a name="index-Return-a-texinfo-subsubsection-tag-33"></a><a name="index-g_t_0024_0024DWTISSSC_005eDWDOCS_0028NAME_0029-34"></a>
+
+<h3 class="section">2.17 Return a texinfo subsubsection tag</h3>
+
+<h4 class="subsection">2.17.1 <code>$$DWTISSSC^DWDOCS(NAME)</code></h4>
+
+<p><br> <em>NAME</em>:  The name of the subsubsection  <br>
+
+<div class="node">
+<p><hr>
+<a name="EWD-Forms-Generator"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Prefiniti-FileMan_002fScreenMan-interfaces">Prefiniti FileMan/ScreenMan interfaces</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Documentation-Generator">Documentation Generator</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 EWD Forms Generator</h2>
+
+<p><a name="index-Compiles-forms-for-a-class-into-EWD-pages-35"></a><a name="index-COMPILE_005eDWFGBLD_0028CLASNAME_002cREVN_002cACTION_002cTARGET_0029-36"></a>
+
+<h3 class="section">3.1 Compiles forms for a class into EWD pages</h3>
+
+<h4 class="subsection">3.1.1 <code>COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The class to compile  <br>
+<br> <em>REVN</em>:  The revision to compile  <br>
+<br> <em>ACTION</em>:  The type of form to generate, ADD or EDIT  <br>
+<br> <em>TARGET</em>:  The file to compile to, defaults to STDOUT  <br>
+<a name="index-Return-an-XML-attribute-37"></a><a name="index-g_t_0024_0024XMLATTR_005eDWFGBLD_0028KEY_002cVAL_0029-38"></a>
+
+<h3 class="section">3.2 Return an XML attribute</h3>
+
+<h4 class="subsection">3.2.1 <code>$$XMLATTR^DWFGBLD(KEY,VAL)</code></h4>
+
+<p><br> <em>KEY</em>:  The attribute's key  <br>
+<br> <em>KEY</em>:  The attribute's value  <br>
+<a name="index-Return-start-of-an-xml-tag-TAG-39"></a><a name="index-g_t_0024_0024XMLST_005eDWFGBLD_0028TAG_0029-40"></a>
+
+<h3 class="section">3.3 Return start of an xml tag TAG</h3>
+
+<h4 class="subsection">3.3.1 <code>$$XMLST^DWFGBLD(TAG)</code></h4>
+
+<p><br> <em>TAG</em>:  The tag to open  <br>
+<a name="index-Return-a-closing-brace-in-a-single-line-xml-tag-41"></a><a name="index-g_t_0024_0024XMLSLCL_005eDWFGBLD_0028_0029-42"></a>
+
+<h3 class="section">3.4 Return a closing brace in a single line xml tag</h3>
+
+<h4 class="subsection">3.4.1 <code>$$XMLSLCL^DWFGBLD()</code></h4>
+
+<p><a name="index-Return-a-closing-brace-in-a-multi-line-xml-tag-TAG-43"></a><a name="index-g_t_0024_0024XMLMLCL_005eDWFGBLD_0028TAG_0029-44"></a>
+
+<h3 class="section">3.5 Return a closing brace in a multi line xml tag TAG</h3>
+
+<h4 class="subsection">3.5.1 <code>$$XMLMLCL^DWFGBLD(TAG)</code></h4>
+
+<p><br> <em>TAG</em>:  The tag to close  <br>
+<a name="index-Return-an-_003chLEVEL_003eTEXT_003c_002fhLEVEL_003e-block-45"></a><a name="index-g_t_0024_0024HDRTXT_005eDWFGBLD_0028TEXT_002cLEVEL_0029-46"></a>
+
+<h3 class="section">3.6 Return an &lt;hLEVEL&gt;TEXT&lt;/hLEVEL&gt; block</h3>
+
+<h4 class="subsection">3.6.1 <code>$$HDRTXT^DWFGBLD(TEXT,LEVEL)</code></h4>
+
+<p><br> <em>TEXT</em>:  The text to place in the block  <br>
+<br> <em>LEVEL</em>:  The level of the heading  <br>
+<a name="index-Return-a-field-block-LABEL_003a-CONT-47"></a><a name="index-g_t_0024_0024FLDBLK_005eDWFGBLD_0028LABEL_002cCONT_0029-48"></a>
+
+<h3 class="section">3.7 Return a field block LABEL: CONT</h3>
+
+<h4 class="subsection">3.7.1 <code>$$FLDBLK^DWFGBLD(LABEL,CONT)</code></h4>
+
+<p><br> <em>LABEL</em>:  The label of the block  <br>
+<br> <em>CONT</em>:  The contents of the block  <br>
+<a name="index-Return-a-form-input-field-49"></a><a name="index-g_t_0024_0024INPFLD_005eDWFGBLD_0028TYPE_002cNAME_002cVALUE_0029-50"></a>
+
+<h3 class="section">3.8 Return a form input field</h3>
+
+<h4 class="subsection">3.8.1 <code>$$INPFLD^DWFGBLD(TYPE,NAME,VALUE)</code></h4>
+
+<p><br> <em>TYPE</em>:  The HTML input field type  <br>
+<br> <em>NAME</em>:  The DOM name of the field  <br>
+<br> <em>VALUE</em>:  The initial value of the field  <br>
+<a name="index-Return-an-HTML-submit-button-51"></a><a name="index-g_t_0024_0024SUBFLD_005eDWFGBLD_0028NAME_002cLABEL_002cACTION_002cNEXTPAGE_0029-52"></a>
+
+<h3 class="section">3.9 Return an HTML submit button</h3>
+
+<h4 class="subsection">3.9.1 <code>$$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE)</code></h4>
+
+<p><br> <em>NAME</em>:  The DOM name of the button  <br>
+<br> <em>LABEL</em>:  The label on the button  <br>
+<br> <em>ACTION</em>:  The MUMPS action script to run  <br>
+<br> <em>NEXTPAGE</em>:  The page to go to after submit  <br>
+<a name="index-Return-opening-of-an-HTML-table-tag-53"></a><a name="index-g_t_0024_0024TBLOPEN_005eDWFGBLD_0028_0029-54"></a>
+
+<h3 class="section">3.10 Return opening of an HTML table tag</h3>
+
+<h4 class="subsection">3.10.1 <code>$$TBLOPEN^DWFGBLD()</code></h4>
+
+<p><a name="index-Return-ending-of-an-HTML-table-tag-55"></a><a name="index-g_t_0024_0024TBLCLS_005eDWFGBLD_0028_0029-56"></a>
+
+<h3 class="section">3.11 Return ending of an HTML table tag</h3>
+
+<h4 class="subsection">3.11.1 <code>$$TBLCLS^DWFGBLD()</code></h4>
+
+<p><a name="index-Return-opening-of-an-HTML-form-tag-57"></a><a name="index-g_t_0024_0024FORMOPEN_005eDWFGBLD_0028METHOD_002cACTION_0029-58"></a>
+
+<h3 class="section">3.12 Return opening of an HTML form tag</h3>
+
+<h4 class="subsection">3.12.1 <code>$$FORMOPEN^DWFGBLD(METHOD,ACTION)</code></h4>
+
+<p><br> <em>METHOD</em>:  The method, either post or get, to submit this form  <br>
+<br> <em>ACTION</em>:  The action to perform, usually ewd  <br>
+<a name="index-Return-ending-of-an-HTML-form-tag-59"></a><a name="index-g_t_0024_0024FORMCLS_005eDWFGBLD_0028_0029-60"></a>
+
+<h3 class="section">3.13 Return ending of an HTML form tag</h3>
+
+<h4 class="subsection">3.13.1 <code>$$FORMCLS^DWFGBLD()</code></h4>
+
+<p><a name="index-Return-an-ewd-config-tag-61"></a><a name="index-g_t_0024_0024EWDHDR_005eDWFGBLD_0028FRSTPAGE_002cPREPAGE_0029-62"></a>
+
+<h3 class="section">3.14 Return an ewd config tag</h3>
+
+<h4 class="subsection">3.14.1 <code>$$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE)</code></h4>
+
+<p><br> <em>FRSTPAGE</em>:  Is this the first page of the app, true or false  <br>
+<br> <em>PREPAGE</em>:  The pre-page script to call  <br>
+<a name="index-Return-an-html-tag-63"></a><a name="index-g_t_0024_0024HTMLOPEN_005eDWFGBLD_0028_0029-64"></a>
+
+<h3 class="section">3.15 Return an html tag</h3>
+
+<h4 class="subsection">3.15.1 <code>$$HTMLOPEN^DWFGBLD()</code></h4>
+
+<p><a name="index-Return-head-section-65"></a><a name="index-g_t_0024_0024HEADSECN_005eDWFGBLD_0028PGTITLE_0029-66"></a>
+
+<h3 class="section">3.16 Return head section</h3>
+
+<h4 class="subsection">3.16.1 <code>$$HEADSECN^DWFGBLD(PGTITLE)</code></h4>
+
+<p><br> <em>PGTITLE</em>:  The title of the page  <br>
+<a name="index-Return-the-body-section-67"></a><a name="index-g_t_0024_0024BODYOPEN_005eDWFGBLD_0028_0029-68"></a>
+
+<h3 class="section">3.17 Return the body section</h3>
+
+<h4 class="subsection">3.17.1 <code>$$BODYOPEN^DWFGBLD()</code></h4>
+
+<p><a name="index-Close-the-body-section-69"></a><a name="index-g_t_0024_0024BODYCLS_005eDWFGBLD_0028_0029-70"></a>
+
+<h3 class="section">3.18 Close the body section</h3>
+
+<h4 class="subsection">3.18.1 <code>$$BODYCLS^DWFGBLD()</code></h4>
+
+<p><a name="index-Close-the-_003chtml_003e-section-71"></a><a name="index-g_t_0024_0024HTMLCLS_005eDWFGBLD_0028_0029-72"></a>
+
+<h3 class="section">3.19 Close the &lt;html&gt; section</h3>
+
+<h4 class="subsection">3.19.1 <code>$$HTMLCLS^DWFGBLD()</code></h4>
+
+<div class="node">
+<p><hr>
+<a name="Prefiniti-FileMan%2fScreenMan-interfaces"></a>
+<a name="Prefiniti-FileMan_002fScreenMan-interfaces"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Instance-Configuration">Instance Configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#EWD-Forms-Generator">EWD Forms Generator</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Prefiniti FileMan/ScreenMan interfaces</h2>
+
+<p><a name="index-Invoke-a-ScreenMan-form-73"></a><a name="index-g_t_0024_0024INVOKE_005eDWSMINTR_0028FILENUM_002cFORMNAM_002cRECNUM_002cPAGENUM_0029-74"></a>
+
+<h3 class="section">4.1 Invoke a ScreenMan form</h3>
+
+<h4 class="subsection">4.1.1 <code>$$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM)</code></h4>
+
+<p><br> <em>FILENUM</em>:  The FileMan file number  <br>
+<br> <em>FORMNAM</em>:  The ScreenMan form name  <br>
+<br> <em>RECNUM</em>:  The record number  <br>
+<br> <em>PAGENUM</em>:  The initial page to display  <br>
+
+<div class="node">
+<p><hr>
+<a name="Instance-Configuration"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Prefiniti-FileMan_002fScreenMan-interfaces">Prefiniti FileMan/ScreenMan interfaces</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 Instance Configuration</h2>
+
+<div class="node">
+<p><hr>
+<a name="Prefiniti-I%2fO-Library"></a>
+<a name="Prefiniti-I_002fO-Library"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Prefiniti-Kernel">Prefiniti Kernel</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Instance-Configuration">Instance Configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 Prefiniti I/O Library</h2>
+
+<p><a name="index-Initialize-the-I_002fO-Library-75"></a><a name="index-g_t_0024_0024INIT_005eDWIOLIB_0028_0029-76"></a>
+
+<h3 class="section">6.1 Initialize the I/O Library</h3>
+
+<h4 class="subsection">6.1.1 <code>$$INIT^DWIOLIB()</code></h4>
+
+<p><a name="index-Set-up-a-screen-buffer-77"></a><a name="index-SETBUF_005eDWIOLIB_0028BUF_002cWIDTH_002cHEIGHT_002cFORECOLR_002cBACKCOLR_002cFILLCHAR_0029-78"></a>
+
+<h3 class="section">6.2 Set up a screen buffer</h3>
+
+<h4 class="subsection">6.2.1 <code>SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)</code></h4>
+
+<p><br> <em>BUF</em>:  Reference to the buffer array  <br>
+<br> <em>WIDTH</em>:  The width of the screen  <br>
+<br> <em>HEIGHT</em>:  The height of the screen  <br>
+<br> <em>FORECOLR</em>:  The foreground color  <br>
+<br> <em>BACKCOLR</em>:  The background color  <br>
+<br> <em>FILLCHAR</em>:  The fill character  <br>
+<a name="index-Update-pending_002d_003ecurrent-and-current_002d_003escreen-79"></a><a name="index-UPDATE_005eDWIOLIB_0028_0029-80"></a>
+
+<h3 class="section">6.3 Update pending-&gt;current and current-&gt;screen</h3>
+
+<h4 class="subsection">6.3.1 <code>UPDATE^DWIOLIB()</code></h4>
+
+<p><a name="index-Draw-a-rectangle-into-the-pending-buffer-81"></a><a name="index-g_t_0024_0024DRAWRECT_005eDWIOLIB_0028XPOS_002cYPOS_002cWIDTH_002cHEIGHT_002cFORECOLR_002cBACKCOLR_002cFILLCHAR_0029-82"></a>
+
+<h3 class="section">6.4 Draw a rectangle into the pending buffer</h3>
+
+<h4 class="subsection">6.4.1 <code>$$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)</code></h4>
+
+<p><br> <em>XPOS</em>:  The horizontal position of the upper-left corner  <br>
+<br> <em>YPOS</em>:  The vertical position of the upper-left corner  <br>
+<br> <em>WIDTH</em>:  The width, in characters, of the rectangle. Must be less than XPOS+SCWIDTH  <br>
+<br> <em>HEIGHT</em>:  The height, in characters, of the rectangle. Must be less than YPOS+SCHEIGHT  <br>
+<br> <em>FORECOLR</em>:  The foreground color of the rectangle  <br>
+<br> <em>BACKCOLR</em>:  The background color of the rectangle  <br>
+<br> <em>FILLCHAR</em>:  The character with which to fill the rectangle  <br>
+
+<div class="node">
+<p><hr>
+<a name="Prefiniti-Kernel"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Object-Record-Management-System">Object Record Management System</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">7 Prefiniti Kernel</h2>
+
+<p><a name="index-Get-the-next-FUID-in-the-sequence-83"></a><a name="index-g_t_0024_0024GETNEXT_005eDWKRFUID_0028_0029-84"></a>
+
+<h3 class="section">7.1 Get the next FUID in the sequence</h3>
+
+<h4 class="subsection">7.1.1 <code>$$GETNEXT^DWKRFUID()</code></h4>
+
+<p><a name="index-Installs-a-kernel-module-into-a-Prefiniti-instance-85"></a><a name="index-INSTALL_005eDWKRMODI_0028MODULE_0029-86"></a>
+
+<h3 class="section">7.2 Installs a kernel module into a Prefiniti instance</h3>
+
+<h4 class="subsection">7.2.1 <code>INSTALL^DWKRMODI(MODULE)</code></h4>
+
+<p><br> <em>MODULE</em>:  The module to be installed  <br>
+<a name="index-Removes-a-kernel-module-from-this-instance-87"></a><a name="index-REMOVE_005eDWKRMODI_0028MODULE_0029-88"></a>
+
+<h3 class="section">7.3 Removes a kernel module from this instance</h3>
+
+<h4 class="subsection">7.3.1 <code>REMOVE^DWKRMODI(MODULE)</code></h4>
+
+<p><br> <em>MODULE</em>:  The module to be removed  <br>
+<a name="index-Prints-a-module_0027s-info-line-89"></a><a name="index-MODINFO_005eDWKRMODI_0028MODULE_0029-90"></a>
+
+<h3 class="section">7.4 Prints a module's info line</h3>
+
+<h4 class="subsection">7.4.1 <code>MODINFO^DWKRMODI(MODULE)</code></h4>
+
+<p><br> <em>MODULE</em>:  The module for which to print the info line  <br>
+<a name="index-Prints-a-list-of-installed-modules-91"></a><a name="index-MODULES_005eDWKRMODI_0028_0029-92"></a>
+
+<h3 class="section">7.5 Prints a list of installed modules</h3>
+
+<h4 class="subsection">7.5.1 <code>MODULES^DWKRMODI()</code></h4>
+
+<p><a name="index-Queries-whether-a-module-is-installed-93"></a><a name="index-g_t_0024_0024QRYMOD_005eDWKRMODI_0028MODULE_0029-94"></a>
+
+<h3 class="section">7.6 Queries whether a module is installed</h3>
+
+<h4 class="subsection">7.6.1 <code>$$QRYMOD^DWKRMODI(MODULE)</code></h4>
+
+<p><br> <em>MODULE</em>:  The module to be queried  <br>
+<a name="index-Return-a-multi_002dline-input-95"></a><a name="index-g_t_0024_0024MLTILINE_005eDWKRRNSI_0028_0029-96"></a>
+
+<h3 class="section">7.7 Return a multi-line input</h3>
+
+<h4 class="subsection">7.7.1 <code>$$MLTILINE^DWKRRNSI()</code></h4>
+
+<p><a name="index-Get-terminal-height-in-lines-97"></a><a name="index-g_t_0024_0024TRMLINES_005eDWKRRNSI_0028_0029-98"></a>
+
+<h3 class="section">7.8 Get terminal height in lines</h3>
+
+<h4 class="subsection">7.8.1 <code>$$TRMLINES^DWKRRNSI()</code></h4>
+
+<p><a name="index-Get-terminal-width-in-columns-99"></a><a name="index-g_t_0024_0024TRMCOLS_005eDWKRRNSI_0028_0029-100"></a>
+
+<h3 class="section">7.9 Get terminal width in columns</h3>
+
+<h4 class="subsection">7.9.1 <code>$$TRMCOLS^DWKRRNSI()</code></h4>
+
+<p><a name="index-Write-a-multi_002dline-global-101"></a><a name="index-WMLTLINE_005eDWKRRNSI_0028GLOB_0029-102"></a>
+
+<h3 class="section">7.10 Write a multi-line global</h3>
+
+<h4 class="subsection">7.10.1 <code>WMLTLINE^DWKRRNSI(GLOB)</code></h4>
+
+<p><br> <em>GLOB</em>:  The global to be written  <br>
+<a name="index-Send-escape-sequence-103"></a><a name="index-ESCAPE_005eDWKRRNSI_0028SEQ_0029-104"></a>
+
+<h3 class="section">7.11 Send escape sequence</h3>
+
+<h4 class="subsection">7.11.1 <code>ESCAPE^DWKRRNSI(SEQ)</code></h4>
+
+<p><br> <em>SEQ</em>:  The escape sequence  <br>
+<a name="index-Clear-the-screen-105"></a><a name="index-CLRSCR_005eDWKRRNSI_0028_0029-106"></a>
+
+<h3 class="section">7.12 Clear the screen</h3>
+
+<h4 class="subsection">7.12.1 <code>CLRSCR^DWKRRNSI()</code></h4>
+
+<p><a name="index-Set-colors-107"></a><a name="index-COLOR_005eDWKRRNSI_0028FG_002cBG_0029-108"></a>
+
+<h3 class="section">7.13 Set colors</h3>
+
+<h4 class="subsection">7.13.1 <code>COLOR^DWKRRNSI(FG,BG)</code></h4>
+
+<p><br> <em>FG</em>:  The foreground color  <br>
+<br> <em>BG</em>:  The background color  <br>
+<a name="index-Restore-the-previous-colors-109"></a><a name="index-RESTRCLR_005eDWKRRNSI_0028_0029-110"></a>
+
+<h3 class="section">7.14 Restore the previous colors</h3>
+
+<h4 class="subsection">7.14.1 <code>RESTRCLR^DWKRRNSI()</code></h4>
+
+<p><a name="index-Locate-the-cursor-to-X_002cY-111"></a><a name="index-LOCATE_005eDWKRRNSI_0028X_002cY_0029-112"></a>
+
+<h3 class="section">7.15 Locate the cursor to X,Y</h3>
+
+<h4 class="subsection">7.15.1 <code>LOCATE^DWKRRNSI(X,Y)</code></h4>
+
+<p><br> <em>X</em>:  The horizontal coordinate  <br>
+<br> <em>Y</em>:  The vertical coordinate  <br>
+<a name="index-Restore-previous-cursor-position-113"></a><a name="index-RESTORXY_005eDWKRRNSI_0028_0029-114"></a>
+
+<h3 class="section">7.16 Restore previous cursor position</h3>
+
+<h4 class="subsection">7.16.1 <code>RESTORXY^DWKRRNSI()</code></h4>
+
+<p><a name="index-Write-a-bar-across-the-screen-115"></a><a name="index-HDRBAR_005eDWKRRNSI_0028FG_002cBG_002cLENGTH_0029-116"></a>
+
+<h3 class="section">7.17 Write a bar across the screen</h3>
+
+<h4 class="subsection">7.17.1 <code>HDRBAR^DWKRRNSI(FG,BG,LENGTH)</code></h4>
+
+<p><br> <em>FG</em>:  Foreground Color  <br>
+<br> <em>BG</em>:  Background Color  <br>
+<br> <em>LENGTH</em>:  Length of the bar  <br>
+<a name="index-Write-TEXT-at-X_002cY-coordinates-117"></a><a name="index-WRITEAT_005eDWKRRNSI_0028X_002cY_002cTEXT_0029-118"></a>
+
+<h3 class="section">7.18 Write TEXT at X,Y coordinates</h3>
+
+<h4 class="subsection">7.18.1 <code>WRITEAT^DWKRRNSI(X,Y,TEXT)</code></h4>
+
+<p><br> <em>X</em>:  X coordinate  <br>
+<br> <em>Y</em>:  Y coordinate  <br>
+<br> <em>TEXT</em>:  Text to be written  <br>
+<a name="index-Reset-the-screen-119"></a><a name="index-RESET_005eDWKRRNSI_0028_0029-120"></a>
+
+<h3 class="section">7.19 Reset the screen</h3>
+
+<h4 class="subsection">7.19.1 <code>RESET^DWKRRNSI()</code></h4>
+
+<p><a name="index-Reset-the-screen-121"></a><a name="index-D-COLOR_005eDWKRRNSI_0028_0022WHITE_0022_002c_0022BLACK_0022_0029-122"></a>
+
+<h3 class="section">7.20 Reset the screen</h3>
+
+<h4 class="subsection">7.20.1 <code> D COLOR^DWKRRNSI("WHITE","BLACK")</code></h4>
+
+<p><a name="index-Reset-the-screen-123"></a><a name="index-D-CLRSCR_005eDWKRRNSI_0028_0029-124"></a>
+
+<h3 class="section">7.21 Reset the screen</h3>
+
+<h4 class="subsection">7.21.1 <code> D CLRSCR^DWKRRNSI()</code></h4>
+
+<p><a name="index-Fires-when-any-class-is-created-125"></a><a name="index-CLSCREAT_005eDWCLWTCH_0028EVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-126"></a>
+
+<h3 class="section">7.22 Fires when any class is created</h3>
+
+<h4 class="subsection">7.22.1 <code>CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)</code></h4>
+
+<p><br> <em>EVTYPE</em>:  The event type  <br>
+<br> <em>OID</em>:  The record's OID  <br>
+<br> <em>KEY</em>:  The key  <br>
+<br> <em>REVN</em>:  The revision of the record  <br>
+<br> <em>DATA</em>:  The PDB of the record  <br>
+<a name="index-Fires-when-any-class-is-revised-127"></a><a name="index-CLSREVIS_005eDWCLWTCH_0028EVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-128"></a>
+
+<h3 class="section">7.23 Fires when any class is revised</h3>
+
+<h4 class="subsection">7.23.1 <code>CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)</code></h4>
+
+<p><br> <em>EVTYPE</em>:  The event type  <br>
+<br> <em>OID</em>:  The record's OID  <br>
+<br> <em>KEY</em>:  The key  <br>
+<br> <em>REVN</em>:  The revision of the record  <br>
+<br> <em>DATA</em>:  The PDB of the record  <br>
+<a name="index-Runs-form-generation-for-the-class-and-compiles-the-EWD-pages-129"></a><a name="index-CLSCOMP_005eDWCLWTCH_0028OID_002cREVN_0029-130"></a>
+
+<h3 class="section">7.24 Runs form generation for the class and compiles the EWD pages</h3>
+
+<h4 class="subsection">7.24.1 <code>CLSCOMP^DWCLWTCH(OID,REVN)</code></h4>
+
+<p><br> <em>OID</em>:  The object's OID  <br>
+<br> <em>REVN</em>:  The revision of the object  <br>
+
+<div class="node">
+<p><hr>
+<a name="Object-Record-Management-System"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Administrator-Shell">Administrator Shell</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Prefiniti-Kernel">Prefiniti Kernel</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">8 Object Record Management System</h2>
+
+<p><a name="index-Create-a-new-ORMS-class-definition-131"></a><a name="index-g_t_0024_0024CREATE_005eDWORCLAS_0028CLASNAME_002cCLASDEFN_0029-132"></a>
+
+<h3 class="section">8.1 Create a new ORMS class definition</h3>
+
+<h4 class="subsection">8.1.1 <code>$$CREATE^DWORCLAS(CLASNAME,CLASDEFN)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The name of the class  <br>
+<br> <em>CLASDEFN</em>:  The definition of the class  <br>
+<a name="index-Return-a-comma_002ddelimited-list-of-the-fields-in-a-class-133"></a><a name="index-g_t_0024_0024LISTFLDS_005eDWORCLAS_0028CLASNAME_002cREVN_002cPARENT_0029-134"></a>
+
+<h3 class="section">8.2 Return a comma-delimited list of the fields in a class</h3>
+
+<h4 class="subsection">8.2.1 <code>$$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The name of the class  <br>
+<br> <em>REVN</em>:  The revision of the class, "N" for newest  <br>
+<br> <em>PARENT</em>:  The parent of this class for CLASPTRs  <br>
+<a name="index-Set-the-primary-key-of-a-class-135"></a><a name="index-SETPK_005eDWORCLAS_0028CLASNAME_002cPK_0029-136"></a>
+
+<h3 class="section">8.3 Set the primary key of a class</h3>
+
+<h4 class="subsection">8.3.1 <code>SETPK^DWORCLAS(CLASNAME,PK)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The name of the class  <br>
+<br> <em>PK</em>:  The name of the primary key field  <br>
+<a name="index-Get-the-primary-key-of-a-class-137"></a><a name="index-g_t_0024_0024GETPK_005eDWORCLAS_0028CLASNAME_0029-138"></a>
+
+<h3 class="section">8.4 Get the primary key of a class</h3>
+
+<h4 class="subsection">8.4.1 <code>$$GETPK^DWORCLAS(CLASNAME)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The name of the class  <br>
+<a name="index-Retrieve-a-class_0027s-CLASDEFN-ORMS-ID-by-name-139"></a><a name="index-g_t_0024_0024RETRIEVE_005eDWORCLAS_0028CLASNAME_0029-140"></a>
+
+<h3 class="section">8.5 Retrieve a class's CLASDEFN ORMS ID by name</h3>
+
+<h4 class="subsection">8.5.1 <code>$$RETRIEVE^DWORCLAS(CLASNAME)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The name of the class  <br>
+<a name="index-Get-the-revision-number-of-the-latest-revision-to-this-class-141"></a><a name="index-g_t_0024_0024REVISION_005eDWORCLAS_0028OID_0029-142"></a>
+
+<h3 class="section">8.6 Get the revision number of the latest revision to this class</h3>
+
+<h4 class="subsection">8.6.1 <code>$$REVISION^DWORCLAS(OID)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the object to check  <br>
+<a name="index-Update-an-existing-ORMS-class-definition-143"></a><a name="index-UPDATE_005eDWORCLAS_0028OID_002cCLASDEFN_0029-144"></a>
+
+<h3 class="section">8.7 Update an existing ORMS class definition</h3>
+
+<h4 class="subsection">8.7.1 <code>UPDATE^DWORCLAS(OID,CLASDEFN)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the record to update  <br>
+<br> <em>CLASDEFN</em>:  The CLASDEFN of the record to update  <br>
+<a name="index-EWD-action-script-for-form-submission-145"></a><a name="index-ACTION_005eDWOREWD_0028sessid_0029-146"></a>
+
+<h3 class="section">8.8 EWD action script for form submission</h3>
+
+<h4 class="subsection">8.8.1 <code>ACTION^DWOREWD(sessid)</code></h4>
+
+<p><br> <em>sessid</em>:  The EWD session ID  <br>
+<a name="index-EWD-prepage-script-for-form-editing-147"></a><a name="index-PREPAGE_005eDWOREWD_0028sessid_0029-148"></a>
+
+<h3 class="section">8.9 EWD prepage script for form editing</h3>
+
+<h4 class="subsection">8.9.1 <code>PREPAGE^DWOREWD(sessid)</code></h4>
+
+<p><br> <em>sessid</em>:  The EWD session ID  <br>
+<a name="index-Register-a-new-ORMS-class-hook-149"></a><a name="index-REGISTER_005eDWORHOOK_0028MODULE_002cCLASNAME_002cEVNTMASK_002cCALLBACK_0029-150"></a>
+
+<h3 class="section">8.10 Register a new ORMS class hook</h3>
+
+<h4 class="subsection">8.10.1 <code>REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK)</code></h4>
+
+<p><br> <em>MODULE</em>:  The kernel module to which the hook belongs  <br>
+<br> <em>CLASNAME</em>:  The class name we are hooking  <br>
+<br> <em>EVNTMASK</em>:  Format "CRD" C=Create,R=Revise,D=Delete 1 for true, 0 for false  <br>
+<br> <em>CALLBACK</em>:  The MUMPS routine to be called when the hook is run  <br>
+<a name="index-Run-hooks-for-CLASNAME-on-OID-151"></a><a name="index-RUNHOOKS_005eDWORHOOK_0028CLASNAME_002cEVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-152"></a>
+
+<h3 class="section">8.11 Run hooks for CLASNAME on OID</h3>
+
+<h4 class="subsection">8.11.1 <code>RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  Class name  <br>
+<br> <em>EVTYPE</em>:  CREATE, REVISE, DELETE  <br>
+<br> <em>OID</em>:  The record's OID  <br>
+<br> <em>KEY</em>:  The key of the updated field  <br>
+<br> <em>REVN</em>:  The revision number  <br>
+<br> <em>DATA</em>:  The new data  <br>
+<a name="index-Internal-subroutine-called-by-RUNHOOKS_005eDWORHOOK-153"></a><a name="index-DOHOOK_005eDWORHOOK_0028BASEROUT_002cEVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-154"></a>
+
+<h3 class="section">8.12 Internal subroutine called by RUNHOOKS^DWORHOOK</h3>
+
+<h4 class="subsection">8.12.1 <code>DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)</code></h4>
+
+<p><a name="index-Index-a-record-by-three-terms-155"></a><a name="index-SIDX3_005eDWORINDX_0028PRILKP_002cSECLKP_002cTERLKP_002cVAL_0029-156"></a>
+
+<h3 class="section">8.13 Index a record by three terms</h3>
+
+<h4 class="subsection">8.13.1 <code>SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL)</code></h4>
+
+<p><br> <em>PRILKP</em>:  The primary lookup term  <br>
+<br> <em>SECLKP</em>:  The secondary lookup term  <br>
+<br> <em>TERLKP</em>:  The tertiary lookup term  <br>
+<br> <em>VAL</em>:  The value to be indexed  <br>
+<a name="index-Lookup-a-record-by-three-terms-157"></a><a name="index-g_t_0024_0024LIDX3_005eDWORINDX_0028PRILKP_002cSECLKP_002cTERLKP_0029-158"></a>
+
+<h3 class="section">8.14 Lookup a record by three terms</h3>
+
+<h4 class="subsection">8.14.1 <code>$$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP)</code></h4>
+
+<p><br> <em>PRILKP</em>:  The primary lookup term  <br>
+<br> <em>SECLKP</em>:  The secondary lookup term  <br>
+<br> <em>TERLKP</em>:  The tertiary lookup term  <br>
+<a name="index-Compile-an-external-CLASDEFN-into-ORMS_002dnative-format-159"></a><a name="index-COMPILE_005eDWORINST_0028FH_0029-160"></a>
+
+<h3 class="section">8.15 Compile an external CLASDEFN into ORMS-native format</h3>
+
+<h4 class="subsection">8.15.1 <code>COMPILE^DWORINST(FH)</code></h4>
+
+<p><br> <em>FH</em>:  The file to compile  <br>
+<a name="index-Create_002fset-meta-stream-STREAM-at-position-POS-to-VAL-on-OID-161"></a><a name="index-SET_005eDWORMETA_0028OID_002cKEY_002cSTREAM_002cPOS_002cVAL_0029-162"></a>
+
+<h3 class="section">8.16 Create/set meta stream STREAM at position POS to VAL on OID</h3>
+
+<h4 class="subsection">8.16.1 <code>SET^DWORMETA(OID,KEY,STREAM,POS,VAL)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the record to attach to  <br>
+<br> <em>KEY</em>:  The key of the record to attach to  <br>
+<br> <em>STREAM</em>:  The metadata stream's name  <br>
+<br> <em>POS</em>:  The numeric index of this stream element  <br>
+<br> <em>VAL</em>:  The value of STREAM at POS  <br>
+<a name="index-Get-meta-stream-STREAM-at-position-POS-on-OID-163"></a><a name="index-GET_005eDWORMETA_0028OID_002cKEY_002cSTREAM_002cPOS_0029-164"></a>
+
+<h3 class="section">8.17 Get meta stream STREAM at position POS on OID</h3>
+
+<h4 class="subsection">8.17.1 <code>GET^DWORMETA(OID,KEY,STREAM,POS)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the record to read from  <br>
+<br> <em>KEY</em>:  The key of the record to read stream from  <br>
+<br> <em>STREAM</em>:  The metadata stream's name  <br>
+<br> <em>POS</em>:  The numeric index of this stream element  <br>
+<a name="index-Create-a-new-ORMS-record-165"></a><a name="index-CREATE_005eDWORREC_0028PARENT_002cCLASS_002cNAME_002cKEY_002cDATA_0029-166"></a>
+
+<h3 class="section">8.18 Create a new ORMS record</h3>
+
+<h4 class="subsection">8.18.1 <code>CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA)</code></h4>
+
+<p><br> <em>PARENT</em>:  The parent record of this record  <br>
+<br> <em>CLASS</em>:  The CLASNAME of this record  <br>
+<br> <em>NAME</em>:  The name of this record  <br>
+<br> <em>KEY</em>:  The key of this record  <br>
+<br> <em>DATA</em>:  The data contained in this record  <br>
+<a name="index-Write-to-an-existing-ORMS-record-167"></a><a name="index-OUTPUT_005eDWORREC_0028OID_002cKEY_002cDATA_0029-168"></a>
+
+<h3 class="section">8.19 Write to an existing ORMS record</h3>
+
+<h4 class="subsection">8.19.1 <code>OUTPUT^DWORREC(OID,KEY,DATA)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the record  <br>
+<br> <em>KEY</em>:  The key of the record  <br>
+<br> <em>DATA</em>:  The PDB of the record  <br>
+<a name="index-Append-to-an-existing-ORMS-record-169"></a><a name="index-APPEND_005eDWORREC_0028OID_002cKEY_002cDATA_0029-170"></a>
+
+<h3 class="section">8.20 Append to an existing ORMS record</h3>
+
+<h4 class="subsection">8.20.1 <code>APPEND^DWORREC(OID,KEY,DATA)</code></h4>
+
+<p><br> <em>OID</em>:  OID  <br>
+<br> <em>KEY</em>:  Key  <br>
+<br> <em>DATA</em>:  PDB  <br>
+<a name="index-Read-from-an-existing-ORMS-record-171"></a><a name="index-INPUT_005eDWORREC_0028OID_002cKEY_002cREV_0029-172"></a>
+
+<h3 class="section">8.21 Read from an existing ORMS record</h3>
+
+<h4 class="subsection">8.21.1 <code>INPUT^DWORREC(OID,KEY,REV)</code></h4>
+
+<p><br> <em>OID</em>:  OID  <br>
+<br> <em>KEY</em>:  Key  <br>
+<br> <em>REV</em>:  Revision  <br>
+<a name="index-Get-by-class-and-key-173"></a><a name="index-CLSGET_005eDWORREC_0028CLASS_002cKEY_002cDATA_0029-174"></a>
+
+<h3 class="section">8.22 Get by class and key</h3>
+
+<h4 class="subsection">8.22.1 <code>CLSGET^DWORREC(CLASS,KEY,DATA)</code></h4>
+
+<p><br> <em>CLASS</em>:  CLASNAME  <br>
+<br> <em>KEY</em>:  Key  <br>
+<br> <em>DATA</em>:  PDB  <br>
+<a name="index-Get-an-OID-through-_005eDWIND-175"></a><a name="index-INDGET_005eDWORREC_0028CLASS_002cKEY_002cDATA_0029-176"></a>
+
+<h3 class="section">8.23 Get an OID through ^DWIND</h3>
+
+<h4 class="subsection">8.23.1 <code>INDGET^DWORREC(CLASS,KEY,DATA)</code></h4>
+
+<p><br> <em>CLASS</em>:  CLASNAME  <br>
+<br> <em>KEY</em>:  Key  <br>
+<br> <em>DATA</em>:  PDB  <br>
+<a name="index-Get-the-newest-revision-number-for-record-OID_002cKEY-177"></a><a name="index-NEWEST_005eDWORREC_0028OID_002cKEY_0029-178"></a>
+
+<h3 class="section">8.24 Get the newest revision number for record OID,KEY</h3>
+
+<h4 class="subsection">8.24.1 <code>NEWEST^DWORREC(OID,KEY)</code></h4>
+
+<p><br> <em>OID</em>:  OID  <br>
+<br> <em>KEY</em>:  Key  <br>
+<a name="index-Set-a-lock-on-record-OID-179"></a><a name="index-SETLOCK_005eDWORREC_0028OID_0029-180"></a>
+
+<h3 class="section">8.25 Set a lock on record OID</h3>
+
+<h4 class="subsection">8.25.1 <code>SETLOCK^DWORREC(OID)</code></h4>
+
+<p><br> <em>OID</em>:  OID  <br>
+<a name="index-Cull-revisions-for-OID_002c-preserving-at-most-COUNT-revisions-181"></a><a name="index-CULL_005eDWORREC_0028OID_002cCOUNT_0029-182"></a>
+
+<h3 class="section">8.26 Cull revisions for OID, preserving at most COUNT revisions</h3>
+
+<h4 class="subsection">8.26.1 <code>CULL^DWORREC(OID,COUNT)</code></h4>
+
+<p><br> <em>OID</em>:  OID of object to cull  <br>
+<br> <em>COUNT</em>:  Maximum revisions to preserve  <br>
+<a name="index-Check-for-locks-on-record-OID-183"></a><a name="index-ISLOCKED_005eDWORREC_0028OID_0029-184"></a>
+
+<h3 class="section">8.27 Check for locks on record OID</h3>
+
+<h4 class="subsection">8.27.1 <code>ISLOCKED^DWORREC(OID)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the desired record  <br>
+<a name="index-Clear-locks-on-record-OID-185"></a><a name="index-CLRLOCK_005eDWORREC_0028OID_0029-186"></a>
+
+<h3 class="section">8.28 Clear locks on record OID</h3>
+
+<h4 class="subsection">8.28.1 <code>CLRLOCK^DWORREC(OID)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the object to have its locks cleared  <br>
+<a name="index-Get-the-root-node-for-this-instance-187"></a><a name="index-ROOTNODE_005eDWORREC_0028_0029-188"></a>
+
+<h3 class="section">8.29 Get the root node for this instance</h3>
+
+<h4 class="subsection">8.29.1 <code>ROOTNODE^DWORREC()</code></h4>
+
+<p><a name="index-Sets-the-root-node-for-this-instance-189"></a><a name="index-SETRTNOD_005eDWORREC_0028OID_0029-190"></a>
+
+<h3 class="section">8.30 Sets the root node for this instance</h3>
+
+<h4 class="subsection">8.30.1 <code>SETRTNOD^DWORREC(OID)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the new root node  <br>
+<a name="index-returns-1-if-OID-exists_002c-0-if-it-does-not-191"></a><a name="index-g_t_0024_0024RECEXIST_005eDWORREC_0028OID_0029-192"></a>
+
+<h3 class="section">8.31 returns 1 if OID exists, 0 if it does not</h3>
+
+<h4 class="subsection">8.31.1 <code>$$RECEXIST^DWORREC(OID)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the record to check  <br>
+<a name="index-Get-the-class-component-of-a-computed-field-193"></a><a name="index-g_t_0024_0024CFCLASS_005eDWORREC_0028CF_0029-194"></a>
+
+<h3 class="section">8.32 Get the class component of a computed field</h3>
+
+<h4 class="subsection">8.32.1 <code>$$CFCLASS^DWORREC(CF)</code></h4>
+
+<p><br> <em>CF</em>:  The entire computed field  <br>
+<a name="index-Get-the-key-component-of-a-computed-field-195"></a><a name="index-g_t_0024_0024CFKEY_005eDWORREC_0028CF_0029-196"></a>
+
+<h3 class="section">8.33 Get the key component of a computed field</h3>
+
+<h4 class="subsection">8.33.1 <code>$$CFKEY^DWORREC(CF)</code></h4>
+
+<p><br> <em>CF</em>:  The entire computed field  <br>
+<a name="index-Get-the-field-component-of-a-computed-field-197"></a><a name="index-g_t_0024_0024CFFIELD_005eDWORREC_0028CF_0029-198"></a>
+
+<h3 class="section">8.34 Get the field component of a computed field</h3>
+
+<h4 class="subsection">8.34.1 <code>$$CFFIELD^DWORREC(CF)</code></h4>
+
+<p><br> <em>CF</em>:  The entire computed field  <br>
+<a name="index-Get-a-computed-field_0027s-value-199"></a><a name="index-g_t_0024_0024CFGET_005eDWORREC_0028CF_0029-200"></a>
+
+<h3 class="section">8.35 Get a computed field's value</h3>
+
+<h4 class="subsection">8.35.1 <code>$$CFGET^DWORREC(CF)</code></h4>
+
+<p><br> <em>CF</em>:  The entire computed field  <br>
+<a name="index-Dump-an-ORMS-record-201"></a><a name="index-DUMP_005eDWORREC_0028OID_0029-202"></a>
+
+<h3 class="section">8.36 Dump an ORMS record</h3>
+
+<h4 class="subsection">8.36.1 <code>DUMP^DWORREC(OID)</code></h4>
+
+<p><br> <em>OID</em>:  The OID of the record to dump  <br>
+<a name="index-Build-a-query-from-a-query-string-203"></a><a name="index-g_t_0024_0024BLDQRY_005eDWORRSET_0028QS_0029-204"></a>
+
+<h3 class="section">8.37 Build a query from a query string</h3>
+
+<h4 class="subsection">8.37.1 <code>$$BLDQRY^DWORRSET(QS)</code></h4>
+
+<p><br> <em>QS</em>:  The query string  <br>
+
+<div class="node">
+<p><hr>
+<a name="Administrator-Shell"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Maintenance-Shell">Maintenance Shell</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Object-Record-Management-System">Object Record Management System</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">9 Administrator Shell</h2>
+
+<p><a name="index-Render-an-add-class-instance-form-205"></a><a name="index-g_t_0024_0024RNDRADD_005eDWPASHL_0028CLASNAME_002cREVN_002cSHHDR_002cSTUFFPK_0029-206"></a>
+
+<h3 class="section">9.1 Render an add class instance form</h3>
+
+<h4 class="subsection">9.1.1 <code>$$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK)</code></h4>
+
+<p><br> <em>CLASNAME</em>:  The class for which to render this form  <br>
+<br> <em>REVN</em>:  The revision number of the class, N for most recent  <br>
+<br> <em>SHHDR</em>:  Should be 1 to show header, 0 to hide header  <br>
+<br> <em>STUFFPK</em>:  The value with which to fill the PK field, 0 for none  <br>
+
+<div class="node">
+<p><hr>
+<a name="Maintenance-Shell"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#User-Shell">User Shell</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Administrator-Shell">Administrator Shell</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">10 Maintenance Shell</h2>
+
+<div class="node">
+<p><hr>
+<a name="User-Shell"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Security-and-Authentication">Security and Authentication</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Maintenance-Shell">Maintenance Shell</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">11 User Shell</h2>
+
+<div class="node">
+<p><hr>
+<a name="Security-and-Authentication"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Concepts-Index">Concepts Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#User-Shell">User Shell</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">12 Security and Authentication</h2>
+
+<p><a name="index-Register-with-authentication-207"></a><a name="index-g_t_0024_0024LOGIN_005eDWSCAUTH_0028EMAIL_002cPASSWORD_002cMODE_002cSESSID_0029-208"></a>
+
+<h3 class="section">12.1 Register with authentication</h3>
+
+<h4 class="subsection">12.1.1 <code>$$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID)</code></h4>
+
+<p><br> <em>EMAIL</em>:  The user's e-mail address  <br>
+<br> <em>PASSWORD</em>:  The user's password  <br>
+<br> <em>MODE</em>:  EWD or DIRECT  <br>
+<br> <em>SESSID</em>:  The EWD session ID if MODE=EWD  <br>
+<div class="node">
+<p><hr>
+<a name="Concepts-Index"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Routines-Index">Routines Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Security-and-Authentication">Security and Authentication</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="unnumbered">Concepts Index</h2>
+
+<ul class="index-cp" compact>
+<li><a href="#index-Append-to-an-existing-ORMS-record-169">Append to an existing ORMS record</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Build-a-query-from-a-query-string-203">Build a query from a query string</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Check-for-locks-on-record-OID-183">Check for locks on record OID</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Clear-locks-on-record-OID-185">Clear locks on record OID</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Clear-the-screen-105">Clear the screen</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Close-the-_003chtml_003e-section-71">Close the &lt;html&gt; section</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Close-the-body-section-69">Close the body section</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Compile-an-external-CLASDEFN-into-ORMS_002dnative-format-159">Compile an external CLASDEFN into ORMS-native format</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Compiles-forms-for-a-class-into-EWD-pages-35">Compiles forms for a class into EWD pages</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Create-a-new-ORMS-class-definition-131">Create a new ORMS class definition</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Create-a-new-ORMS-record-165">Create a new ORMS record</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Create_002fset-meta-stream-STREAM-at-position-POS-to-VAL-on-OID-161">Create/set meta stream STREAM at position POS to VAL on OID</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Cull-revisions-for-OID_002c-preserving-at-most-COUNT-revisions-181">Cull revisions for OID, preserving at most COUNT revisions</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Draw-a-rectangle-into-the-pending-buffer-81">Draw a rectangle into the pending buffer</a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-Dump-an-ORMS-record-201">Dump an ORMS record</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-EWD-action-script-for-form-submission-145">EWD action script for form submission</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-EWD-prepage-script-for-form-editing-147">EWD prepage script for form editing</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Fires-when-any-class-is-created-125">Fires when any class is created</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Fires-when-any-class-is-revised-127">Fires when any class is revised</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Generate-texinfo-from-PDI-input-file-1">Generate texinfo from PDI input file</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Get-a-computed-field_0027s-value-199">Get a computed field's value</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-an-OID-through-_005eDWIND-175">Get an OID through ^DWIND</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-by-class-and-key-173">Get by class and key</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-meta-stream-STREAM-at-position-POS-on-OID-163">Get meta stream STREAM at position POS on OID</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-terminal-height-in-lines-97">Get terminal height in lines</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Get-terminal-width-in-columns-99">Get terminal width in columns</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Get-the-class-component-of-a-computed-field-193">Get the class component of a computed field</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-the-field-component-of-a-computed-field-197">Get the field component of a computed field</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-the-key-component-of-a-computed-field-195">Get the key component of a computed field</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-the-newest-revision-number-for-record-OID_002cKEY-177">Get the newest revision number for record OID,KEY</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-the-next-FUID-in-the-sequence-83">Get the next FUID in the sequence</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Get-the-primary-key-of-a-class-137">Get the primary key of a class</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-the-revision-number-of-the-latest-revision-to-this-class-141">Get the revision number of the latest revision to this class</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Get-the-root-node-for-this-instance-187">Get the root node for this instance</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Index-a-record-by-three-terms-155">Index a record by three terms</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Initialize-the-I_002fO-Library-75">Initialize the I/O Library</a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-Installs-a-kernel-module-into-a-Prefiniti-instance-85">Installs a kernel module into a Prefiniti instance</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Internal-subroutine-called-by-RUNHOOKS_005eDWORHOOK-153">Internal subroutine called by RUNHOOKS^DWORHOOK</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Invoke-a-ScreenMan-form-73">Invoke a ScreenMan form</a>: <a href="#Prefiniti-FileMan_002fScreenMan-interfaces">Prefiniti FileMan/ScreenMan interfaces</a></li>
+<li><a href="#index-Locate-the-cursor-to-X_002cY-111">Locate the cursor to X,Y</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Lookup-a-record-by-three-terms-157">Lookup a record by three terms</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Prints-a-list-of-installed-modules-91">Prints a list of installed modules</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Prints-a-module_0027s-info-line-89">Prints a module's info line</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Queries-whether-a-module-is-installed-93">Queries whether a module is installed</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Read-from-an-existing-ORMS-record-171">Read from an existing ORMS record</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Register-a-new-ORMS-class-hook-149">Register a new ORMS class hook</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Register-with-authentication-207">Register with authentication</a>: <a href="#Security-and-Authentication">Security and Authentication</a></li>
+<li><a href="#index-Removes-a-kernel-module-from-this-instance-87">Removes a kernel module from this instance</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Render-an-add-class-instance-form-205">Render an add class instance form</a>: <a href="#Administrator-Shell">Administrator Shell</a></li>
+<li><a href="#index-Reset-the-screen-119">Reset the screen</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Restore-previous-cursor-position-113">Restore previous cursor position</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Restore-the-previous-colors-109">Restore the previous colors</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Retrieve-a-class_0027s-CLASDEFN-ORMS-ID-by-name-139">Retrieve a class's CLASDEFN ORMS ID by name</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Return-a-closing-brace-in-a-multi-line-xml-tag-TAG-43">Return a closing brace in a multi line xml tag TAG</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-a-closing-brace-in-a-single-line-xml-tag-41">Return a closing brace in a single line xml tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-a-comma_002ddelimited-list-of-the-fields-in-a-class-133">Return a comma-delimited list of the fields in a class</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Return-a-field-block-LABEL_003a-CONT-47">Return a field block LABEL: CONT</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-a-form-input-field-49">Return a form input field</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-a-multi_002dline-input-95">Return a multi-line input</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Return-a-texinfo-chapheading-5">Return a texinfo chapheading</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-chapter-tag-25">Return a texinfo chapter tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-cindex-tag-9">Return a texinfo cindex tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-code-tag-27">Return a texinfo code tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-end-of-header-21">Return a texinfo end of header</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-findex-tag-11">Return a texinfo findex tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-input-tag-13">Return a texinfo input tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-majorheading-7">Return a texinfo majorheading</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-node-tag-23">Return a texinfo node tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-section-tag-29">Return a texinfo section tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-setfilename-tag-17">Return a texinfo setfilename tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-settitle-tag-19">Return a texinfo settitle tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-start-of-header-15">Return a texinfo start of header</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-subsection-tag-31">Return a texinfo subsection tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-a-texinfo-subsubsection-tag-33">Return a texinfo subsubsection tag</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-an-_003chLEVEL_003eTEXT_003c_002fhLEVEL_003e-block-45">Return an &lt;hLEVEL&gt;TEXT&lt;/hLEVEL&gt; block</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-an-Argument-description-3">Return an Argument description</a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-Return-an-ewd-config-tag-61">Return an ewd config tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-an-HTML-submit-button-51">Return an HTML submit button</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-an-html-tag-63">Return an html tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-an-XML-attribute-37">Return an XML attribute</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-ending-of-an-HTML-form-tag-59">Return ending of an HTML form tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-ending-of-an-HTML-table-tag-55">Return ending of an HTML table tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-head-section-65">Return head section</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-opening-of-an-HTML-form-tag-57">Return opening of an HTML form tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-opening-of-an-HTML-table-tag-53">Return opening of an HTML table tag</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-start-of-an-xml-tag-TAG-39">Return start of an xml tag TAG</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-Return-the-body-section-67">Return the body section</a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-returns-1-if-OID-exists_002c-0-if-it-does-not-191">returns 1 if OID exists, 0 if it does not</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Run-hooks-for-CLASNAME-on-OID-151">Run hooks for CLASNAME on OID</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Runs-form-generation-for-the-class-and-compiles-the-EWD-pages-129">Runs form generation for the class and compiles the EWD pages</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Send-escape-sequence-103">Send escape sequence</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Set-a-lock-on-record-OID-179">Set a lock on record OID</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Set-colors-107">Set colors</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Set-the-primary-key-of-a-class-135">Set the primary key of a class</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Set-up-a-screen-buffer-77">Set up a screen buffer</a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-Sets-the-root-node-for-this-instance-189">Sets the root node for this instance</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Update-an-existing-ORMS-class-definition-143">Update an existing ORMS class definition</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-Update-pending_002d_003ecurrent-and-current_002d_003escreen-79">Update pending-&gt;current and current-&gt;screen</a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-Write-a-bar-across-the-screen-115">Write a bar across the screen</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Write-a-multi_002dline-global-101">Write a multi-line global</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Write-TEXT-at-X_002cY-coordinates-117">Write TEXT at X,Y coordinates</a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-Write-to-an-existing-ORMS-record-167">Write to an existing ORMS record</a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+   </ul><div class="node">
+<p><hr>
+<a name="Routines-Index"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Concepts-Index">Concepts Index</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="unnumbered">Routines Index</h2>
+
+
+
+<ul class="index-fn" compact>
+<li><a href="#index-g_t_0024_0024ARGDESC_005eDWDOCS_0028TEXT_0029-4"><code>$$ARGDESC^DWDOCS(TEXT)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024BLDQRY_005eDWORRSET_0028QS_0029-204"><code>$$BLDQRY^DWORRSET(QS)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024BODYCLS_005eDWFGBLD_0028_0029-70"><code>$$BODYCLS^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024BODYOPEN_005eDWFGBLD_0028_0029-68"><code>$$BODYOPEN^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024CFCLASS_005eDWORREC_0028CF_0029-194"><code>$$CFCLASS^DWORREC(CF)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024CFFIELD_005eDWORREC_0028CF_0029-198"><code>$$CFFIELD^DWORREC(CF)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024CFGET_005eDWORREC_0028CF_0029-200"><code>$$CFGET^DWORREC(CF)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024CFKEY_005eDWORREC_0028CF_0029-196"><code>$$CFKEY^DWORREC(CF)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024CHAPHEAD_005eDWDOCS_0028TEXT_0029-6"><code>$$CHAPHEAD^DWDOCS(TEXT)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024CINDEX_005eDWDOCS_0028TEXT_0029-10"><code>$$CINDEX^DWDOCS(TEXT)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024CREATE_005eDWORCLAS_0028CLASNAME_002cCLASDEFN_0029-132"><code>$$CREATE^DWORCLAS(CLASNAME,CLASDEFN)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024DRAWRECT_005eDWIOLIB_0028XPOS_002cYPOS_002cWIDTH_002cHEIGHT_002cFORECOLR_002cBACKCOLR_002cFILLCHAR_0029-82"><code>$$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)</code></a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-g_t_0024_0024DWTICHAP_005eDWDOCS_0028NAME_0029-26"><code>$$DWTICHAP^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTICODE_005eDWDOCS_0028CODE_0029-28"><code>$$DWTICODE^DWDOCS(CODE)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTIEOH_005eDWDOCS_0028_0029-22"><code>$$DWTIEOH^DWDOCS()</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTIINPT_005eDWDOCS_0028_0029-14"><code>$$DWTIINPT^DWDOCS()</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTINODE_005eDWDOCS_0028NAME_0029-24"><code>$$DWTINODE^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTISC_005eDWDOCS_0028NAME_0029-30"><code>$$DWTISC^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTISFN_005eDWDOCS_0028NAME_0029-18"><code>$$DWTISFN^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTISOH_005eDWDOCS_0028_0029-16"><code>$$DWTISOH^DWDOCS()</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTISSC_005eDWDOCS_0028NAME_0029-32"><code>$$DWTISSC^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTISSSC_005eDWDOCS_0028NAME_0029-34"><code>$$DWTISSSC^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024DWTISTTL_005eDWDOCS_0028NAME_0029-20"><code>$$DWTISTTL^DWDOCS(NAME)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024EWDHDR_005eDWFGBLD_0028FRSTPAGE_002cPREPAGE_0029-62"><code>$$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024FINDEX_005eDWDOCS_0028TEXT_0029-12"><code>$$FINDEX^DWDOCS(TEXT)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024FLDBLK_005eDWFGBLD_0028LABEL_002cCONT_0029-48"><code>$$FLDBLK^DWFGBLD(LABEL,CONT)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024FORMCLS_005eDWFGBLD_0028_0029-60"><code>$$FORMCLS^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024FORMOPEN_005eDWFGBLD_0028METHOD_002cACTION_0029-58"><code>$$FORMOPEN^DWFGBLD(METHOD,ACTION)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024GETNEXT_005eDWKRFUID_0028_0029-84"><code>$$GETNEXT^DWKRFUID()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-g_t_0024_0024GETPK_005eDWORCLAS_0028CLASNAME_0029-138"><code>$$GETPK^DWORCLAS(CLASNAME)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024HDRTXT_005eDWFGBLD_0028TEXT_002cLEVEL_0029-46"><code>$$HDRTXT^DWFGBLD(TEXT,LEVEL)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024HEADSECN_005eDWFGBLD_0028PGTITLE_0029-66"><code>$$HEADSECN^DWFGBLD(PGTITLE)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024HTMLCLS_005eDWFGBLD_0028_0029-72"><code>$$HTMLCLS^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024HTMLOPEN_005eDWFGBLD_0028_0029-64"><code>$$HTMLOPEN^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024INIT_005eDWIOLIB_0028_0029-76"><code>$$INIT^DWIOLIB()</code></a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-g_t_0024_0024INPFLD_005eDWFGBLD_0028TYPE_002cNAME_002cVALUE_0029-50"><code>$$INPFLD^DWFGBLD(TYPE,NAME,VALUE)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024INVOKE_005eDWSMINTR_0028FILENUM_002cFORMNAM_002cRECNUM_002cPAGENUM_0029-74"><code>$$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM)</code></a>: <a href="#Prefiniti-FileMan_002fScreenMan-interfaces">Prefiniti FileMan/ScreenMan interfaces</a></li>
+<li><a href="#index-g_t_0024_0024LIDX3_005eDWORINDX_0028PRILKP_002cSECLKP_002cTERLKP_0029-158"><code>$$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024LISTFLDS_005eDWORCLAS_0028CLASNAME_002cREVN_002cPARENT_0029-134"><code>$$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024LOGIN_005eDWSCAUTH_0028EMAIL_002cPASSWORD_002cMODE_002cSESSID_0029-208"><code>$$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID)</code></a>: <a href="#Security-and-Authentication">Security and Authentication</a></li>
+<li><a href="#index-g_t_0024_0024MAJRHEAD_005eDWDOCS_0028TEXT_0029-8"><code>$$MAJRHEAD^DWDOCS(TEXT)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-g_t_0024_0024MLTILINE_005eDWKRRNSI_0028_0029-96"><code>$$MLTILINE^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-g_t_0024_0024QRYMOD_005eDWKRMODI_0028MODULE_0029-94"><code>$$QRYMOD^DWKRMODI(MODULE)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-g_t_0024_0024RECEXIST_005eDWORREC_0028OID_0029-192"><code>$$RECEXIST^DWORREC(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024RETRIEVE_005eDWORCLAS_0028CLASNAME_0029-140"><code>$$RETRIEVE^DWORCLAS(CLASNAME)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024REVISION_005eDWORCLAS_0028OID_0029-142"><code>$$REVISION^DWORCLAS(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-g_t_0024_0024RNDRADD_005eDWPASHL_0028CLASNAME_002cREVN_002cSHHDR_002cSTUFFPK_0029-206"><code>$$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK)</code></a>: <a href="#Administrator-Shell">Administrator Shell</a></li>
+<li><a href="#index-g_t_0024_0024SUBFLD_005eDWFGBLD_0028NAME_002cLABEL_002cACTION_002cNEXTPAGE_0029-52"><code>$$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024TBLCLS_005eDWFGBLD_0028_0029-56"><code>$$TBLCLS^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024TBLOPEN_005eDWFGBLD_0028_0029-54"><code>$$TBLOPEN^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024TRMCOLS_005eDWKRRNSI_0028_0029-100"><code>$$TRMCOLS^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-g_t_0024_0024TRMLINES_005eDWKRRNSI_0028_0029-98"><code>$$TRMLINES^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-g_t_0024_0024XMLATTR_005eDWFGBLD_0028KEY_002cVAL_0029-38"><code>$$XMLATTR^DWFGBLD(KEY,VAL)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024XMLMLCL_005eDWFGBLD_0028TAG_0029-44"><code>$$XMLMLCL^DWFGBLD(TAG)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024XMLSLCL_005eDWFGBLD_0028_0029-42"><code>$$XMLSLCL^DWFGBLD()</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-g_t_0024_0024XMLST_005eDWFGBLD_0028TAG_0029-40"><code>$$XMLST^DWFGBLD(TAG)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-ACTION_005eDWOREWD_0028sessid_0029-146"><code>ACTION^DWOREWD(sessid)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-APPEND_005eDWORREC_0028OID_002cKEY_002cDATA_0029-170"><code>APPEND^DWORREC(OID,KEY,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-CLRLOCK_005eDWORREC_0028OID_0029-186"><code>CLRLOCK^DWORREC(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-CLRSCR_005eDWKRRNSI_0028_0029-106"><code>CLRSCR^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-CLSCOMP_005eDWCLWTCH_0028OID_002cREVN_0029-130"><code>CLSCOMP^DWCLWTCH(OID,REVN)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-CLSCREAT_005eDWCLWTCH_0028EVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-126"><code>CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-CLSGET_005eDWORREC_0028CLASS_002cKEY_002cDATA_0029-174"><code>CLSGET^DWORREC(CLASS,KEY,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-CLSREVIS_005eDWCLWTCH_0028EVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-128"><code>CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-COLOR_005eDWKRRNSI_0028FG_002cBG_0029-108"><code>COLOR^DWKRRNSI(FG,BG)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-COMPILE_005eDWFGBLD_0028CLASNAME_002cREVN_002cACTION_002cTARGET_0029-36"><code>COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET)</code></a>: <a href="#EWD-Forms-Generator">EWD Forms Generator</a></li>
+<li><a href="#index-COMPILE_005eDWORINST_0028FH_0029-160"><code>COMPILE^DWORINST(FH)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-CREATE_005eDWORREC_0028PARENT_002cCLASS_002cNAME_002cKEY_002cDATA_0029-166"><code>CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-CULL_005eDWORREC_0028OID_002cCOUNT_0029-182"><code>CULL^DWORREC(OID,COUNT)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-D-CLRSCR_005eDWKRRNSI_0028_0029-124"><code>D CLRSCR^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-D-COLOR_005eDWKRRNSI_0028_0022WHITE_0022_002c_0022BLACK_0022_0029-122"><code>D COLOR^DWKRRNSI("WHITE","BLACK")</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-DOHOOK_005eDWORHOOK_0028BASEROUT_002cEVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-154"><code>DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-DUMP_005eDWORREC_0028OID_0029-202"><code>DUMP^DWORREC(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-DWTIGPDI_005eDWDOCS_0028INFILE_0029-2"><code>DWTIGPDI^DWDOCS(INFILE)</code></a>: <a href="#Documentation-Generator">Documentation Generator</a></li>
+<li><a href="#index-ESCAPE_005eDWKRRNSI_0028SEQ_0029-104"><code>ESCAPE^DWKRRNSI(SEQ)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-GET_005eDWORMETA_0028OID_002cKEY_002cSTREAM_002cPOS_0029-164"><code>GET^DWORMETA(OID,KEY,STREAM,POS)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-HDRBAR_005eDWKRRNSI_0028FG_002cBG_002cLENGTH_0029-116"><code>HDRBAR^DWKRRNSI(FG,BG,LENGTH)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-INDGET_005eDWORREC_0028CLASS_002cKEY_002cDATA_0029-176"><code>INDGET^DWORREC(CLASS,KEY,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-INPUT_005eDWORREC_0028OID_002cKEY_002cREV_0029-172"><code>INPUT^DWORREC(OID,KEY,REV)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-INSTALL_005eDWKRMODI_0028MODULE_0029-86"><code>INSTALL^DWKRMODI(MODULE)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-ISLOCKED_005eDWORREC_0028OID_0029-184"><code>ISLOCKED^DWORREC(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-LOCATE_005eDWKRRNSI_0028X_002cY_0029-112"><code>LOCATE^DWKRRNSI(X,Y)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-MODINFO_005eDWKRMODI_0028MODULE_0029-90"><code>MODINFO^DWKRMODI(MODULE)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-MODULES_005eDWKRMODI_0028_0029-92"><code>MODULES^DWKRMODI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-NEWEST_005eDWORREC_0028OID_002cKEY_0029-178"><code>NEWEST^DWORREC(OID,KEY)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-OUTPUT_005eDWORREC_0028OID_002cKEY_002cDATA_0029-168"><code>OUTPUT^DWORREC(OID,KEY,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-PREPAGE_005eDWOREWD_0028sessid_0029-148"><code>PREPAGE^DWOREWD(sessid)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-REGISTER_005eDWORHOOK_0028MODULE_002cCLASNAME_002cEVNTMASK_002cCALLBACK_0029-150"><code>REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-REMOVE_005eDWKRMODI_0028MODULE_0029-88"><code>REMOVE^DWKRMODI(MODULE)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-RESET_005eDWKRRNSI_0028_0029-120"><code>RESET^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-RESTORXY_005eDWKRRNSI_0028_0029-114"><code>RESTORXY^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-RESTRCLR_005eDWKRRNSI_0028_0029-110"><code>RESTRCLR^DWKRRNSI()</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-ROOTNODE_005eDWORREC_0028_0029-188"><code>ROOTNODE^DWORREC()</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-RUNHOOKS_005eDWORHOOK_0028CLASNAME_002cEVTYPE_002cOID_002cKEY_002cREVN_002cDATA_0029-152"><code>RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-SET_005eDWORMETA_0028OID_002cKEY_002cSTREAM_002cPOS_002cVAL_0029-162"><code>SET^DWORMETA(OID,KEY,STREAM,POS,VAL)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-SETBUF_005eDWIOLIB_0028BUF_002cWIDTH_002cHEIGHT_002cFORECOLR_002cBACKCOLR_002cFILLCHAR_0029-78"><code>SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)</code></a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-SETLOCK_005eDWORREC_0028OID_0029-180"><code>SETLOCK^DWORREC(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-SETPK_005eDWORCLAS_0028CLASNAME_002cPK_0029-136"><code>SETPK^DWORCLAS(CLASNAME,PK)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-SETRTNOD_005eDWORREC_0028OID_0029-190"><code>SETRTNOD^DWORREC(OID)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-SIDX3_005eDWORINDX_0028PRILKP_002cSECLKP_002cTERLKP_002cVAL_0029-156"><code>SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-UPDATE_005eDWIOLIB_0028_0029-80"><code>UPDATE^DWIOLIB()</code></a>: <a href="#Prefiniti-I_002fO-Library">Prefiniti I/O Library</a></li>
+<li><a href="#index-UPDATE_005eDWORCLAS_0028OID_002cCLASDEFN_0029-144"><code>UPDATE^DWORCLAS(OID,CLASDEFN)</code></a>: <a href="#Object-Record-Management-System">Object Record Management System</a></li>
+<li><a href="#index-WMLTLINE_005eDWKRRNSI_0028GLOB_0029-102"><code>WMLTLINE^DWKRRNSI(GLOB)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+<li><a href="#index-WRITEAT_005eDWKRRNSI_0028X_002cY_002cTEXT_0029-118"><code>WRITEAT^DWKRRNSI(X,Y,TEXT)</code></a>: <a href="#Prefiniti-Kernel">Prefiniti Kernel</a></li>
+   </ul></body></html>
+

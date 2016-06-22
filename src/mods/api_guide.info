@@ -1,0 +1,275 @@
+This is api_guide.info, produced by makeinfo version 4.13 from
+/home/mumps/prefiniti/doc/api_guide.texinfo.
+
+This manual describes the Prefiniti v3 API
+
+   Copyright (C) 2010 Coherent Logic Development LLC
+
+
+File: api_guide.info,  Node: Top,  Next: Object Broker,  Up: (dir)
+
+Prefiniti API Guide
+*******************
+
+This manual describes the Prefiniti v3 API
+
+   Copyright (C) 2010 Coherent Logic Development LLC
+
+* Menu:
+
+* Object Broker::
+* Documentation Generator::
+* EWD Forms Generator::
+* Instance Configuration::
+* Prefiniti Kernel::
+* Standard Distribution Modules::
+* Object Record Management System::
+* Administrator Shell::
+* Maintenance Shell::
+* User Shell::
+* Security and Authentication::
+
+* Index::
+
+
+File: api_guide.info,  Node: Object Broker,  Next: Documentation Generator,  Prev: Top,  Up: Top
+
+1 Object Broker
+***************
+
+
+File: api_guide.info,  Node: Documentation Generator,  Next: EWD Forms Generator,  Prev: Object Broker,  Up: Top
+
+2 Documentation Generator
+*************************
+
+2.0.1 `DWTIGPDI^DWDOCS()'-Generate texinfo from PDI input file
+--------------------------------------------------------------
+
+2.0.2 `$$DWTIINPT^DWDOCS()'-Return a texinfo input tag
+------------------------------------------------------
+
+2.0.3 `$$DWTISOH^DWDOCS()'-Return a texinfo start of header
+-----------------------------------------------------------
+
+2.0.4 `$$DWTISFN^DWDOCS()'-Return a texinfo setfilename tag
+-----------------------------------------------------------
+
+2.0.5 `$$DWTISTTL^DWDOCS()'-Return a texinfo settitle tag
+---------------------------------------------------------
+
+2.0.6 `$$DWTIEOH^DWDOCS()'-Return a texinfo end of header
+---------------------------------------------------------
+
+2.0.7 `$$DWTINODE^DWDOCS()'-Return a texinfo node tag
+-----------------------------------------------------
+
+2.0.8 `$$DWTICHAP^DWDOCS()'-Return a texinfo chapter tag
+--------------------------------------------------------
+
+2.0.9 `$$DWTICODE^DWDOCS()'-Return a texinfo code tag
+-----------------------------------------------------
+
+2.0.10 `$$DWTISC^DWDOCS()'-Return a texinfo section tag
+-------------------------------------------------------
+
+2.0.11 `$$DWTISSC^DWDOCS()'-Return a texinfo subsection tag
+-----------------------------------------------------------
+
+2.0.12 `$$DWTISSSC^DWDOCS()'-Return a texinfo subsubsection tag
+---------------------------------------------------------------
+
+
+File: api_guide.info,  Node: EWD Forms Generator,  Next: Instance Configuration,  Prev: Documentation Generator,  Up: Top
+
+3 EWD Forms Generator
+*********************
+
+
+File: api_guide.info,  Node: Instance Configuration,  Next: Prefiniti Kernel,  Prev: EWD Forms Generator,  Up: Top
+
+4 Instance Configuration
+************************
+
+
+File: api_guide.info,  Node: Prefiniti Kernel,  Next: Standard Distribution Modules,  Prev: Instance Configuration,  Up: Top
+
+5 Prefiniti Kernel
+******************
+
+5.0.1 `$$GETNEXT^DWKRFUID()'-Get the next FUID in the sequence
+--------------------------------------------------------------
+
+5.0.2 `INSTALL^DWKRMODI()'-Installs a kernel module into a Prefiniti instance
+-----------------------------------------------------------------------------
+
+5.0.3 `REMOVE^DWKRMODI()'-Removes a kernel module from this instance
+--------------------------------------------------------------------
+
+5.0.4 `MODINFO^DWKRMODI()'-Prints a module's info line
+------------------------------------------------------
+
+5.0.5 `MODULES^DWKRMODI()'-Prints a list of installed modules
+-------------------------------------------------------------
+
+5.0.6 `QRYMOD^DWKRMODI()'-Queries whether a module is installed
+---------------------------------------------------------------
+
+5.0.7 `MLTILINE^DWKRRNSI()'-Return a multi-line input
+-----------------------------------------------------
+
+5.0.8 `WMLTLINE^DWKRRNSI()'-Write a multi-line global
+-----------------------------------------------------
+
+
+File: api_guide.info,  Node: Standard Distribution Modules,  Next: Object Record Management System,  Prev: Prefiniti Kernel,  Up: Top
+
+6 Standard Distribution Modules
+*******************************
+
+6.0.1 `CLSCREAT^DWCLWTCH()'-Fires when any class is created
+-----------------------------------------------------------
+
+6.0.2 `CLSREVIS^DWCLWTCH()'-Fires when any class is revised
+-----------------------------------------------------------
+
+6.0.3 `CLSCOMP^DWCLWTCH()'-Runs form generation for the class and compiles the EWD pages
+----------------------------------------------------------------------------------------
+
+
+File: api_guide.info,  Node: Object Record Management System,  Next: Administrator Shell,  Prev: Standard Distribution Modules,  Up: Top
+
+7 Object Record Management System
+*********************************
+
+7.0.1 `CREATE^DWORCLAS()'-Create a new ORMS class definition
+------------------------------------------------------------
+
+7.0.2 `RETRIEVE^DWORCLAS()'-Retrieve a class' ORMS ID by name
+-------------------------------------------------------------
+
+7.0.3 `REVISION^DWORCLAS()'-Get the revision number of the latest revision to this class
+----------------------------------------------------------------------------------------
+
+7.0.4 `UPDATE^DWORCLAS()'-Update an existing ORMS class definition
+------------------------------------------------------------------
+
+7.0.5 `ACTION^DWOREWD()'-EWD action script for form submission
+--------------------------------------------------------------
+
+7.0.6 `PREPAGE^DWOREWD()'-EWD prepage script for form editing
+-------------------------------------------------------------
+
+7.0.7 `REGISTER^DWORHOOK()'-Register a new ORMS class hook
+----------------------------------------------------------
+
+7.0.8 `RUNHOOKS^DWORHOOK()'-Run hooks for CLASNAME on OID
+---------------------------------------------------------
+
+7.0.9 `DOHOOK^DWORHOOK()'-Internal subroutine called by RUNHOOKS^DWORHOOK
+-------------------------------------------------------------------------
+
+7.0.10 `COMPILE^DWORINST()'-Compile an external CLASDEFN into ORMS-native format
+--------------------------------------------------------------------------------
+
+7.0.11 `SET^DWORMETA()'-Create/set meta stream STREAM at position POS to VAL on OID
+-----------------------------------------------------------------------------------
+
+7.0.12 `GET^DWORMETA()'-Get meta stream STREAM at position POS on OID
+---------------------------------------------------------------------
+
+7.0.13 `CREATE^DWORREC()'-Create a new ORMS record
+--------------------------------------------------
+
+7.0.14 `OUTPUT^DWORREC()'-Write to an existing ORMS record
+----------------------------------------------------------
+
+7.0.15 `APPEND^DWORREC()'-Append to an existing ORMS record
+-----------------------------------------------------------
+
+7.0.16 `INPUT^DWORREC()'-Read from an existing ORMS record
+----------------------------------------------------------
+
+7.0.17 `CLSGET^DWORREC()'-Get by class and key
+----------------------------------------------
+
+7.0.18 `INDGET^DWORREC()'-Get an OID through ^DWIND
+---------------------------------------------------
+
+7.0.19 `NEWEST^DWORREC()'-Get the newest revision number for record OID,KEY
+---------------------------------------------------------------------------
+
+7.0.20 `SETLOCK^DWORREC()'-Set a lock on record OID
+---------------------------------------------------
+
+7.0.21 `CULL^DWORREC()'-Cull revisions for OID, preserving at most COUNT revisions
+----------------------------------------------------------------------------------
+
+7.0.22 `ISLOCKED^DWORREC()'-Check for locks on record OID
+---------------------------------------------------------
+
+7.0.23 `CLRLOCK^DWORREC()'-Clear locks on record OID
+----------------------------------------------------
+
+7.0.24 `ROOTNODE^DWORREC()'-Get the root node for this instance
+---------------------------------------------------------------
+
+7.0.25 `SETRTNOD^DWORREC()'-Sets the root node for this instance
+----------------------------------------------------------------
+
+7.0.26 `RECEXIST^DWORREC()'-returns 1 if OID exists, 0 if it does not
+---------------------------------------------------------------------
+
+7.0.27 `DUMP^DWORREC()'-Dump an ORMS record
+-------------------------------------------
+
+
+File: api_guide.info,  Node: Administrator Shell,  Next: Maintenance Shell,  Prev: Object Record Management System,  Up: Top
+
+8 Administrator Shell
+*********************
+
+
+File: api_guide.info,  Node: Maintenance Shell,  Next: User Shell,  Prev: Administrator Shell,  Up: Top
+
+9 Maintenance Shell
+*******************
+
+
+File: api_guide.info,  Node: User Shell,  Next: Security and Authentication,  Prev: Maintenance Shell,  Up: Top
+
+10 User Shell
+*************
+
+
+File: api_guide.info,  Node: Security and Authentication,  Next: Index,  Prev: User Shell,  Up: Top
+
+11 Security and Authentication
+******************************
+
+
+File: api_guide.info,  Node: Index,  Prev: Security and Authentication,  Up: Top
+
+Index
+*****
+
+ [index ]
+* Menu:
+
+
+Tag Table:
+Node: Top207
+Node: Object Broker718
+Node: Documentation Generator851
+Node: EWD Forms Generator2430
+Node: Instance Configuration2600
+Node: Prefiniti Kernel2769
+Node: Standard Distribution Modules3942
+Node: Object Record Management System4565
+Node: Administrator Shell8247
+Node: Maintenance Shell8420
+Node: User Shell8568
+Node: Security and Authentication8712
+Node: Index8878
+
+End Tag Table

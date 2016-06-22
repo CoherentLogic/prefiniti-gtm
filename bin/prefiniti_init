@@ -1,0 +1,12 @@
+#!/bin/bash
+# PREFINITI 3.0
+# PICASSO/JOLLIS - CONFIGURE UNIX ENVIRONMENT FOR PREFINITI;9/11/10;bin/prefiniti_init
+# ;;3.0;SETUP;9/11/2010;1
+
+# $Id: prefiniti_init 4 2010-10-24 17:30:25Z jollis $
+
+source ~/prefiniti/etc/prefiniti.conf
+export gtmroutines="$gtmroutines ${PREFINITI_ROOT}/obj(${PREFINITI_ROOT}/src/brkr ${PREFINITI_ROOT}/src/krnl ${PREFINITI_ROOT}/src/orms ${PREFINITI_ROOT}/src/pash ${PREFINITI_ROOT}/src/pmsh ${PREFINITI_ROOT}/src/push ${PREFINITI_ROOT}/src/secu ${PREFINITI_ROOT}/src/inst ${PREFINITI_ROOT}/src/docs ${PREFINITI_ROOT}/src/fgen ${PREFINITI_ROOT}/src/fman) ${PREFINITI_ROOT}/lib(${PREFINITI_ROOT}/src/iolib) ${PREFINITI_ROOT}/mod(${PREFINITI_ROOT}/src/mods)"
+export PATH=$PATH:${PREFINITI_ROOT}/bin
+export LINES
+export COLUMNS

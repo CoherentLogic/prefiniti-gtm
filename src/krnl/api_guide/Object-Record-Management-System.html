@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+<title>Object Record Management System - Prefiniti API Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Prefiniti API Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Standard-Distribution-Modules.html#Standard-Distribution-Modules" title="Standard Distribution Modules">
+<link rel="next" href="Administrator-Shell.html#Administrator-Shell" title="Administrator Shell">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes the Prefiniti v3 API
+
+Copyright (C) 2010 Coherent Logic Development LLC-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Object-Record-Management-System"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Administrator-Shell.html#Administrator-Shell">Administrator Shell</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Standard-Distribution-Modules.html#Standard-Distribution-Modules">Standard Distribution Modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">7 Object Record Management System</h2>
+
+<h4 class="subsection">7.0.1 <code>CREATE^DWORCLAS()</code>-Create a new ORMS class definition</h4>
+
+<h4 class="subsection">7.0.2 <code>RETRIEVE^DWORCLAS()</code>-Retrieve a class' ORMS ID by name</h4>
+
+<h4 class="subsection">7.0.3 <code>REVISION^DWORCLAS()</code>-Get the revision number of the latest revision to this class</h4>
+
+<h4 class="subsection">7.0.4 <code>UPDATE^DWORCLAS()</code>-Update an existing ORMS class definition</h4>
+
+<h4 class="subsection">7.0.5 <code>ACTION^DWOREWD()</code>-EWD action script for form submission</h4>
+
+<h4 class="subsection">7.0.6 <code>PREPAGE^DWOREWD()</code>-EWD prepage script for form editing</h4>
+
+<h4 class="subsection">7.0.7 <code>REGISTER^DWORHOOK()</code>-Register a new ORMS class hook</h4>
+
+<h4 class="subsection">7.0.8 <code>RUNHOOKS^DWORHOOK()</code>-Run hooks for CLASNAME on OID</h4>
+
+<h4 class="subsection">7.0.9 <code>DOHOOK^DWORHOOK()</code>-Internal subroutine called by RUNHOOKS^DWORHOOK</h4>
+
+<h4 class="subsection">7.0.10 <code>COMPILE^DWORINST()</code>-Compile an external CLASDEFN into ORMS-native format</h4>
+
+<h4 class="subsection">7.0.11 <code>SET^DWORMETA()</code>-Create/set meta stream STREAM at position POS to VAL on OID</h4>
+
+<h4 class="subsection">7.0.12 <code>GET^DWORMETA()</code>-Get meta stream STREAM at position POS on OID</h4>
+
+<h4 class="subsection">7.0.13 <code>CREATE^DWORREC()</code>-Create a new ORMS record</h4>
+
+<h4 class="subsection">7.0.14 <code>OUTPUT^DWORREC()</code>-Write to an existing ORMS record</h4>
+
+<h4 class="subsection">7.0.15 <code>APPEND^DWORREC()</code>-Append to an existing ORMS record</h4>
+
+<h4 class="subsection">7.0.16 <code>INPUT^DWORREC()</code>-Read from an existing ORMS record</h4>
+
+<h4 class="subsection">7.0.17 <code>CLSGET^DWORREC()</code>-Get by class and key</h4>
+
+<h4 class="subsection">7.0.18 <code>INDGET^DWORREC()</code>-Get an OID through ^DWIND</h4>
+
+<h4 class="subsection">7.0.19 <code>NEWEST^DWORREC()</code>-Get the newest revision number for record OID,KEY</h4>
+
+<h4 class="subsection">7.0.20 <code>SETLOCK^DWORREC()</code>-Set a lock on record OID</h4>
+
+<h4 class="subsection">7.0.21 <code>CULL^DWORREC()</code>-Cull revisions for OID, preserving at most COUNT revisions</h4>
+
+<h4 class="subsection">7.0.22 <code>ISLOCKED^DWORREC()</code>-Check for locks on record OID</h4>
+
+<h4 class="subsection">7.0.23 <code>CLRLOCK^DWORREC()</code>-Clear locks on record OID</h4>
+
+<h4 class="subsection">7.0.24 <code>ROOTNODE^DWORREC()</code>-Get the root node for this instance</h4>
+
+<h4 class="subsection">7.0.25 <code>SETRTNOD^DWORREC()</code>-Sets the root node for this instance</h4>
+
+<h4 class="subsection">7.0.26 <code>RECEXIST^DWORREC()</code>-returns 1 if OID exists, 0 if it does not</h4>
+
+<h4 class="subsection">7.0.27 <code>DUMP^DWORREC()</code>-Dump an ORMS record</h4>
+
+</body></html>
+

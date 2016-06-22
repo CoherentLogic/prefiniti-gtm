@@ -1,0 +1,106 @@
+\input textinfo    @c -*-textinfo-*-
+@c %**start of header
+@setfilename api_guide.info
+@settitle Prefiniti API Guide
+@c %**end of header
+
+@copying
+This manual describes the Prefiniti v3 API
+
+Copyright (C) 2010 Coherent Logic Development LLC
+@end copying
+
+
+@titlepage
+@title Prefiniti API Guide
+@page
+@vskip 0pt plus 1filll
+@end titlepage
+
+@contents
+@ifnottex
+@node Top
+@top Prefiniti API Guide
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Object Broker::                     
+* Documentation Generator::           Generates documentation from marked-up mumps code
+* EWD Forms Generator::               Generates EWD forms from ORMS CLASDEFns
+* Instance Configuration::            Instance Configuration
+* Prefiniti Kernel::                  Core functions of Prefiniti
+* Standard Distribution Modules::     Standard KRNL modules distributed with Prefiniti
+* Object Record Management System::   Prefiniti's DBMS
+* Administrator Shell::               Prefiniti Administrator Shell
+* Maintenance Shell::                 Shell for system maintenance
+* User Shell::                        Shell for general users
+* Security and Authentication::       Security and authentication
+
+* Index::                             Comprehensive Index
+@end menu
+
+@node Object Broker
+@chapter Object Broker
+
+
+@node Documentation Generator
+@chapter Documentation Generator
+
+@subsection @code{DWTIGPDI^DWDOCS()}-Generate texinfo from PDI input file
+@subsection @code{$$DWTIINPT^DWDOCS()}-Return a texinfo input tag
+@subsection @code{$$DWTISOH^DWDOCS()}-Return a texinfo start of header
+@subsection @code{$$DWTISFN^DWDOCS()}-Return a texinfo setfilename tag
+@subsection @code{$$DWTISTTL^DWDOCS()}-Return a texinfo settitle tag
+@subsection @code{$$DWTIEOH^DWDOCS()}-Return a texinfo end of header
+@subsection @code{$$DWTINODE^DWDOCS()}-Return a texinfo node tag
+@subsection @code{$$DWTICHAP^DWDOCS()}-Return a texinfo chapter tag
+@subsection @code{$$DWTICODE^DWDOCS()}-Return a texinfo code tag
+@subsection @code{$$DWTISC^DWDOCS()}-Return a texinfo section tag
+@subsection @code{$$DWTISSC^DWDOCS()}-Return a texinfo subsection tag
+@subsection @code{$$DWTISSSC^DWDOCS()}-Return a texinfo subsubsection tag
+
+@node EWD Forms Generator
+@chapter EWD Forms Generator
+
+
+@node Instance Configuration
+@chapter Instance Configuration
+
+
+@node Prefiniti Kernel
+@chapter Prefiniti Kernel
+
+
+@node Standard Distribution Modules
+@chapter Standard Distribution Modules
+
+
+@node Object Record Management System
+@chapter Object Record Management System
+
+@subsection @code{$$CREATE^DWORREC()}-Create a new ORMS record
+@subsection @code{$$OUTPUT^DWORREC()}-Write to an existing ORMS record
+
+@node Administrator Shell
+@chapter Administrator Shell
+
+
+@node Maintenance Shell
+@chapter Maintenance Shell
+
+
+@node User Shell
+@chapter User Shell
+
+
+@node Security and Authentication
+@chapter Security and Authentication
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye

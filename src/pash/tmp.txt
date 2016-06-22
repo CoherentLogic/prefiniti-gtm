@@ -1,0 +1,11 @@
+LOGIN(sessid) ;
+ N X S X=$$getTextValue^%zewdAPI("accessCode",sessid)
+ Q:X="" "Please enter your Access Code"
+ D ^XUSHSH N DUZ S DUZ=$O(^VA(200,"A",X,0))
+ N X S X=$$getTextValue^%zewdAPI("verifyCode",sessid)
+ Q:X="" "Please enter your Verify Code"
+ Q:DUZ="" "Incorrect Access or Verify Code"
+ D ^XUSHSH
+ N VERIFY S VERIFY=$P(^VA(200,DUZ,.1),"^",2)
+ Q:X'=VERIFY "Incorrect Access or Verify Code"
+ Q ""

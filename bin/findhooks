@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# $Id: findhooks 4 2010-10-24 17:30:25Z jollis $
+
+SRCDIRS=`echo ${PREFINITI_ROOT}/src/*`
+
+for DIR in ${SRCDIRS}
+do
+    FILES=${DIR}/*.m
+    for FILE in ${FILES}   
+    do
+      echo ""
+      echo "*** FILE: " ${FILE}
+      echo ""
+      grep '\^DWHOOKS' ${FILE}
+    done
+done

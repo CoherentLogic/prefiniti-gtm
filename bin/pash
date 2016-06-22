@@ -1,0 +1,10 @@
+#!/bin/bash
+#PREFINITI 3.0
+#PICASSO/JOLLIS - RUN THE ADMIN SHELL;9/12/10;bin/pash
+#3.0;SETUP;9/12/10;1
+
+# $Id: pash 4 2010-10-24 17:30:25Z jollis $
+
+export COLUMNS
+export LINES
+mumps -r "DWPASHL"

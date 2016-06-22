@@ -1,0 +1,20 @@
+;;**************************************************
+;;
+;; LOCATION class
+;;
+;;  Defines a Location on Prefiniti
+;;
+;; Author:      John Willis
+;; Created:     18 Sep 2010
+;;
+;; Copyright (C) 2010 Coherent Logic Development LLC
+;;
+;;***************************************************
+
+LOCATION::Location:NAME
+NAME:TEXT,SINGLE:REQUIRED:::Location Name
+STREET:TEXT,SINGLE:OPTIONAL:::Street Address
+CITY:TEXT,SINGLE:OPTIONAL:::City
+STATE:TEXT,SINGLE:OPTIONAL:::State
+ZIP:TEXT,SINGLE:OPTIONAL:::ZIP Code
+

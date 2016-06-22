@@ -1,0 +1,53 @@
+#!/bin/bash
+#PICASSO/JOLLIS - CONFIGURE PREFINITI;9/13/10;bin/prefconf
+##INST;9/13/10;1
+
+# $Id: prefconf 4 2010-10-24 17:30:25Z jollis $
+
+# run the instance setup
+mumps -r "DWPRINST"
+echo ""
+echo "PREFCONF:  PREFINITI INSTANCE CONFIGURED."
+echo ""
+read -p "DO YOU WISH TO CONFIGURE KERNEL MODULES NOW? (Y/n) " CONFMODS
+
+if [ ${CONFMODS} = "Y" ]; then
+  MODS=${PREFINITI_ROOT}/src/mods/*.m
+  
+  for MOD in ${MODS}
+    do
+      CMOD=`basename ${MOD}`      
+      MODINFO=`modinfo ${CMOD}`
+      echo ""
+      echo "MODULE ${CMOD}:  ${MODINFO}"
+      read -p "DO YOU WISH TO INSTALL THIS MODULE? (Y/n) " DOINST      
+      if [ ${DOINST} = "Y" ]; then
+	modinst ${CMOD}
+      fi
+    done
+  echo "PREFCONF:  MODULE CONFIGURATION COMPLETE"
+fi
+
+echo ""
+read -p "DO YOU WISH TO COMPILE CLASSES NOW? (Y/n) " CONFCLAS
+
+if [ ${CONFCLAS} = "Y" ]; then
+  CLASSES=${PREFINITI_ROOT}/classes/*.ocl
+  
+  for CLASS in ${CLASSES}
+    do
+      CCLASS=`basename ${CLASS}`      
+      echo
+      echo "CLASS:  ${CCLASS}"
+      read -p "DO YOU WISH TO COMPILE THIS CLASS? (Y/n) " DOCOMPILE
+      if [ ${DOCOMPILE} = "Y" ]; then
+	ocl ${CLASS}
+      fi
+    done
+  echo "PREFCONF:  CLASS COMPILATION COMPLETE"
+fi
+
+
+echo "PREFCONF:  LAUNCHING PREFINITI ADMIN SHELL"
+echo ""
+pash

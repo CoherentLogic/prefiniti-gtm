@@ -1,0 +1,6 @@
+#!/bin/bash
+#PICASSO/JOLLIS - CALL MUMPS FROM UNIX;9/14/10;bin/mcall
+#3.0;KRNL;9/14/10;1
+# $Id: mcall 4 2010-10-24 17:30:25Z jollis $
+
+mumps -r "KRNLMCAL" "$1"

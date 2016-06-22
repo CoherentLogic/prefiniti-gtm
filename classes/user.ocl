@@ -1,0 +1,26 @@
+;;**************************************************
+;;
+;; USER class
+;;      
+;;  Defines a single user on Prefiniti
+;; 
+;; Author:	John Willis
+;; Created:	18 Sep 2010
+;;
+;; Copyright (C) 2010 AJL Intel-Properties LLC
+;;
+;;***************************************************
+
+USER::Prefiniti User:EMAIL
+EMAIL:TEXT,SINGLE:REQUIRED:::E-Mail Address
+PASSWORD:PASSWORD,SINGLE:REQUIRED:::Password
+FIRSTNAME:TEXT,SINGLE:REQUIRED:::First Name
+LASTNAME:TEXT,SINGLE:REQUIRED:::Last Name
+ACCCODE:TEXT,SINGLE:OPTIONAL:::VistA Access Code
+VERCODE:PASSWORD,SINGLE:OPTIONAL:::VistA Verify Code
+SEX:TEXT,SINGLE:OPTIONAL:::Sex
+BIRTHDAY:TEXT,SINGLE:OPTIONAL:::Birthday
+OCCUPATION:TEXT,SINGLE:OPTIONAL:::Occupation
+HOMEADDRESS:CLASPTR,LOCATION,0:OPTIONAL:::Home Address
+WORKADDRESS:CLASPTR,LOCATION,0:OPTIONAL:::Work Address
+

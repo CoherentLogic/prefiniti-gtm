@@ -1,0 +1,127 @@
+<html lang="en">
+<head>
+<title>Prefiniti API Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Prefiniti API Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes the Prefiniti v3 API
+
+Copyright © 2010 Coherent Logic Development LLC-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">Prefiniti API Guide</h1>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="index.html#Top">Prefiniti API Guide</a>
+<li><a name="toc_Kernel" href="Kernel.html#Kernel">1 Prefiniti Kernel</a>
+<ul>
+<ul>
+<li><a href="Kernel.html#Kernel">1.0.1 Frame-Unique Identifiers (DWKRFUID)</a>
+<ul>
+<li><a href="Kernel.html#Kernel">1.0.1.1 <code>$$GETNEXT^DWKRFUID()</code> - Obtain a new FUID</a>
+</li></ul>
+<li><a href="Kernel.html#Kernel">1.0.2 MUMPS External Call Interface (DWKRMCAL)</a>
+<ul>
+<li><a href="Kernel.html#Kernel">1.0.2.1 <code>DWKRFUID</code> - Call a MUMPS routine from UNIX</a>
+</li></ul>
+<li><a href="Kernel.html#Kernel">1.0.3 Kernel Module Interface (DWKRMODI)</a>
+<ul>
+<li><a href="Kernel.html#Kernel">1.0.3.1 <code>INSTALL^DWKRMODI(MODULE)</code> - Install Kernel Module</a>
+<li><a href="Kernel.html#Kernel">1.0.3.2 <code>REMOVE^DWKRMODI(MODULE)</code> - Remove Kernel Module</a>
+<li><a href="Kernel.html#Kernel">1.0.3.3 <code>MODINFO^DWKRMODI(MODULE)</code> - Print Module's Info Line</a>
+<li><a href="Kernel.html#Kernel">1.0.3.4 <code>MODULES^DWKRMODI()</code> - List Installed Modules</a>
+<li><a href="Kernel.html#Kernel">1.0.3.5 <code>$$MODULES^QRYMOD(MODULE)</code> - Query Whether Module is Installed</a>
+</li></ul>
+<li><a href="Kernel.html#Kernel">1.0.4 Roll and Scroll Interface (DWKRRNSI)</a>
+<ul>
+<li><a href="Kernel.html#Kernel">1.0.4.1 <code>$$MLTILINE^DWKRRNSI()</code> - Read a multi-line text value</a>
+<li><a href="Kernel.html#Kernel">1.0.4.2 <code>$$WMLTLINE^DWKRRNSI()</code> - Write a multi-line text value</a>
+</li></ul>
+</li></ul>
+</li></ul>
+<li><a name="toc_ORMS" href="ORMS.html#ORMS">2 Object Record Management System</a>
+<ul>
+<ul>
+<li><a href="ORMS.html#ORMS">2.0.1 Records (DWORREC)</a>
+<ul>
+<li><a href="ORMS.html#ORMS">2.0.1.1 <code>$$CREATE^DWORREC(PAR,CLS,NAM,KEY,PDB)</code> - Create Record</a>
+<li><a href="ORMS.html#ORMS">2.0.1.2 <code>$$OUTPUT^DWORREC(OID,KEY,PDB)</code> - Revise Record's PDB</a>
+<li><a href="ORMS.html#ORMS">2.0.1.3 <code>$$APPEND^DWORREC(OID,KEY,PDB)</code> - Add Key/PDB To Record</a>
+<li><a href="ORMS.html#ORMS">2.0.1.4 <code>$$INPUT^DWORREC(OID,KEY,REV)</code> - Read Record's PDB by OID/key/revision</a>
+<li><a href="ORMS.html#ORMS">2.0.1.5 <code>$$CLSGET^DWORREC(CLASNAME,KEY,PDB)</code> - Get PDB through class/key/PDB</a>
+<li><a href="ORMS.html#ORMS">2.0.1.6 <code>$$INDGET^DWORREC(CLASNAME,KEY,PDB)</code> - Get OID through class/key/PDB</a>
+<li><a href="ORMS.html#ORMS">2.0.1.7 <code>$$NEWEST^DWORREC(OID,KEY)</code> - Get Highest Rev. # through OID/key</a>
+<li><a href="ORMS.html#ORMS">2.0.1.8 <code>SETLOCK^DWORREC(OID)</code> - Lock record by OID</a>
+<li><a href="ORMS.html#ORMS">2.0.1.9 <code>$$ISLOCKED^DWORREC(OID)</code> - Is record OID locked?</a>
+<li><a href="ORMS.html#ORMS">2.0.1.10 <code>CLRLOCK^DWORREC(OID)</code> - Clear lock on record OID</a>
+<li><a href="ORMS.html#ORMS">2.0.1.11 <code>$$ROOTNODE^DWORREC()</code> - Get Root Node's OID</a>
+<li><a href="ORMS.html#ORMS">2.0.1.12 <code>SETRTNOD^DWORREC(OID)</code> - Set Root Node to OID</a>
+<li><a href="ORMS.html#ORMS">2.0.1.13 <code>$$RECEXIST^DWORREC(OID)</code> - Does record OID exist?</a>
+<li><a href="ORMS.html#ORMS">2.0.1.14 <code>DUMP^DWORREC(OID)</code> - ZWR record OID</a>
+</li></ul>
+<li><a href="ORMS.html#ORMS">2.0.2 Classes (DWORCLAS)</a>
+<li><a href="ORMS.html#ORMS">2.0.3 Compiler (DWORINST)</a>
+<li><a href="ORMS.html#ORMS">2.0.4 EWD Interface (DWOREWD)</a>
+<li><a href="ORMS.html#ORMS">2.0.5 Hooks (DWORHOOK)</a>
+<li><a href="ORMS.html#ORMS">2.0.6 Metadata Streams (DWORMETA)</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_FGEN" href="FGEN.html#FGEN">3 EWD Forms Generator</a>
+<ul>
+<ul>
+<li><a href="FGEN.html#FGEN">3.0.1 Builder</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Modules" href="Modules.html#Modules">4 Standard Distribution Modules</a>
+<ul>
+<ul>
+<li><a href="Modules.html#Modules">4.0.1 Class Watcher (DWCLWTCH)</a>
+<li><a href="Modules.html#Modules">4.0.2 Logging Support (DWLGSUPT)</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Index" href="Index.html#Index">Index</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<a name="Top"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Kernel.html#Kernel">Kernel</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">Prefiniti API Guide</h2>
+
+<p>This manual describes the Prefiniti v3 API
+
+   <p>Copyright © 2010 Coherent Logic Development LLC
+
+<ul class="menu">
+<li><a accesskey="1" href="Kernel.html#Kernel">Kernel</a>:       Core functions of Prefiniti
+<li><a accesskey="2" href="ORMS.html#ORMS">ORMS</a>:         Object Record Management System
+<li><a accesskey="3" href="FGEN.html#FGEN">FGEN</a>:         EWD Forms Generator
+<li><a accesskey="4" href="Modules.html#Modules">Modules</a>:      Modules from the standard Prefiniti distribution
+<li><a accesskey="5" href="Index.html#Index">Index</a>:        Complete index. 
+</ul>
+
+   </body></html>
+

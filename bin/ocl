@@ -1,0 +1,7 @@
+#!/bin/bash
+#PICASSO/JOLLIS - COMPILE A PREFINITI CLASDEFN;9/19/10;bin/ocl
+#3.0;ORMS;9/19/10;1
+
+# $Id: ocl 4 2010-10-24 17:30:25Z jollis $
+
+mumps -r "DWORINST" $1

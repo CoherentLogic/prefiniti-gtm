@@ -1,0 +1,129 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename prefiniti_api.info
+@settitle Prefiniti API Guide
+@c %**end of header
+
+@copying
+This manual describes the Prefiniti v3 API
+
+Copyright © 2010 Coherent Logic Development LLC
+@end copying
+
+@titlepage
+@title Prefiniti API Guide
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@c Output the table of the contents at the beginning.
+@contents
+
+@ifnottex
+@node Top
+@top Prefiniti API Guide
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Kernel::      Core functions of Prefiniti
+* ORMS::        Object Record Management System
+* FGEN::        EWD Forms Generator
+* Modules::     Modules from the standard Prefiniti distribution
+* Index::       Complete index.
+@end menu
+
+@node Kernel
+@chapter Prefiniti Kernel
+
+@subsection Frame-Unique Identifiers (DWKRFUID)
+
+@subsubsection @code{$$GETNEXT^DWKRFUID()} - Obtain a new FUID
+
+@subsection MUMPS External Call Interface (DWKRMCAL)
+
+@subsubsection @code{DWKRFUID} - Call a MUMPS routine from UNIX
+
+@subsection Kernel Module Interface (DWKRMODI)
+
+@subsubsection @code{INSTALL^DWKRMODI(MODULE)} - Install Kernel Module
+
+@subsubsection @code{REMOVE^DWKRMODI(MODULE)} - Remove Kernel Module
+
+@subsubsection @code{MODINFO^DWKRMODI(MODULE)} - Print Module's Info Line
+
+@subsubsection @code{MODULES^DWKRMODI()} - List Installed Modules
+
+@subsubsection @code{$$MODULES^QRYMOD(MODULE)} - Query Whether Module is Installed
+
+@subsection Roll and Scroll Interface (DWKRRNSI)
+
+@subsubsection @code{$$MLTILINE^DWKRRNSI()} - Read a multi-line text value
+
+@subsubsection @code{$$WMLTLINE^DWKRRNSI()} - Write a multi-line text value
+
+@node ORMS
+@chapter Object Record Management System
+
+@subsection Records (DWORREC)
+
+@subsubsection @code{$$CREATE^DWORREC(PAR,CLS,NAM,KEY,PDB)} - Create Record
+
+@subsubsection @code{$$OUTPUT^DWORREC(OID,KEY,PDB)} - Revise Record's PDB
+
+@subsubsection @code{$$APPEND^DWORREC(OID,KEY,PDB)} - Add Key/PDB To Record
+
+@subsubsection @code{$$INPUT^DWORREC(OID,KEY,REV)} - Read Record's PDB by OID/key/revision
+
+@subsubsection @code{$$CLSGET^DWORREC(CLASNAME,KEY,PDB)} - Get PDB through class/key/PDB
+
+@subsubsection @code{$$INDGET^DWORREC(CLASNAME,KEY,PDB)} - Get OID through class/key/PDB
+
+@subsubsection @code{$$NEWEST^DWORREC(OID,KEY)} - Get Highest Rev. # through OID/key
+
+@subsubsection @code{SETLOCK^DWORREC(OID)} - Lock record by OID
+
+@subsubsection @code{$$ISLOCKED^DWORREC(OID)} - Is record OID locked?
+
+@subsubsection @code{CLRLOCK^DWORREC(OID)} - Clear lock on record OID
+
+@subsubsection @code{$$ROOTNODE^DWORREC()} - Get Root Node's OID
+
+@subsubsection @code{SETRTNOD^DWORREC(OID)} - Set Root Node to OID
+
+@subsubsection @code{$$RECEXIST^DWORREC(OID)} - Does record OID exist?
+
+@subsubsection @code{DUMP^DWORREC(OID)} - ZWR record OID
+
+@subsection Classes (DWORCLAS)
+
+
+
+@subsection Compiler (DWORINST)
+
+@subsection EWD Interface (DWOREWD)
+
+@subsection Hooks (DWORHOOK)
+
+@subsection Metadata Streams (DWORMETA)
+
+@node FGEN
+@chapter EWD Forms Generator
+
+@subsection Builder
+
+@node Modules
+@chapter Standard Distribution Modules
+
+@subsection Class Watcher (DWCLWTCH)
+
+@subsection Logging Support (DWLGSUPT)
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye

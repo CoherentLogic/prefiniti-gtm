@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<title>ORMS - Prefiniti API Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Prefiniti API Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Kernel.html#Kernel" title="Kernel">
+<link rel="next" href="FGEN.html#FGEN" title="FGEN">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes the Prefiniti v3 API
+
+Copyright © 2010 Coherent Logic Development LLC-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="ORMS"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="FGEN.html#FGEN">FGEN</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Kernel.html#Kernel">Kernel</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">2 Object Record Management System</h2>
+
+<h4 class="subsection">2.0.1 Records (DWORREC)</h4>
+
+<h5 class="subsubsection">2.0.1.1 <code>$$CREATE^DWORREC(PAR,CLS,NAM,KEY,PDB)</code> - Create Record</h5>
+
+<h5 class="subsubsection">2.0.1.2 <code>$$OUTPUT^DWORREC(OID,KEY,PDB)</code> - Revise Record's PDB</h5>
+
+<h5 class="subsubsection">2.0.1.3 <code>$$APPEND^DWORREC(OID,KEY,PDB)</code> - Add Key/PDB To Record</h5>
+
+<h5 class="subsubsection">2.0.1.4 <code>$$INPUT^DWORREC(OID,KEY,REV)</code> - Read Record's PDB by OID/key/revision</h5>
+
+<h5 class="subsubsection">2.0.1.5 <code>$$CLSGET^DWORREC(CLASNAME,KEY,PDB)</code> - Get PDB through class/key/PDB</h5>
+
+<h5 class="subsubsection">2.0.1.6 <code>$$INDGET^DWORREC(CLASNAME,KEY,PDB)</code> - Get OID through class/key/PDB</h5>
+
+<h5 class="subsubsection">2.0.1.7 <code>$$NEWEST^DWORREC(OID,KEY)</code> - Get Highest Rev. # through OID/key</h5>
+
+<h5 class="subsubsection">2.0.1.8 <code>SETLOCK^DWORREC(OID)</code> - Lock record by OID</h5>
+
+<h5 class="subsubsection">2.0.1.9 <code>$$ISLOCKED^DWORREC(OID)</code> - Is record OID locked?</h5>
+
+<h5 class="subsubsection">2.0.1.10 <code>CLRLOCK^DWORREC(OID)</code> - Clear lock on record OID</h5>
+
+<h5 class="subsubsection">2.0.1.11 <code>$$ROOTNODE^DWORREC()</code> - Get Root Node's OID</h5>
+
+<h5 class="subsubsection">2.0.1.12 <code>SETRTNOD^DWORREC(OID)</code> - Set Root Node to OID</h5>
+
+<h5 class="subsubsection">2.0.1.13 <code>$$RECEXIST^DWORREC(OID)</code> - Does record OID exist?</h5>
+
+<h5 class="subsubsection">2.0.1.14 <code>DUMP^DWORREC(OID)</code> - ZWR record OID</h5>
+
+<h4 class="subsection">2.0.2 Classes (DWORCLAS)</h4>
+
+<h4 class="subsection">2.0.3 Compiler (DWORINST)</h4>
+
+<h4 class="subsection">2.0.4 EWD Interface (DWOREWD)</h4>
+
+<h4 class="subsection">2.0.5 Hooks (DWORHOOK)</h4>
+
+<h4 class="subsection">2.0.6 Metadata Streams (DWORMETA)</h4>
+
+</body></html>
+

@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+<title>Prefiniti API Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Prefiniti API Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual describes the Prefiniti v3 API
+
+Copyright (C) 2010 Coherent Logic Development LLC-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">Prefiniti API Guide</h1>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="index.html#Top">Prefiniti API Guide</a>
+<li><a name="toc_Object-Broker" href="Object-Broker.html#Object-Broker">1 Object Broker</a>
+<li><a name="toc_Documentation-Generator" href="Documentation-Generator.html#Documentation-Generator">2 Documentation Generator</a>
+<ul>
+<ul>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.1 <code>DWTIGPDI^DWDOCS()</code>-Generate texinfo from PDI input file</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.2 <code>$$DWTIINPT^DWDOCS()</code>-Return a texinfo input tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.3 <code>$$DWTISOH^DWDOCS()</code>-Return a texinfo start of header</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.4 <code>$$DWTISFN^DWDOCS()</code>-Return a texinfo setfilename tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.5 <code>$$DWTISTTL^DWDOCS()</code>-Return a texinfo settitle tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.6 <code>$$DWTIEOH^DWDOCS()</code>-Return a texinfo end of header</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.7 <code>$$DWTINODE^DWDOCS()</code>-Return a texinfo node tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.8 <code>$$DWTICHAP^DWDOCS()</code>-Return a texinfo chapter tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.9 <code>$$DWTICODE^DWDOCS()</code>-Return a texinfo code tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.10 <code>$$DWTISC^DWDOCS()</code>-Return a texinfo section tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.11 <code>$$DWTISSC^DWDOCS()</code>-Return a texinfo subsection tag</a>
+<li><a href="Documentation-Generator.html#Documentation-Generator">2.0.12 <code>$$DWTISSSC^DWDOCS()</code>-Return a texinfo subsubsection tag</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_EWD-Forms-Generator" href="EWD-Forms-Generator.html#EWD-Forms-Generator">3 EWD Forms Generator</a>
+<li><a name="toc_Instance-Configuration" href="Instance-Configuration.html#Instance-Configuration">4 Instance Configuration</a>
+<li><a name="toc_Prefiniti-Kernel" href="Prefiniti-Kernel.html#Prefiniti-Kernel">5 Prefiniti Kernel</a>
+<ul>
+<ul>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.1 <code>$$GETNEXT^DWKRFUID()</code>-Get the next FUID in the sequence</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.2 <code>INSTALL^DWKRMODI()</code>-Installs a kernel module into a Prefiniti instance</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.3 <code>REMOVE^DWKRMODI()</code>-Removes a kernel module from this instance</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.4 <code>MODINFO^DWKRMODI()</code>-Prints a module's info line</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.5 <code>MODULES^DWKRMODI()</code>-Prints a list of installed modules</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.6 <code>QRYMOD^DWKRMODI()</code>-Queries whether a module is installed</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.7 <code>MLTILINE^DWKRRNSI()</code>-Return a multi-line input</a>
+<li><a href="Prefiniti-Kernel.html#Prefiniti-Kernel">5.0.8 <code>WMLTLINE^DWKRRNSI()</code>-Write a multi-line global</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Standard-Distribution-Modules" href="Standard-Distribution-Modules.html#Standard-Distribution-Modules">6 Standard Distribution Modules</a>
+<li><a name="toc_Object-Record-Management-System" href="Object-Record-Management-System.html#Object-Record-Management-System">7 Object Record Management System</a>
+<ul>
+<ul>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.1 <code>CREATE^DWORCLAS()</code>-Create a new ORMS class definition</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.2 <code>RETRIEVE^DWORCLAS()</code>-Retrieve a class' ORMS ID by name</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.3 <code>REVISION^DWORCLAS()</code>-Get the revision number of the latest revision to this class</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.4 <code>UPDATE^DWORCLAS()</code>-Update an existing ORMS class definition</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.5 <code>ACTION^DWOREWD()</code>-EWD action script for form submission</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.6 <code>PREPAGE^DWOREWD()</code>-EWD prepage script for form editing</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.7 <code>REGISTER^DWORHOOK()</code>-Register a new ORMS class hook</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.8 <code>RUNHOOKS^DWORHOOK()</code>-Run hooks for CLASNAME on OID</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.9 <code>DOHOOK^DWORHOOK()</code>-Internal subroutine called by RUNHOOKS^DWORHOOK</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.10 <code>COMPILE^DWORINST()</code>-Compile an external CLASDEFN into ORMS-native format</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.11 <code>SET^DWORMETA()</code>-Create/set meta stream STREAM at position POS to VAL on OID</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.12 <code>GET^DWORMETA()</code>-Get meta stream STREAM at position POS on OID</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.13 <code>CREATE^DWORREC()</code>-Create a new ORMS record</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.14 <code>OUTPUT^DWORREC()</code>-Write to an existing ORMS record</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.15 <code>APPEND^DWORREC()</code>-Append to an existing ORMS record</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.16 <code>INPUT^DWORREC()</code>-Read from an existing ORMS record</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.17 <code>CLSGET^DWORREC()</code>-Get by class and key</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.18 <code>INDGET^DWORREC()</code>-Get an OID through ^DWIND</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.19 <code>NEWEST^DWORREC()</code>-Get the newest revision number for record OID,KEY</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.20 <code>SETLOCK^DWORREC()</code>-Set a lock on record OID</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.21 <code>CULL^DWORREC()</code>-Cull revisions for OID, preserving at most COUNT revisions</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.22 <code>ISLOCKED^DWORREC()</code>-Check for locks on record OID</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.23 <code>CLRLOCK^DWORREC()</code>-Clear locks on record OID</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.24 <code>ROOTNODE^DWORREC()</code>-Get the root node for this instance</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.25 <code>SETRTNOD^DWORREC()</code>-Sets the root node for this instance</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.26 <code>RECEXIST^DWORREC()</code>-returns 1 if OID exists, 0 if it does not</a>
+<li><a href="Object-Record-Management-System.html#Object-Record-Management-System">7.0.27 <code>DUMP^DWORREC()</code>-Dump an ORMS record</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Administrator-Shell" href="Administrator-Shell.html#Administrator-Shell">8 Administrator Shell</a>
+<li><a name="toc_Maintenance-Shell" href="Maintenance-Shell.html#Maintenance-Shell">9 Maintenance Shell</a>
+<li><a name="toc_User-Shell" href="User-Shell.html#User-Shell">10 User Shell</a>
+<li><a name="toc_Security-and-Authentication" href="Security-and-Authentication.html#Security-and-Authentication">11 Security and Authentication</a>
+<li><a name="toc_Index" href="Index.html#Index">Index</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<a name="Top"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Object-Broker.html#Object-Broker">Object Broker</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">Prefiniti API Guide</h2>
+
+<p>This manual describes the Prefiniti v3 API
+
+   <p>Copyright (C) 2010 Coherent Logic Development LLC
+
+<ul class="menu">
+<li><a accesskey="1" href="Object-Broker.html#Object-Broker">Object Broker</a>
+<li><a accesskey="2" href="Documentation-Generator.html#Documentation-Generator">Documentation Generator</a>
+<li><a accesskey="3" href="EWD-Forms-Generator.html#EWD-Forms-Generator">EWD Forms Generator</a>
+<li><a accesskey="4" href="Instance-Configuration.html#Instance-Configuration">Instance Configuration</a>
+<li><a accesskey="5" href="Prefiniti-Kernel.html#Prefiniti-Kernel">Prefiniti Kernel</a>
+<li><a accesskey="6" href="Standard-Distribution-Modules.html#Standard-Distribution-Modules">Standard Distribution Modules</a>
+<li><a accesskey="7" href="Object-Record-Management-System.html#Object-Record-Management-System">Object Record Management System</a>
+<li><a accesskey="8" href="Administrator-Shell.html#Administrator-Shell">Administrator Shell</a>
+<li><a accesskey="9" href="Maintenance-Shell.html#Maintenance-Shell">Maintenance Shell</a>
+<li><a href="User-Shell.html#User-Shell">User Shell</a>
+<li><a href="Security-and-Authentication.html#Security-and-Authentication">Security and Authentication</a>
+
+<li><a href="Index.html#Index">Index</a>
+</ul>
+
+   </body></html>
+

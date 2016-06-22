@@ -1,0 +1,1279 @@
+This is api_guide.info, produced by makeinfo version 4.8 from
+/home/prefiniti/prefiniti/doc/api_guide.texinfo.
+
+   This manual describes the Prefiniti v3 API
+
+   Copyright (C) 2010 Coherent Logic Development LLC
+
+
+File: api_guide.info,  Node: Top,  Next: Object Broker,  Up: (dir)
+
+Prefiniti API Guide
+*******************
+
+This manual describes the Prefiniti v3 API
+
+   Copyright (C) 2010 Coherent Logic Development LLC
+
+* Menu:
+
+* Object Broker::
+* Documentation Generator::
+* EWD Forms Generator::
+* Prefiniti FileMan/ScreenMan interfaces::
+* Instance Configuration::
+* Prefiniti I/O Library::
+* Prefiniti Kernel::
+* Object Record Management System::
+* Administrator Shell::
+* Maintenance Shell::
+* User Shell::
+* Security and Authentication::
+
+* Concepts Index::
+* Routines Index::
+
+
+File: api_guide.info,  Node: Object Broker,  Next: Documentation Generator,  Prev: Top,  Up: Top
+
+1 Object Broker
+***************
+
+
+File: api_guide.info,  Node: Documentation Generator,  Next: EWD Forms Generator,  Prev: Object Broker,  Up: Top
+
+2 Documentation Generator
+*************************
+
+2.1 Generate texinfo from PDI input file
+========================================
+
+2.1.1 `DWTIGPDI^DWDOCS(INFILE)'
+-------------------------------
+
+_INFILE_:  Specifies the PDI file to convert
+2.2 Return an Argument description
+==================================
+
+2.2.1 `$$ARGDESC^DWDOCS(TEXT)'
+------------------------------
+
+__:
+_TEXT_:  The PDI argument line to parse and display
+2.3 Return a texinfo chapheading
+================================
+
+2.3.1 `$$CHAPHEAD^DWDOCS(TEXT)'
+-------------------------------
+
+_TEXT_:  The text of the chapter heading
+2.4 Return a texinfo majorheading
+=================================
+
+2.4.1 `$$MAJRHEAD^DWDOCS(TEXT)'
+-------------------------------
+
+_TEXT_:  The text of the major heading
+2.5 Return a texinfo cindex tag
+===============================
+
+2.5.1 `$$CINDEX^DWDOCS(TEXT)'
+-----------------------------
+
+_TEXT_:  The text of the index entry
+2.6 Return a texinfo findex tag
+===============================
+
+2.6.1 `$$FINDEX^DWDOCS(TEXT)'
+-----------------------------
+
+_TEXT_:  The text of the index entry
+2.7 Return a texinfo input tag
+==============================
+
+2.7.1 `$$DWTIINPT^DWDOCS()'
+---------------------------
+
+2.8 Return a texinfo start of header
+====================================
+
+2.8.1 `$$DWTISOH^DWDOCS()'
+--------------------------
+
+2.9 Return a texinfo setfilename tag
+====================================
+
+2.9.1 `$$DWTISFN^DWDOCS(NAME)'
+------------------------------
+
+_NAME_:  The file to which the makeinfo output will be sent
+2.10 Return a texinfo settitle tag
+==================================
+
+2.10.1 `$$DWTISTTL^DWDOCS(NAME)'
+--------------------------------
+
+_NAME_:  The title of the document
+2.11 Return a texinfo end of header
+===================================
+
+2.11.1 `$$DWTIEOH^DWDOCS()'
+---------------------------
+
+2.12 Return a texinfo node tag
+==============================
+
+2.12.1 `$$DWTINODE^DWDOCS(NAME)'
+--------------------------------
+
+_NAME_:  The name of the node
+2.13 Return a texinfo chapter tag
+=================================
+
+2.13.1 `$$DWTICHAP^DWDOCS(NAME)'
+--------------------------------
+
+_NAME_:  The name of the chapter
+2.14 Return a texinfo code tag
+==============================
+
+2.14.1 `$$DWTICODE^DWDOCS(CODE)'
+--------------------------------
+
+_CODE_:  The code to quote
+2.15 Return a texinfo section tag
+=================================
+
+2.15.1 `$$DWTISC^DWDOCS(NAME)'
+------------------------------
+
+_NAME_:  The name of the section
+2.16 Return a texinfo subsection tag
+====================================
+
+2.16.1 `$$DWTISSC^DWDOCS(NAME)'
+-------------------------------
+
+_NAME_:  The name of the subsection
+2.17 Return a texinfo subsubsection tag
+=======================================
+
+2.17.1 `$$DWTISSSC^DWDOCS(NAME)'
+--------------------------------
+
+_NAME_:  The name of the subsubsection
+
+File: api_guide.info,  Node: EWD Forms Generator,  Next: Prefiniti FileMan/ScreenMan interfaces,  Prev: Documentation Generator,  Up: Top
+
+3 EWD Forms Generator
+*********************
+
+3.1 Compiles forms for a class into EWD pages
+=============================================
+
+3.1.1 `COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET)'
+----------------------------------------------------
+
+_CLASNAME_:  The class to compile
+_REVN_:  The revision to compile
+_ACTION_:  The type of form to generate, ADD or EDIT
+_TARGET_:  The file to compile to, defaults to STDOUT
+3.2 Return an XML attribute
+===========================
+
+3.2.1 `$$XMLATTR^DWFGBLD(KEY,VAL)'
+----------------------------------
+
+_KEY_:  The attribute's key
+_KEY_:  The attribute's value
+3.3 Return start of an xml tag TAG
+==================================
+
+3.3.1 `$$XMLST^DWFGBLD(TAG)'
+----------------------------
+
+_TAG_:  The tag to open
+3.4 Return a closing brace in a single line xml tag
+===================================================
+
+3.4.1 `$$XMLSLCL^DWFGBLD()'
+---------------------------
+
+3.5 Return a closing brace in a multi line xml tag TAG
+======================================================
+
+3.5.1 `$$XMLMLCL^DWFGBLD(TAG)'
+------------------------------
+
+_TAG_:  The tag to close
+3.6 Return an <hLEVEL>TEXT</hLEVEL> block
+=========================================
+
+3.6.1 `$$HDRTXT^DWFGBLD(TEXT,LEVEL)'
+------------------------------------
+
+_TEXT_:  The text to place in the block
+_LEVEL_:  The level of the heading
+3.7 Return a field block LABEL: CONT
+====================================
+
+3.7.1 `$$FLDBLK^DWFGBLD(LABEL,CONT)'
+------------------------------------
+
+_LABEL_:  The label of the block
+_CONT_:  The contents of the block
+3.8 Return a form input field
+=============================
+
+3.8.1 `$$INPFLD^DWFGBLD(TYPE,NAME,VALUE)'
+-----------------------------------------
+
+_TYPE_:  The HTML input field type
+_NAME_:  The DOM name of the field
+_VALUE_:  The initial value of the field
+3.9 Return an HTML submit button
+================================
+
+3.9.1 `$$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE)'
+----------------------------------------------------
+
+_NAME_:  The DOM name of the button
+_LABEL_:  The label on the button
+_ACTION_:  The MUMPS action script to run
+_NEXTPAGE_:  The page to go to after submit
+3.10 Return opening of an HTML table tag
+========================================
+
+3.10.1 `$$TBLOPEN^DWFGBLD()'
+----------------------------
+
+3.11 Return ending of an HTML table tag
+=======================================
+
+3.11.1 `$$TBLCLS^DWFGBLD()'
+---------------------------
+
+3.12 Return opening of an HTML form tag
+=======================================
+
+3.12.1 `$$FORMOPEN^DWFGBLD(METHOD,ACTION)'
+------------------------------------------
+
+_METHOD_:  The method, either post or get, to submit this form
+_ACTION_:  The action to perform, usually ewd
+3.13 Return ending of an HTML form tag
+======================================
+
+3.13.1 `$$FORMCLS^DWFGBLD()'
+----------------------------
+
+3.14 Return an ewd config tag
+=============================
+
+3.14.1 `$$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE)'
+-------------------------------------------
+
+_FRSTPAGE_:  Is this the first page of the app, true or false
+_PREPAGE_:  The pre-page script to call
+3.15 Return an html tag
+=======================
+
+3.15.1 `$$HTMLOPEN^DWFGBLD()'
+-----------------------------
+
+3.16 Return head section
+========================
+
+3.16.1 `$$HEADSECN^DWFGBLD(PGTITLE)'
+------------------------------------
+
+_PGTITLE_:  The title of the page
+3.17 Return the body section
+============================
+
+3.17.1 `$$BODYOPEN^DWFGBLD()'
+-----------------------------
+
+3.18 Close the body section
+===========================
+
+3.18.1 `$$BODYCLS^DWFGBLD()'
+----------------------------
+
+3.19 Close the <html> section
+=============================
+
+3.19.1 `$$HTMLCLS^DWFGBLD()'
+----------------------------
+
+
+File: api_guide.info,  Node: Prefiniti FileMan/ScreenMan interfaces,  Next: Instance Configuration,  Prev: EWD Forms Generator,  Up: Top
+
+4 Prefiniti FileMan/ScreenMan interfaces
+****************************************
+
+4.1 Invoke a ScreenMan form
+===========================
+
+4.1.1 `$$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM)'
+---------------------------------------------------------
+
+_FILENUM_:  The FileMan file number
+_FORMNAM_:  The ScreenMan form name
+_RECNUM_:  The record number
+_PAGENUM_:  The initial page to display
+
+File: api_guide.info,  Node: Instance Configuration,  Next: Prefiniti I/O Library,  Prev: Prefiniti FileMan/ScreenMan interfaces,  Up: Top
+
+5 Instance Configuration
+************************
+
+
+File: api_guide.info,  Node: Prefiniti I/O Library,  Next: Prefiniti Kernel,  Prev: Instance Configuration,  Up: Top
+
+6 Prefiniti I/O Library
+***********************
+
+6.1 Initialize the I/O Library
+==============================
+
+6.1.1 `$$INIT^DWIOLIB()'
+------------------------
+
+6.2 Set up a screen buffer
+==========================
+
+6.2.1 `SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)'
+-------------------------------------------------------------------
+
+_BUF_:  Reference to the buffer array
+_WIDTH_:  The width of the screen
+_HEIGHT_:  The height of the screen
+_FORECOLR_:  The foreground color
+_BACKCOLR_:  The background color
+_FILLCHAR_:  The fill character
+6.3 Update pending->current and current->screen
+===============================================
+
+6.3.1 `UPDATE^DWIOLIB()'
+------------------------
+
+6.4 Draw a rectangle into the pending buffer
+============================================
+
+6.4.1 `$$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR)'
+-----------------------------------------------------------------------------
+
+_XPOS_:  The horizontal position of the upper-left corner
+_YPOS_:  The vertical position of the upper-left corner
+_WIDTH_:  The width, in characters, of the rectangle. Must be less than
+XPOS+SCWIDTH
+_HEIGHT_:  The height, in characters, of the rectangle. Must be less
+than YPOS+SCHEIGHT
+_FORECOLR_:  The foreground color of the rectangle
+_BACKCOLR_:  The background color of the rectangle
+_FILLCHAR_:  The character with which to fill the rectangle
+
+File: api_guide.info,  Node: Prefiniti Kernel,  Next: Object Record Management System,  Prev: Prefiniti I/O Library,  Up: Top
+
+7 Prefiniti Kernel
+******************
+
+7.1 Get the next FUID in the sequence
+=====================================
+
+7.1.1 `$$GETNEXT^DWKRFUID()'
+----------------------------
+
+7.2 Installs a kernel module into a Prefiniti instance
+======================================================
+
+7.2.1 `INSTALL^DWKRMODI(MODULE)'
+--------------------------------
+
+_MODULE_:  The module to be installed
+7.3 Removes a kernel module from this instance
+==============================================
+
+7.3.1 `REMOVE^DWKRMODI(MODULE)'
+-------------------------------
+
+_MODULE_:  The module to be removed
+7.4 Prints a module's info line
+===============================
+
+7.4.1 `MODINFO^DWKRMODI(MODULE)'
+--------------------------------
+
+_MODULE_:  The module for which to print the info line
+7.5 Prints a list of installed modules
+======================================
+
+7.5.1 `MODULES^DWKRMODI()'
+--------------------------
+
+7.6 Queries whether a module is installed
+=========================================
+
+7.6.1 `$$QRYMOD^DWKRMODI(MODULE)'
+---------------------------------
+
+_MODULE_:  The module to be queried
+7.7 Return a multi-line input
+=============================
+
+7.7.1 `$$MLTILINE^DWKRRNSI()'
+-----------------------------
+
+7.8 Get terminal height in lines
+================================
+
+7.8.1 `$$TRMLINES^DWKRRNSI()'
+-----------------------------
+
+7.9 Get terminal width in columns
+=================================
+
+7.9.1 `$$TRMCOLS^DWKRRNSI()'
+----------------------------
+
+7.10 Write a multi-line global
+==============================
+
+7.10.1 `WMLTLINE^DWKRRNSI(GLOB)'
+--------------------------------
+
+_GLOB_:  The global to be written
+7.11 Send escape sequence
+=========================
+
+7.11.1 `ESCAPE^DWKRRNSI(SEQ)'
+-----------------------------
+
+_SEQ_:  The escape sequence
+7.12 Clear the screen
+=====================
+
+7.12.1 `CLRSCR^DWKRRNSI()'
+--------------------------
+
+7.13 Set colors
+===============
+
+7.13.1 `COLOR^DWKRRNSI(FG,BG)'
+------------------------------
+
+_FG_:  The foreground color
+_BG_:  The background color
+7.14 Restore the previous colors
+================================
+
+7.14.1 `RESTRCLR^DWKRRNSI()'
+----------------------------
+
+7.15 Locate the cursor to X,Y
+=============================
+
+7.15.1 `LOCATE^DWKRRNSI(X,Y)'
+-----------------------------
+
+_X_:  The horizontal coordinate
+_Y_:  The vertical coordinate
+7.16 Restore previous cursor position
+=====================================
+
+7.16.1 `RESTORXY^DWKRRNSI()'
+----------------------------
+
+7.17 Write a bar across the screen
+==================================
+
+7.17.1 `HDRBAR^DWKRRNSI(FG,BG,LENGTH)'
+--------------------------------------
+
+_FG_:  Foreground Color
+_BG_:  Background Color
+_LENGTH_:  Length of the bar
+7.18 Write TEXT at X,Y coordinates
+==================================
+
+7.18.1 `WRITEAT^DWKRRNSI(X,Y,TEXT)'
+-----------------------------------
+
+_X_:  X coordinate
+_Y_:  Y coordinate
+_TEXT_:  Text to be written
+7.19 Reset the screen
+=====================
+
+7.19.1 `RESET^DWKRRNSI()'
+-------------------------
+
+7.20 Reset the screen
+=====================
+
+7.20.1 ` D COLOR^DWKRRNSI("WHITE","BLACK")'
+-------------------------------------------
+
+7.21 Reset the screen
+=====================
+
+7.21.1 ` D CLRSCR^DWKRRNSI()'
+-----------------------------
+
+7.22 Fires when any class is created
+====================================
+
+7.22.1 `CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)'
+----------------------------------------------------
+
+_EVTYPE_:  The event type
+_OID_:  The record's OID
+_KEY_:  The key
+_REVN_:  The revision of the record
+_DATA_:  The PDB of the record
+7.23 Fires when any class is revised
+====================================
+
+7.23.1 `CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA)'
+----------------------------------------------------
+
+_EVTYPE_:  The event type
+_OID_:  The record's OID
+_KEY_:  The key
+_REVN_:  The revision of the record
+_DATA_:  The PDB of the record
+7.24 Runs form generation for the class and compiles the EWD pages
+==================================================================
+
+7.24.1 `CLSCOMP^DWCLWTCH(OID,REVN)'
+-----------------------------------
+
+_OID_:  The object's OID
+_REVN_:  The revision of the object
+
+File: api_guide.info,  Node: Object Record Management System,  Next: Administrator Shell,  Prev: Prefiniti Kernel,  Up: Top
+
+8 Object Record Management System
+*********************************
+
+8.1 Create a new ORMS class definition
+======================================
+
+8.1.1 `$$CREATE^DWORCLAS(CLASNAME,CLASDEFN)'
+--------------------------------------------
+
+_CLASNAME_:  The name of the class
+_CLASDEFN_:  The definition of the class
+8.2 Return a comma-delimited list of the fields in a class
+==========================================================
+
+8.2.1 `$$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT)'
+-------------------------------------------------
+
+_CLASNAME_:  The name of the class
+_REVN_:  The revision of the class, "N" for newest
+_PARENT_:  The parent of this class for CLASPTRs
+8.3 Set the primary key of a class
+==================================
+
+8.3.1 `SETPK^DWORCLAS(CLASNAME,PK)'
+-----------------------------------
+
+_CLASNAME_:  The name of the class
+_PK_:  The name of the primary key field
+8.4 Get the primary key of a class
+==================================
+
+8.4.1 `$$GETPK^DWORCLAS(CLASNAME)'
+----------------------------------
+
+_CLASNAME_:  The name of the class
+8.5 Retrieve a class's CLASDEFN ORMS ID by name
+===============================================
+
+8.5.1 `$$RETRIEVE^DWORCLAS(CLASNAME)'
+-------------------------------------
+
+_CLASNAME_:  The name of the class
+8.6 Get the revision number of the latest revision to this class
+================================================================
+
+8.6.1 `$$REVISION^DWORCLAS(OID)'
+--------------------------------
+
+_OID_:  The OID of the object to check
+8.7 Update an existing ORMS class definition
+============================================
+
+8.7.1 `UPDATE^DWORCLAS(OID,CLASDEFN)'
+-------------------------------------
+
+_OID_:  The OID of the record to update
+_CLASDEFN_:  The CLASDEFN of the record to update
+8.8 EWD action script for form submission
+=========================================
+
+8.8.1 `ACTION^DWOREWD(sessid)'
+------------------------------
+
+_sessid_:  The EWD session ID
+8.9 EWD prepage script for form editing
+=======================================
+
+8.9.1 `PREPAGE^DWOREWD(sessid)'
+-------------------------------
+
+_sessid_:  The EWD session ID
+8.10 Register a new ORMS class hook
+===================================
+
+8.10.1 `REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK)'
+-------------------------------------------------------------
+
+_MODULE_:  The kernel module to which the hook belongs
+_CLASNAME_:  The class name we are hooking
+_EVNTMASK_:  Format "CRD" C=Create,R=Revise,D=Delete 1 for true, 0 for
+false
+_CALLBACK_:  The MUMPS routine to be called when the hook is run
+8.11 Run hooks for CLASNAME on OID
+==================================
+
+8.11.1 `RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA)'
+-------------------------------------------------------------
+
+_CLASNAME_:  Class name
+_EVTYPE_:  CREATE, REVISE, DELETE
+_OID_:  The record's OID
+_KEY_:  The key of the updated field
+_REVN_:  The revision number
+_DATA_:  The new data
+8.12 Internal subroutine called by RUNHOOKS^DWORHOOK
+====================================================
+
+8.12.1 `DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA)'
+-----------------------------------------------------------
+
+8.13 Index a record by three terms
+==================================
+
+8.13.1 `SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL)'
+-------------------------------------------------
+
+_PRILKP_:  The primary lookup term
+_SECLKP_:  The secondary lookup term
+_TERLKP_:  The tertiary lookup term
+_VAL_:  The value to be indexed
+8.14 Lookup a record by three terms
+===================================
+
+8.14.1 `$$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP)'
+-----------------------------------------------
+
+_PRILKP_:  The primary lookup term
+_SECLKP_:  The secondary lookup term
+_TERLKP_:  The tertiary lookup term
+8.15 Compile an external CLASDEFN into ORMS-native format
+=========================================================
+
+8.15.1 `COMPILE^DWORINST(FH)'
+-----------------------------
+
+_FH_:  The file to compile
+8.16 Create/set meta stream STREAM at position POS to VAL on OID
+================================================================
+
+8.16.1 `SET^DWORMETA(OID,KEY,STREAM,POS,VAL)'
+---------------------------------------------
+
+_OID_:  The OID of the record to attach to
+_KEY_:  The key of the record to attach to
+_STREAM_:  The metadata stream's name
+_POS_:  The numeric index of this stream element
+_VAL_:  The value of STREAM at POS
+8.17 Get meta stream STREAM at position POS on OID
+==================================================
+
+8.17.1 `GET^DWORMETA(OID,KEY,STREAM,POS)'
+-----------------------------------------
+
+_OID_:  The OID of the record to read from
+_KEY_:  The key of the record to read stream from
+_STREAM_:  The metadata stream's name
+_POS_:  The numeric index of this stream element
+8.18 Create a new ORMS record
+=============================
+
+8.18.1 `CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA)'
+---------------------------------------------------
+
+_PARENT_:  The parent record of this record
+_CLASS_:  The CLASNAME of this record
+_NAME_:  The name of this record
+_KEY_:  The key of this record
+_DATA_:  The data contained in this record
+8.19 Write to an existing ORMS record
+=====================================
+
+8.19.1 `OUTPUT^DWORREC(OID,KEY,DATA)'
+-------------------------------------
+
+_OID_:  The OID of the record
+_KEY_:  The key of the record
+_DATA_:  The PDB of the record
+8.20 Append to an existing ORMS record
+======================================
+
+8.20.1 `APPEND^DWORREC(OID,KEY,DATA)'
+-------------------------------------
+
+_OID_:  OID
+_KEY_:  Key
+_DATA_:  PDB
+8.21 Read from an existing ORMS record
+======================================
+
+8.21.1 `INPUT^DWORREC(OID,KEY,REV)'
+-----------------------------------
+
+_OID_:  OID
+_KEY_:  Key
+_REV_:  Revision
+8.22 Get by class and key
+=========================
+
+8.22.1 `CLSGET^DWORREC(CLASS,KEY,DATA)'
+---------------------------------------
+
+_CLASS_:  CLASNAME
+_KEY_:  Key
+_DATA_:  PDB
+8.23 Get an OID through ^DWIND
+==============================
+
+8.23.1 `INDGET^DWORREC(CLASS,KEY,DATA)'
+---------------------------------------
+
+_CLASS_:  CLASNAME
+_KEY_:  Key
+_DATA_:  PDB
+8.24 Get the newest revision number for record OID,KEY
+======================================================
+
+8.24.1 `NEWEST^DWORREC(OID,KEY)'
+--------------------------------
+
+_OID_:  OID
+_KEY_:  Key
+8.25 Set a lock on record OID
+=============================
+
+8.25.1 `SETLOCK^DWORREC(OID)'
+-----------------------------
+
+_OID_:  OID
+8.26 Cull revisions for OID, preserving at most COUNT revisions
+===============================================================
+
+8.26.1 `CULL^DWORREC(OID,COUNT)'
+--------------------------------
+
+_OID_:  OID of object to cull
+_COUNT_:  Maximum revisions to preserve
+8.27 Check for locks on record OID
+==================================
+
+8.27.1 `ISLOCKED^DWORREC(OID)'
+------------------------------
+
+_OID_:  The OID of the desired record
+8.28 Clear locks on record OID
+==============================
+
+8.28.1 `CLRLOCK^DWORREC(OID)'
+-----------------------------
+
+_OID_:  The OID of the object to have its locks cleared
+8.29 Get the root node for this instance
+========================================
+
+8.29.1 `ROOTNODE^DWORREC()'
+---------------------------
+
+8.30 Sets the root node for this instance
+=========================================
+
+8.30.1 `SETRTNOD^DWORREC(OID)'
+------------------------------
+
+_OID_:  The OID of the new root node
+8.31 returns 1 if OID exists, 0 if it does not
+==============================================
+
+8.31.1 `$$RECEXIST^DWORREC(OID)'
+--------------------------------
+
+_OID_:  The OID of the record to check
+8.32 Get the class component of a computed field
+================================================
+
+8.32.1 `$$CFCLASS^DWORREC(CF)'
+------------------------------
+
+_CF_:  The entire computed field
+8.33 Get the key component of a computed field
+==============================================
+
+8.33.1 `$$CFKEY^DWORREC(CF)'
+----------------------------
+
+_CF_:  The entire computed field
+8.34 Get the field component of a computed field
+================================================
+
+8.34.1 `$$CFFIELD^DWORREC(CF)'
+------------------------------
+
+_CF_:  The entire computed field
+8.35 Get a computed field's value
+=================================
+
+8.35.1 `$$CFGET^DWORREC(CF)'
+----------------------------
+
+_CF_:  The entire computed field
+8.36 Dump an ORMS record
+========================
+
+8.36.1 `DUMP^DWORREC(OID)'
+--------------------------
+
+_OID_:  The OID of the record to dump
+8.37 Build a query from a query string
+======================================
+
+8.37.1 `$$BLDQRY^DWORRSET(QS)'
+------------------------------
+
+_QS_:  The query string
+
+File: api_guide.info,  Node: Administrator Shell,  Next: Maintenance Shell,  Prev: Object Record Management System,  Up: Top
+
+9 Administrator Shell
+*********************
+
+9.1 Render an add class instance form
+=====================================
+
+9.1.1 `$$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK)'
+------------------------------------------------------
+
+_CLASNAME_:  The class for which to render this form
+_REVN_:  The revision number of the class, N for most recent
+_SHHDR_:  Should be 1 to show header, 0 to hide header
+_STUFFPK_:  The value with which to fill the PK field, 0 for none
+
+File: api_guide.info,  Node: Maintenance Shell,  Next: User Shell,  Prev: Administrator Shell,  Up: Top
+
+10 Maintenance Shell
+********************
+
+
+File: api_guide.info,  Node: User Shell,  Next: Security and Authentication,  Prev: Maintenance Shell,  Up: Top
+
+11 User Shell
+*************
+
+
+File: api_guide.info,  Node: Security and Authentication,  Next: Concepts Index,  Prev: User Shell,  Up: Top
+
+12 Security and Authentication
+******************************
+
+12.1 Register with authentication
+=================================
+
+12.1.1 `$$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID)'
+-----------------------------------------------------
+
+_EMAIL_:  The user's e-mail address
+_PASSWORD_:  The user's password
+_MODE_:  EWD or DIRECT
+_SESSID_:  The EWD session ID if MODE=EWD
+
+File: api_guide.info,  Node: Concepts Index,  Next: Routines Index,  Prev: Security and Authentication,  Up: Top
+
+Concepts Index
+**************
+
+ [index ]
+* Menu:
+
+* Append to an existing ORMS record:     Object Record Management System.
+                                                              (line 170)
+* Build a query from a query string:     Object Record Management System.
+                                                              (line 298)
+* Check for locks on record OID:         Object Record Management System.
+                                                              (line 229)
+* Clear locks on record OID:             Object Record Management System.
+                                                              (line 236)
+* Clear the screen:                      Prefiniti Kernel.    (line  78)
+* Close the <html> section:              EWD Forms Generator. (line 138)
+* Close the body section:                EWD Forms Generator. (line 132)
+* Compile an external CLASDEFN into ORMS-native format: Object Record Management System.
+                                                              (line 122)
+* Compiles forms for a class into EWD pages: EWD Forms Generator.
+                                                              (line   6)
+* Create a new ORMS class definition:    Object Record Management System.
+                                                              (line   6)
+* Create a new ORMS record:              Object Record Management System.
+                                                              (line 150)
+* Create/set meta stream STREAM at position POS to VAL on OID: Object Record Management System.
+                                                              (line 129)
+* Cull revisions for OID, preserving at most COUNT revisions: Object Record Management System.
+                                                              (line 221)
+* Draw a rectangle into the pending buffer: Prefiniti I/O Library.
+                                                              (line  30)
+* Dump an ORMS record:                   Object Record Management System.
+                                                              (line 291)
+* EWD action script for form submission: Object Record Management System.
+                                                              (line  60)
+* EWD prepage script for form editing:   Object Record Management System.
+                                                              (line  67)
+* Fires when any class is created:       Prefiniti Kernel.    (line 148)
+* Fires when any class is revised:       Prefiniti Kernel.    (line 159)
+* Generate texinfo from PDI input file:  Documentation Generator.
+                                                              (line   6)
+* Get a computed field's value:          Object Record Management System.
+                                                              (line 284)
+* Get an OID through ^DWIND:             Object Record Management System.
+                                                              (line 197)
+* Get by class and key:                  Object Record Management System.
+                                                              (line 188)
+* Get meta stream STREAM at position POS on OID: Object Record Management System.
+                                                              (line 140)
+* Get terminal height in lines:          Prefiniti Kernel.    (line  52)
+* Get terminal width in columns:         Prefiniti Kernel.    (line  58)
+* Get the class component of a computed field: Object Record Management System.
+                                                              (line 263)
+* Get the field component of a computed field: Object Record Management System.
+                                                              (line 277)
+* Get the key component of a computed field: Object Record Management System.
+                                                              (line 270)
+* Get the newest revision number for record OID,KEY: Object Record Management System.
+                                                              (line 206)
+* Get the next FUID in the sequence:     Prefiniti Kernel.    (line   6)
+* Get the primary key of a class:        Object Record Management System.
+                                                              (line  31)
+* Get the revision number of the latest revision to this class: Object Record Management System.
+                                                              (line  45)
+* Get the root node for this instance:   Object Record Management System.
+                                                              (line 243)
+* Index a record by three terms:         Object Record Management System.
+                                                              (line 103)
+* Initialize the I/O Library:            Prefiniti I/O Library.
+                                                              (line   6)
+* Installs a kernel module into a Prefiniti instance: Prefiniti Kernel.
+                                                              (line  12)
+* Internal subroutine called by RUNHOOKS^DWORHOOK: Object Record Management System.
+                                                              (line  97)
+* Invoke a ScreenMan form:               Prefiniti FileMan/ScreenMan interfaces.
+                                                              (line   6)
+* Locate the cursor to X,Y:              Prefiniti Kernel.    (line  98)
+* Lookup a record by three terms:        Object Record Management System.
+                                                              (line 113)
+* Prints a list of installed modules:    Prefiniti Kernel.    (line  33)
+* Prints a module's info line:           Prefiniti Kernel.    (line  26)
+* Queries whether a module is installed: Prefiniti Kernel.    (line  39)
+* Read from an existing ORMS record:     Object Record Management System.
+                                                              (line 179)
+* Register a new ORMS class hook:        Object Record Management System.
+                                                              (line  74)
+* Register with authentication:          Security and Authentication.
+                                                              (line   6)
+* Removes a kernel module from this instance: Prefiniti Kernel.
+                                                              (line  19)
+* Render an add class instance form:     Administrator Shell. (line   6)
+* Reset the screen:                      Prefiniti Kernel.    (line 130)
+* Restore previous cursor position:      Prefiniti Kernel.    (line 106)
+* Restore the previous colors:           Prefiniti Kernel.    (line  92)
+* Retrieve a class's CLASDEFN ORMS ID by name: Object Record Management System.
+                                                              (line  38)
+* Return a closing brace in a multi line xml tag TAG: EWD Forms Generator.
+                                                              (line  37)
+* Return a closing brace in a single line xml tag: EWD Forms Generator.
+                                                              (line  31)
+* Return a comma-delimited list of the fields in a class: Object Record Management System.
+                                                              (line  14)
+* Return a field block LABEL: CONT:      EWD Forms Generator. (line  52)
+* Return a form input field:             EWD Forms Generator. (line  60)
+* Return a multi-line input:             Prefiniti Kernel.    (line  46)
+* Return a texinfo chapheading:          Documentation Generator.
+                                                              (line  21)
+* Return a texinfo chapter tag:          Documentation Generator.
+                                                              (line  88)
+* Return a texinfo cindex tag:           Documentation Generator.
+                                                              (line  35)
+* Return a texinfo code tag:             Documentation Generator.
+                                                              (line  95)
+* Return a texinfo end of header:        Documentation Generator.
+                                                              (line  75)
+* Return a texinfo findex tag:           Documentation Generator.
+                                                              (line  42)
+* Return a texinfo input tag:            Documentation Generator.
+                                                              (line  49)
+* Return a texinfo majorheading:         Documentation Generator.
+                                                              (line  28)
+* Return a texinfo node tag:             Documentation Generator.
+                                                              (line  81)
+* Return a texinfo section tag:          Documentation Generator.
+                                                              (line 102)
+* Return a texinfo setfilename tag:      Documentation Generator.
+                                                              (line  61)
+* Return a texinfo settitle tag:         Documentation Generator.
+                                                              (line  68)
+* Return a texinfo start of header:      Documentation Generator.
+                                                              (line  55)
+* Return a texinfo subsection tag:       Documentation Generator.
+                                                              (line 109)
+* Return a texinfo subsubsection tag:    Documentation Generator.
+                                                              (line 116)
+* Return an <hLEVEL>TEXT</hLEVEL> block: EWD Forms Generator. (line  44)
+* Return an Argument description:        Documentation Generator.
+                                                              (line  13)
+* Return an ewd config tag:              EWD Forms Generator. (line 105)
+* Return an HTML submit button:          EWD Forms Generator. (line  69)
+* Return an html tag:                    EWD Forms Generator. (line 113)
+* Return an XML attribute:               EWD Forms Generator. (line  16)
+* Return ending of an HTML form tag:     EWD Forms Generator. (line  99)
+* Return ending of an HTML table tag:    EWD Forms Generator. (line  85)
+* Return head section:                   EWD Forms Generator. (line 119)
+* Return opening of an HTML form tag:    EWD Forms Generator. (line  91)
+* Return opening of an HTML table tag:   EWD Forms Generator. (line  79)
+* Return start of an xml tag TAG:        EWD Forms Generator. (line  24)
+* Return the body section:               EWD Forms Generator. (line 126)
+* returns 1 if OID exists, 0 if it does not: Object Record Management System.
+                                                              (line 256)
+* Run hooks for CLASNAME on OID:         Object Record Management System.
+                                                              (line  85)
+* Runs form generation for the class and compiles the EWD pages: Prefiniti Kernel.
+                                                              (line 170)
+* Send escape sequence:                  Prefiniti Kernel.    (line  71)
+* Set a lock on record OID:              Object Record Management System.
+                                                              (line 214)
+* Set colors:                            Prefiniti Kernel.    (line  84)
+* Set the primary key of a class:        Object Record Management System.
+                                                              (line  23)
+* Set up a screen buffer:                Prefiniti I/O Library.
+                                                              (line  12)
+* Sets the root node for this instance:  Object Record Management System.
+                                                              (line 249)
+* Update an existing ORMS class definition: Object Record Management System.
+                                                              (line  52)
+* Update pending->current and current->screen: Prefiniti I/O Library.
+                                                              (line  24)
+* Write a bar across the screen:         Prefiniti Kernel.    (line 112)
+* Write a multi-line global:             Prefiniti Kernel.    (line  64)
+* Write TEXT at X,Y coordinates:         Prefiniti Kernel.    (line 121)
+* Write to an existing ORMS record:      Object Record Management System.
+                                                              (line 161)
+
+
+File: api_guide.info,  Node: Routines Index,  Prev: Concepts Index,  Up: Top
+
+Routines Index
+**************
+
+ [index ]
+* Menu:
+
+* $$ARGDESC^DWDOCS(TEXT):                Documentation Generator.
+                                                              (line  13)
+* $$BLDQRY^DWORRSET(QS):                 Object Record Management System.
+                                                              (line 298)
+* $$BODYCLS^DWFGBLD():                   EWD Forms Generator. (line 132)
+* $$BODYOPEN^DWFGBLD():                  EWD Forms Generator. (line 126)
+* $$CFCLASS^DWORREC(CF):                 Object Record Management System.
+                                                              (line 263)
+* $$CFFIELD^DWORREC(CF):                 Object Record Management System.
+                                                              (line 277)
+* $$CFGET^DWORREC(CF):                   Object Record Management System.
+                                                              (line 284)
+* $$CFKEY^DWORREC(CF):                   Object Record Management System.
+                                                              (line 270)
+* $$CHAPHEAD^DWDOCS(TEXT):               Documentation Generator.
+                                                              (line  21)
+* $$CINDEX^DWDOCS(TEXT):                 Documentation Generator.
+                                                              (line  35)
+* $$CREATE^DWORCLAS(CLASNAME,CLASDEFN):  Object Record Management System.
+                                                              (line   6)
+* $$DRAWRECT^DWIOLIB(XPOS,YPOS,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR): Prefiniti I/O Library.
+                                                              (line  30)
+* $$DWTICHAP^DWDOCS(NAME):               Documentation Generator.
+                                                              (line  88)
+* $$DWTICODE^DWDOCS(CODE):               Documentation Generator.
+                                                              (line  95)
+* $$DWTIEOH^DWDOCS():                    Documentation Generator.
+                                                              (line  75)
+* $$DWTIINPT^DWDOCS():                   Documentation Generator.
+                                                              (line  49)
+* $$DWTINODE^DWDOCS(NAME):               Documentation Generator.
+                                                              (line  81)
+* $$DWTISC^DWDOCS(NAME):                 Documentation Generator.
+                                                              (line 102)
+* $$DWTISFN^DWDOCS(NAME):                Documentation Generator.
+                                                              (line  61)
+* $$DWTISOH^DWDOCS():                    Documentation Generator.
+                                                              (line  55)
+* $$DWTISSC^DWDOCS(NAME):                Documentation Generator.
+                                                              (line 109)
+* $$DWTISSSC^DWDOCS(NAME):               Documentation Generator.
+                                                              (line 116)
+* $$DWTISTTL^DWDOCS(NAME):               Documentation Generator.
+                                                              (line  68)
+* $$EWDHDR^DWFGBLD(FRSTPAGE,PREPAGE):    EWD Forms Generator. (line 105)
+* $$FINDEX^DWDOCS(TEXT):                 Documentation Generator.
+                                                              (line  42)
+* $$FLDBLK^DWFGBLD(LABEL,CONT):          EWD Forms Generator. (line  52)
+* $$FORMCLS^DWFGBLD():                   EWD Forms Generator. (line  99)
+* $$FORMOPEN^DWFGBLD(METHOD,ACTION):     EWD Forms Generator. (line  91)
+* $$GETNEXT^DWKRFUID():                  Prefiniti Kernel.    (line   6)
+* $$GETPK^DWORCLAS(CLASNAME):            Object Record Management System.
+                                                              (line  31)
+* $$HDRTXT^DWFGBLD(TEXT,LEVEL):          EWD Forms Generator. (line  44)
+* $$HEADSECN^DWFGBLD(PGTITLE):           EWD Forms Generator. (line 119)
+* $$HTMLCLS^DWFGBLD():                   EWD Forms Generator. (line 138)
+* $$HTMLOPEN^DWFGBLD():                  EWD Forms Generator. (line 113)
+* $$INIT^DWIOLIB():                      Prefiniti I/O Library.
+                                                              (line   6)
+* $$INPFLD^DWFGBLD(TYPE,NAME,VALUE):     EWD Forms Generator. (line  60)
+* $$INVOKE^DWSMINTR(FILENUM,FORMNAM,RECNUM,PAGENUM): Prefiniti FileMan/ScreenMan interfaces.
+                                                              (line   6)
+* $$LIDX3^DWORINDX(PRILKP,SECLKP,TERLKP): Object Record Management System.
+                                                              (line 113)
+* $$LISTFLDS^DWORCLAS(CLASNAME,REVN,PARENT): Object Record Management System.
+                                                              (line  14)
+* $$LOGIN^DWSCAUTH(EMAIL,PASSWORD,MODE,SESSID): Security and Authentication.
+                                                              (line   6)
+* $$MAJRHEAD^DWDOCS(TEXT):               Documentation Generator.
+                                                              (line  28)
+* $$MLTILINE^DWKRRNSI():                 Prefiniti Kernel.    (line  46)
+* $$QRYMOD^DWKRMODI(MODULE):             Prefiniti Kernel.    (line  39)
+* $$RECEXIST^DWORREC(OID):               Object Record Management System.
+                                                              (line 256)
+* $$RETRIEVE^DWORCLAS(CLASNAME):         Object Record Management System.
+                                                              (line  38)
+* $$REVISION^DWORCLAS(OID):              Object Record Management System.
+                                                              (line  45)
+* $$RNDRADD^DWPASHL(CLASNAME,REVN,SHHDR,STUFFPK): Administrator Shell.
+                                                              (line   6)
+* $$SUBFLD^DWFGBLD(NAME,LABEL,ACTION,NEXTPAGE): EWD Forms Generator.
+                                                              (line  69)
+* $$TBLCLS^DWFGBLD():                    EWD Forms Generator. (line  85)
+* $$TBLOPEN^DWFGBLD():                   EWD Forms Generator. (line  79)
+* $$TRMCOLS^DWKRRNSI():                  Prefiniti Kernel.    (line  58)
+* $$TRMLINES^DWKRRNSI():                 Prefiniti Kernel.    (line  52)
+* $$XMLATTR^DWFGBLD(KEY,VAL):            EWD Forms Generator. (line  16)
+* $$XMLMLCL^DWFGBLD(TAG):                EWD Forms Generator. (line  37)
+* $$XMLSLCL^DWFGBLD():                   EWD Forms Generator. (line  31)
+* $$XMLST^DWFGBLD(TAG):                  EWD Forms Generator. (line  24)
+* ACTION^DWOREWD(sessid):                Object Record Management System.
+                                                              (line  60)
+* APPEND^DWORREC(OID,KEY,DATA):          Object Record Management System.
+                                                              (line 170)
+* CLRLOCK^DWORREC(OID):                  Object Record Management System.
+                                                              (line 236)
+* CLRSCR^DWKRRNSI():                     Prefiniti Kernel.    (line  78)
+* CLSCOMP^DWCLWTCH(OID,REVN):            Prefiniti Kernel.    (line 170)
+* CLSCREAT^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA): Prefiniti Kernel.
+                                                              (line 148)
+* CLSGET^DWORREC(CLASS,KEY,DATA):        Object Record Management System.
+                                                              (line 188)
+* CLSREVIS^DWCLWTCH(EVTYPE,OID,KEY,REVN,DATA): Prefiniti Kernel.
+                                                              (line 159)
+* COLOR^DWKRRNSI(FG,BG):                 Prefiniti Kernel.    (line  84)
+* COMPILE^DWFGBLD(CLASNAME,REVN,ACTION,TARGET): EWD Forms Generator.
+                                                              (line   6)
+* COMPILE^DWORINST(FH):                  Object Record Management System.
+                                                              (line 122)
+* CREATE^DWORREC(PARENT,CLASS,NAME,KEY,DATA): Object Record Management System.
+                                                              (line 150)
+* CULL^DWORREC(OID,COUNT):               Object Record Management System.
+                                                              (line 221)
+* D CLRSCR^DWKRRNSI():                   Prefiniti Kernel.    (line 142)
+* D COLOR^DWKRRNSI("WHITE","BLACK"):     Prefiniti Kernel.    (line 136)
+* DOHOOK^DWORHOOK(BASEROUT,EVTYPE,OID,KEY,REVN,DATA): Object Record Management System.
+                                                              (line  97)
+* DUMP^DWORREC(OID):                     Object Record Management System.
+                                                              (line 291)
+* DWTIGPDI^DWDOCS(INFILE):               Documentation Generator.
+                                                              (line   6)
+* ESCAPE^DWKRRNSI(SEQ):                  Prefiniti Kernel.    (line  71)
+* GET^DWORMETA(OID,KEY,STREAM,POS):      Object Record Management System.
+                                                              (line 140)
+* HDRBAR^DWKRRNSI(FG,BG,LENGTH):         Prefiniti Kernel.    (line 112)
+* INDGET^DWORREC(CLASS,KEY,DATA):        Object Record Management System.
+                                                              (line 197)
+* INPUT^DWORREC(OID,KEY,REV):            Object Record Management System.
+                                                              (line 179)
+* INSTALL^DWKRMODI(MODULE):              Prefiniti Kernel.    (line  12)
+* ISLOCKED^DWORREC(OID):                 Object Record Management System.
+                                                              (line 229)
+* LOCATE^DWKRRNSI(X,Y):                  Prefiniti Kernel.    (line  98)
+* MODINFO^DWKRMODI(MODULE):              Prefiniti Kernel.    (line  26)
+* MODULES^DWKRMODI():                    Prefiniti Kernel.    (line  33)
+* NEWEST^DWORREC(OID,KEY):               Object Record Management System.
+                                                              (line 206)
+* OUTPUT^DWORREC(OID,KEY,DATA):          Object Record Management System.
+                                                              (line 161)
+* PREPAGE^DWOREWD(sessid):               Object Record Management System.
+                                                              (line  67)
+* REGISTER^DWORHOOK(MODULE,CLASNAME,EVNTMASK,CALLBACK): Object Record Management System.
+                                                              (line  74)
+* REMOVE^DWKRMODI(MODULE):               Prefiniti Kernel.    (line  19)
+* RESET^DWKRRNSI():                      Prefiniti Kernel.    (line 130)
+* RESTORXY^DWKRRNSI():                   Prefiniti Kernel.    (line 106)
+* RESTRCLR^DWKRRNSI():                   Prefiniti Kernel.    (line  92)
+* ROOTNODE^DWORREC():                    Object Record Management System.
+                                                              (line 243)
+* RUNHOOKS^DWORHOOK(CLASNAME,EVTYPE,OID,KEY,REVN,DATA): Object Record Management System.
+                                                              (line  85)
+* SET^DWORMETA(OID,KEY,STREAM,POS,VAL):  Object Record Management System.
+                                                              (line 129)
+* SETBUF^DWIOLIB(BUF,WIDTH,HEIGHT,FORECOLR,BACKCOLR,FILLCHAR): Prefiniti I/O Library.
+                                                              (line  12)
+* SETLOCK^DWORREC(OID):                  Object Record Management System.
+                                                              (line 214)
+* SETPK^DWORCLAS(CLASNAME,PK):           Object Record Management System.
+                                                              (line  23)
+* SETRTNOD^DWORREC(OID):                 Object Record Management System.
+                                                              (line 249)
+* SIDX3^DWORINDX(PRILKP,SECLKP,TERLKP,VAL): Object Record Management System.
+                                                              (line 103)
+* UPDATE^DWIOLIB():                      Prefiniti I/O Library.
+                                                              (line  24)
+* UPDATE^DWORCLAS(OID,CLASDEFN):         Object Record Management System.
+                                                              (line  52)
+* WMLTLINE^DWKRRNSI(GLOB):               Prefiniti Kernel.    (line  64)
+* WRITEAT^DWKRRNSI(X,Y,TEXT):            Prefiniti Kernel.    (line 121)
+
+
+
+Tag Table:
+Node: Top213
+Node: Object Broker787
+Node: Documentation Generator920
+Node: EWD Forms Generator3909
+Node: Prefiniti FileMan/ScreenMan interfaces7783
+Node: Instance Configuration8321
+Node: Prefiniti I/O Library8514
+Node: Prefiniti Kernel10042
+Node: Object Record Management System14327
+Node: Administrator Shell23087
+Node: Maintenance Shell23683
+Node: User Shell23833
+Node: Security and Authentication23977
+Node: Concepts Index24464
+Node: Routines Index36944
+
+End Tag Table
